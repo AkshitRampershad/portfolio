@@ -8,10 +8,11 @@
   <style>
 
 .top-image {
-      width:100%;
-      display: block;
-      margin: 10px auto;
-    }
+  width: 80%;
+  display: block;
+  margin: 10px auto;
+}
+
 
     /* Reset default margin and padding */
     body, h1, h2, h3, p, ul, li, form {
@@ -26,7 +27,7 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed;
-      color: whitesmoke;
+      color: white;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
     }
 
@@ -368,15 +369,143 @@ flex-direction: column-reverse;
 </header>
 <section id="blog">
   <div class="container">
-    <br><h2 style="text-align: center;">Addressing Bias in Venture Capital: The Story of Reach Capital</h2><br><br>
+    <br><h2 style="text-align: center;">Building Inclusive Design Systems: A Framework for Human-Centered AI
+    </h2><br><br>
     <img src="images/human-centered.png" alt="Top Image" class="top-image">
     <article class="blog-article">
       <h3></h3>
-      <p class="blog-date">Published on July 5, 2023</p> <br> 
+      <p class="blog-date">Published on June 26, 2023</p> <br> 
+      <article class="blog-article">
 
-  Stay tuned
-</body>
+ <p style="text-align:justify;">   <font size="4px">
+  In today's world, technology has become an integral part of our daily lives. As such, it is essential that we prioritize the development of inclusive and considerate systems that cater to the needs of all individuals. In this regard, human-centered AI offers a framework for achieving this goal.
+</p></font>
+<p><br> 
+         <p style="text-align: justify;"><font size="4px">
+          The process of creating inclusive design systems is intricate and multifaceted, requiring a comprehensive understanding of the needs and perspectives of all individuals who interact with the system. Therefore, it is essential to gather a diverse range of voices and engage in meaningful conversations to ensure that no one is left out.
+        </p><br></font>
+
+        <p style="text-align: justify;"><font size ="4px">
+          One crucial aspect of inclusive design is acknowledging and addressing potential biases that may be present in the data used to train AI. Doing so helps create a more equitable and accurate system that serves everyone fairly.    In addition, it is vital to ensure that the user interface is accessible to all individuals. This involves implementing features such as screen readers and closed captioning to cater to a diverse range of users, including those with disabilities.Lastly, continually evaluating and improving the design system is crucial to ensure that it remains inclusive and effective. This requires ongoing feedback and testing from a diverse range of users to ensure that everyone's needs are being met.
+        </p></font>
+</p>
+<br><br>
+            <div style="display: flex; align-items: center;">
+
+              <img src="images/humancentricai1.jpg" alt="vertical-align" height="160" width="390" style="margin-right: 50px;">
+              
+              <p style="text-align: justify;"> <font size="4px">
+
+                An example of inclusive design in action is the creation of voice assistants such as Siri and Alexa. These systems were designed to be accessible to individuals with disabilities who may have difficulty using traditional interfaces such as keyboards and touchscreens. By using voice commands, users can interact with the system in a way that is easier and more intuitive for them. Additionally, these systems have built-in features such as closed captioning and screen readers to ensure that they are accessible to all users.
+              </p></font>
+            </div>
+            <br>
+            <br>
+            <h2>Conclusions:</h2>
+            <div style="display: flex; align-items: center;">
+          
+              <p style="text-align: justify; flex: 1; font-size: 18px;">
+              
+                Embracing the development of inclusive design systems is not just a choice but a necessity in shaping a more equitable and accessible world. By wholeheartedly adopting a human-centered AI framework and valuing the diverse needs and perspectives of all individuals, we can forge a path towards technology that genuinely serves and uplifts everyone. It is through this unwavering commitment to inclusivity that we can bridge the gaps, break down barriers, and foster a future where technology becomes a catalyst for positive change in the lives of people worldwide.
+              </p>
+            
+              <img src="images/homepagebias.jpg" alt="vertical-align" width="250" style="margin-left: 20px;">
+            </div>
+            
+            
+<div class="social-media-card">
+  <p class="share-text"></p>
+  <div class="social-media-icons">
+    <a href="https://medium.com/" target="_blank" class="social-media-medium"><i class="fab fa-medium"></i></a>
+    <a href="https://www.facebook.com/" target="_blank" class="social-media-facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.linkedin.com/signup/cold-join" target="_blank" class="social-media-linkedin"><i class="fab fa-linkedin"></i></a>
+    <a href="https://twitter.com/intent/tweet?url=YOUR_BLOG_URL" target="_blank" class="social-media-twitter"><i class="fab fa-twitter"></i></a>
+  </div>
+</div>
+<form id="subscribe-form">
+  <button type="submit">Subscribe</button>
+</form>
+</section>       
+  <div id="comment-container">
+    <h2 style="text-align: center;">We would love to hear your thoughts! Please feel free to leave a comment below </h2><br><br>
+    
+    <form id="comment-form">
+      <input type="text" id="name-input" placeholder="Your Name" required>
+      <textarea id="comment-input" placeholder="Your Comment" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="comment-list">
+      <!-- Comment items will be dynamically added here -->
+    </div>
+  </div>
+  <script>
+    document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+  
+      // Display a popup message
+      alert('Thank you for subscribing!');
+
+     // Refresh the page and scroll to the top
+     location.reload();
+    window.scrollTo(0, 0);
+  });
+  
+  </script>
+<script>
+  document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    var email = document.getElementById('email-input').value; // Get the entered email address
+
+    // Call the Mailchimp API to subscribe the user
+    fetch('https://api.mailchimp.com/3.0/lists/{YOUR_LIST_ID}/members', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'apikey {YOUR_API_KEY}'
+      },
+      body: JSON.stringify({
+        email_address: email,
+        status: 'subscribed'
+      })
+    })
+    .then(function(response) {
+      if (response.ok) {
+        // Subscription successful, display a success message or redirect to a thank-you page
+        alert('Thank you for subscribing!');
+      } else {
+        // Subscription failed, display an error message
+        alert('Thank you for subscribing!');
+      }
+    })
+    .catch(function(error) {
+      console.error('Error:', error);
+    });
+  });
+</script>
+<script>
+    document.getElementById("comment-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get input values
+  var name = document.getElementById("name-input").value;
+  var comment = document.getElementById("comment-input").value;
+
+  // Create new comment item
+  var commentItem = document.createElement("div");
+  commentItem.classList.add("comment-item");
+  commentItem.innerHTML = "<strong>" + name + ":</strong> <span>" + comment + "</span>";
+
+  // Append new comment item to the comment list
+  document.getElementById("comment-list").appendChild(commentItem);
+
+  // Clear input values
+  document.getElementById("name-input").value = "";
+  document.getElementById("comment-input").value = "";
+});
+</script>
 <footer>
     <p>&copy; 2023 Akshit RamPershad. All rights reserved.</p>
     </footer>
+</body>
 </html>
