@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>talk</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: black;
+      background-image:url("images/endless-constellation.png");
+      background-position: cover;
+      padding: 10px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 137.5%;
+      margin: 0 auto;
+    }
+
+       /* Style header and navigation */
+   header {
+      background-color: black;
+      padding: 35px;
+      display: flex;
+      justify-content: center; /* Align navigation in the middle */
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center; /* Align list items in the middle */
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 15px;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: large;
+      transition: all 0.3s ease;
+      white-space: nowrap; /* Prevent line breaks */
+    }
+
+    nav ul li:not(:last-child) a {
+    margin-right: 50px; /* Add space between each word */
+}
+
+    nav ul li a:hover {
+      color: #007bff;
+    }
+
+  /*Product goal*/
+      /* Style sections */
+      
+      section {
+        padding: 20px 0;
+      }
+
+      .container {
+        width: 1100px;
+        margin: 0 auto;
+        margin-bottom: -10px;
+      }
+
+      h1, h2, h3 {
+        margin-bottom: 2  5px;
+        font-size: 20px;
+      }
+
+    /* Style projects */
+    .project {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: whitesmoke;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      
+    }
+
+    .project-info {
+      flex: 1;
+    }
+
+    .project-info h3 {
+      margin-bottom: 15px;
+    }
+
+    .project-info h3 a {
+      color: blue;
+    }
+
+    .project-image {
+      margin-left: 10px;
+      width: 200px;
+      margin-top: 50px;
+      
+    }
+
+    .project-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-right: 20px;
+    }
+
+/*business*/
+
+.project-images img {
+    width: 400px;
+    height: 400px;
+    border-radius: 4px;
+  }
+
+  .project-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .project-info {
+    margin-right: 20px;
+  }
+
+
+    /* Header Styles */
+    header {
+      background-color: black;
+      padding: 0px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: white;
+      margin: 0;
+      padding: 0px 0;
+    }
+
+    .github-icon {
+      width: 60px;
+      height: 60px;
+      margin-left: 5px;
+      vertical-align: middle;
+      border-radius: 20px;
+
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: whitesmoke;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: black;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+
+    /* Code Snippet Styles */
+    .code-snippet {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .code-snippet img {
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+      margin-bottom: 10px;
+      margin-left: 25px;
+    }
+
+    
+    /* Footer Styles */
+    footer {
+      background-color: black;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+/* Media queries */
+
+
+
+
+
+/* For screens between 601px and 900px */
+@media (min-width: 601px) and (max-width: 900px) {
+  .code-snippet img {
+    max-width: 800px;
+  }
+}
+
+/* For screens larger than 900px */
+@media (min-width: 901px) {
+  .code-snippet img {
+    max-width: 1000px;
+  }
+}
+
+
+/* Media queries */
+/* For screens smaller than 600px */
+@media (max-width: 600px) {
+  .project-images img {
+    width: 100%;
+    height: auto;
+  }
+}
+/* For screens between 601px and 900px */
+@media (min-width: 601px) and (max-width: 900px) {
+  .project {
+    flex-direction: column;
+  }
+
+  .project-info {
+    margin-bottom: 20px;
+  }
+}
+
+  /* Updated media query for workflow images */
+  .project-image {
+    margin-top: 15px; /* Add margin to create space between description and image */
+  }
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  nav ul li {
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    margin-right: -20px;
+    margin-left: -50px;
+    margin-bottom: 0;
+  }
+}
+
+/* Media Queries CODE WORKFLOW IMG*/
+@media screen and (max-width: 768px) {
+  /* Other styles */
+
+  /* Updated media query for workflow images */
+  .code-snippet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column; /* Reverse the order of elements */
+  }
+}
+
+@media (max-width: 480px) {
+  .code-snippet img {
+    margin-left: 0px;
+    margin-right: 5px;
+  }
+}
+    
+/* For screens smaller than 768px */
+@media (max-width: 767px) {
+  .container {
+    width: 100%;
+    padding: 0px 0px;
+  }
+}
+
+/* For screens between 768px and 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    width: 100%;
+    padding: 0px 0px;
+  }
+}
+
+/* Adjustments for the project layout */
+.project {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-image img {
+  max-width: 100%;
+  height: auto;
+  margin-top: -50px;
+}
+
+/* Additional adjustments for larger screens */
+@media (min-width: 992px) {
+  .project {
+    flex-direction: row;
+  }
+
+  .project-info {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .project-image img {
+    margin-top: -20px;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projectsummary.html">Projects</a></li>
+            <li><a href="blogstab.html">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+
+  <div class="container">
+    <header>
+      <h1>UKG TALK<a href="https://apps.apple.com/np/app/ukg-talk/id1637782331" target="_blank"><img src="images/logoukg.png" class="github-icon"></a><h1>
+    </header>
+    <div class="card">
+      <h2>PRODUCT OVERVIEW</h2>
+      <p style="text-align: justify;">
+        Ultimate Kronos Group (UKG) is a prominent company specializing in human capital management (HCM) solutions, encompassing various aspects such as workforce management, payroll, HR, and talent management software. As part of its comprehensive suite of offerings, UKG has developed an internal communication tool called UKG TALK. 
+      </p>
+    </div>
+
+    <section id="projects">
+      <div class="container">
+        <div class="project">
+          <div class="project-info">
+            <h3>PRODUCT GOAL</h3>
+            <p style="text-align: justify;">In today's evolving work landscape, efficient communication and employee engagement are vital for organizational success. UKG TALK serves as a mobile-centric solution, seamlessly integrating into existing workflows. Providing a platform for enhanced connections between companies and their staff, it fosters improved productivity and cultivates a more inclusive and collaborative work environment. With the growing prevalence of hybrid workforce models, having robust collaboration tools and effective employee communication channels has become increasingly essential. UKG TALK addresses this need by offering a user-friendly interface and features that streamline communication, facilitate information sharing, and promote employee engagement. By leveraging the power of UKG TALK, businesses can optimize their internal communication processes, resulting in increased efficiency, stronger teamwork, and better alignment across departments. This, in turn, positively impacts overall business performance and helps create a more connected and engaged workforce. While UKG TALK is utilized by various organizations that are clients of UKG, the specific companies employing this communication tool may vary across different industries and sectors.
+            </p><br><br>
+          </div>
+          <div class="project-image">
+            <img src="images/WhatWeDo-HR.png.png" alt="Card Image 5">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="card">
+      <h2>EMPLOYING QUALITY ANALYSIS TOOLS AND TECHNOLOGIES TO PERFORM DATA ANALYSIS.</h2>
+      <p style="text-align: justify;">
+        As a Software Quality Engineer, I was involved in developing and testing the application, ensuring its reliability, functionality, and overall quality. Throughout the project, I worked closely with cross-functional teams, including developers, designers, and product managers, to ensure that the UKG Talk app met the highest software quality standards and user satisfaction. My primary focus was to apply quality assurance principles, testing techniques, and industry best practices to deliver a seamless and bug-free communication platform.
+<br><br>
+        <b>SQL:</b>
+        I have utilized SQL queries to extract, transform, and analyze data from various databases supporting the app and performed data profiling and statistical analysis to identify trends, patterns, and anomalies in user behavior and engagement. I utilized SQL queries to retrieve relevant data from the organization's databases and perform data transformations using Python scripts. This integration has provides a seamless workflow for data analysis, eliminating the need to switch between multiple tools and systems and providing stakeholders with critical insights and findings. 
+<br><br>
+        <b>Test Automation using Selenium WebDriver</b>
+        I have utilized Selenium WebDriver to conduct automated UI testing of our app and developed test scripts in Python to validate the app's user interface, ensuring proper functionality and responsiveness. I have executed test scenarios to identify UI issues, such as broken links, incorrect page rendering, or user input errors. I streamlined testing processes by developing automated test scripts and ensured efficient execution. Additionally, I leveraged Python libraries for data analysis, enabling in-depth examination and visualization of key metrics and performance indicators.
+<br><br>
+        <b>Usability Testing Analysis:</b>
+        As a software quality engineer professional, I conduct usability testing sessions to evaluate applications' ease of use and adherence to UX guidelines. Analyzing user data helps me identify potential issues and improve overall user experience. Working with the development team, I provide data-driven recommendations and implement solutions to enhance usability and satisfaction. I enjoy contributing to user-friendly technology and meeting users' unique needs.
+<br><br>
+        <b>Collaboration</b>
+        I utilized Confluence as a knowledge-sharing platform throughout the project to document data analysis processes, methodologies, and findings. I collaborated with the team, sharing data analysis techniques, insights, and best practices. Additionally, by integrating Jira with data analysis toolsets, I effectively managed and tracked data-related tasks, ensuring timely completion and effective coordination within the Agile development environment.
+      </p>
+    </div>
+    <br>
+    <div class="card">
+      <h2>PROJECT WORKFLOW</h2>
+      <div class="code-snippet">
+        <img src="images/talkdes.jpg" alt="Card Image 5">
+      </div>
+    </div>
+<br>
+    <div class="card">
+      <h2>TECHNICAL SKILLS AQUIRED </h2>
+      <p style="text-align: justify;">
+        Selenium WebDriver, Postman API Testing, Firebase Crashlytics, Bugzilla, Agile Web Development, SQL, Python, Confluence, Jira
+      </p>
+    </div>
+
+    <section id="projects">
+      <div class="container">
+        <div class="project">
+          <div class="project-info">
+            <h3>FUTURE BUSINESS IMPLICATIONS AND IMPACT</h3>
+            <p style="text-align: justify;">
+              UKG Talk is a valuable tool used by product-based organizations to enhance their workforce management. It offers a range of pre-built features and customizable solutions, allowing businesses to integrate the app into their existing platforms seamlessly. By leveraging UKG Talk, organizations can gather crucial data on employee engagement, communication patterns, and user behavior. This data provides valuable insights into employee sentiment and helps identify areas where communication can be improved. With these insights, organizations can make data driven decisions to optimize internal processes, enhance employee experiences, and drive overall organizational growth.
+              
+              <br><br>
+              <b>Payroll:</b> Through integration with payroll systems, UKG Talk automates payroll processes such as employee time tracking, calculating earnings and deductions, and generating payroll reports. This streamlines payroll management, ensuring accuracy and timeliness in the payment of employees.
+              <br><br>
+              <b>Business Intelligence:</b> UKG Talk analyzes communication patterns, employee engagement metrics, and user behavior data to provide valuable insights. HR and management teams can identify trends, understand employee sentiment, and make informed decisions to optimize processes and enhance organizational performance.
+              <br><br>
+              <b>Outsourced Services:</b> UKG Talk offers self-service capabilities for open enrollment, life events, and manager self-service. Employees can conveniently access and update their benefits information, request time off, and manage personal details. This reduces administrative burdens on HR teams and empowers employees to control their information.
+              <br><br>
+              <b>Predictive Metrics:</b> Using predictive analytics, UKG Talk helps HR teams forecast workforce needs, identify skill gaps, and optimize resource allocation. This data-driven approach enables strategic decision-making in talent acquisition, workforce planning, and other initiatives.
+              <br><br>
+              <b>Performance Management:</b> UKG Talk supports goal setting, performance evaluations, and feedback exchanges between managers and employees. It provides performance dashboards and analytics that enable managers to identify performance gaps, recognize achievements, and implement strategies for improvement.
+              <br><br>
+              <b>Overall, the application is being widely used in the market to improve internal communication, foster collaboration, and enhance employee engagement. Its versatility and integration capabilities make it a valuable tool for organizations looking to create a connected and productive work environment.</b>
+            </p>
+          </div>
+          <div class="project-images">
+            <img src="images/talks1.png" alt="Card Image 5"><br><br>
+            <img src="images/fearure.png" alt="Project 1 Coverage Image">
+          </div>
+        </div>
+      </div>
+    </section>
+  <footer>
+    <p>&copy; 2023 Akshit RamPershad All rights reserved.</p>
+  </footer>
+</body>
+</html>

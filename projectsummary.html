@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>projectsummary</title>
+  <link rel="stylesheet" href="Portfolio.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+
+    /* Reset default margin and padding */
+    body, h1, h2, h3, p, ul, li, form {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set background color and text color */
+    body {
+      background-color: whitesmoke;
+      background-image: url(images/background2.png);
+      background-repeat: no-repeat;
+      background-size: center;
+      background-attachment: fixed;
+      color: black;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+   /* Style header and navigation */
+   header {
+      background-color: black;
+      padding: 35px;
+      display: flex;
+      justify-content: center; /* Align navigation in the middle */
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center; /* Align list items in the middle */
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 15px;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: large;
+      transition: all 0.3s ease;
+      white-space: nowrap; /* Prevent line breaks */
+    }
+
+    nav ul li:not(:last-child) a {
+    margin-right: 50px; /* Add space between each word */
+}
+
+    nav ul li a:hover {
+      color: #007bff;
+    }
+
+    /* Style sections */
+    section {
+      padding: 20px 0;
+    }
+
+    .container {
+      width: 85%;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 15px;
+    }
+
+    /* Style projects */
+    .project {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: whitesmoke;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .project-info {
+      flex: 1;
+    }
+
+    .project-info h3 {
+      margin-bottom: 15px;
+    }
+
+    .project-info h3 a {
+      color: blue;
+    }
+
+    .project-image {
+      margin-left: 20px;
+      width: 200px;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    a.read-more {
+      color: black;
+    }
+    
+    /* Media Queries */
+    @media screen and (max-width: 768px) {
+      header {
+        padding: 25px;
+        padding-top: 30px;
+        padding-bottom: 15px;
+      }
+      .container {
+        width: 95%;
+      }
+      .project {
+        flex-direction: column;
+      }
+      .project-image {
+        margin: 20px 0 0;
+        width: 100%;
+      }
+    }
+
+    /* Style footer */
+footer {
+  background-color: black;
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  color: #fff;
+}
+
+    /* Media queries for responsive design */
+    @media (max-width: 768px) {
+      nav ul li {
+        display: inline-block;
+        padding: 0px;
+        text-align: center;
+        margin-right: -10px;
+        margin-left: -10px;
+        margin-bottom: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projectsummary.html">Projects</a></li>
+        <li><a href="blogstab.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="projects">
+    <div class="container">
+      <div class="project">
+        <div class="project-info">
+          <h3>HEARTBEAT PREDICTION MODEL USING MACHINE LEARNING</h3>
+          <p style="text-align: justify;">The project goal was to determine if a measurement represented a typical heartbeat or showed any abnormalities. We implemented various multiclass classification models, including the Cross-Sectional Neural Network, LSTM, Deep LSTM, GRU, and Deep GRU models. This project helped me gain a deeper understanding of model building, predictive analysis, and the importance of adjusting model parameters to improve accuracy. It allowed us to uncover valuable insights, patterns, trends, and relationships within healthcare data. <a href="heartbeat.html" target="_self">Read More </a>
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="images/project1.webp" alt="Project 1 Coverage Image">
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-info">
+          <h3>MONKEYPOX PREDICTION MODEL FOR RAPID DISEASE DETECTION</h3>
+          <p style="text-align: justify;">As part of the Data Mining course at Muma College of Business, University of South Florida, I was part of a team that analyzed a dataset of Global monkeypox patients obtained from Kaggle. Our primary objective was to identify positive monkeypox cases using various machine-learning algorithms and in order to compare the performance of these models, we utilized different metrics such as precision, recall, f1_score, and accuracy to find the best model with the highest test accuracy values. This project provided me with essential skills such as critical thinking, problem-solving, applying machine learning models as well as the ability to draw meaningful conclusions from the analysis.
+            <a href="mokeypox.html" target="_self">Read More</a>
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="images/project2.jpg" alt="Project 2 Coverage Image">
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-info">
+          <h3>UKG TALK</h3>
+          <p style="text-align: justify;">During my work experiences at the organization, we created UKG Talk, an internal communication platform powered by Groupe.io, to enhance employee engagement and communication. During the project, I took on a crucial role by designing and executing comprehensive test cases to ensure the quality of the product. I also proactively identified and resolved defects to prevent any negative impact on customers. Through my skills in team management, leadership, problem-solving, and decision-making, I was able to demonstrate the effectiveness of our backend systems and quality assurance processes and also build confidence and trust in our product among senior management by presenting its features and addressing any concerns or questions which helped the company for further investment in the project.
+            <a href="talk.html" target="_self"> ReadMore</a>
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="images/project3.webp" alt="Project 3 Coverage Image">
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2023 Akshit RamPershad All rights reserved.</p>
+  </footer>
+</body>
+</html>

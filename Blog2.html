@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Addressing Bias in Venture Capital</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+
+.top-image {
+      width: 90%;
+      height: 50%;
+      display: block;
+      margin: 10px auto;
+    }
+
+    /* Reset default margin and padding */
+    body, h1, h2, h3, p, ul, li, form {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set background color and text color */
+    body {
+      background-color: black;
+      background-image: url("images/background2.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      color: whitesmoke;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
+
+   /* Style header and navigation */
+   header {
+      background-color: black;
+      padding: 35px;
+      display: flex;
+      justify-content: center; /* Align navigation in the middle */
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center; /* Align list items in the middle */
+    }
+    nav ul li {
+      display: inline;
+      margin-right: 15px;
+      margin-bottom: -70px;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: large;
+      transition: all 0.3s ease;
+      white-space: nowrap; /* Prevent line breaks */
+    }
+
+    nav ul li:not(:last-child) a {
+      margin-right: 50px; /* Add space between each word */
+    }
+
+    nav ul li a:hover {
+      color: #007bff;
+    }
+
+    /* Style sections */
+    section {
+      padding: 20px 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+
+/* styles.css */
+#subscribe-form {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh; /* Adjust this value based on your layout */
+  margin-bottom: -90px; /* Add or adjust this line to control the space below the button */
+
+}
+
+#subscribe-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+#subscribe-form button:hover {
+  background-color: blue;
+}
+
+    /* code for image workflow */
+
+    .image-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: -50px;
+      padding: 0px;
+      margin-left: 5px;
+    }
+    
+    .description {
+      padding: 15px;
+      margin-left: 120px;
+      margin-right: auto;
+      text-align: left;
+
+    }
+    
+    .image {
+      flex: 2px;
+      text-align: left;
+    }
+    
+    .image img {
+      max-height: 700px;
+      max-width: 100%;
+      display: block;
+      padding-left: 10px;
+      padding-right: 40px;
+    }
+
+    /* Add styling for the blog article */
+    .blog-article {
+      margin-bottom: 20px;
+    }
+
+    .blog-article h3 {
+      margin-bottom: 10px;
+    }
+
+    .blog-date {
+      color: #777;
+      font-style: italic;
+    }
+    
+    .social-media-card {
+      background-color: transparent;
+      border: none;
+      border-radius: 5px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .share-text {
+      margin-bottom: 10px;
+      font-weight: normal;
+      font-size: 20px;
+      color: whitesmoke;
+      text-align: center;
+    }
+
+    .social-media-icons {
+      display: flex;
+      justify-content: center;
+    }
+
+    .social-media-icons a {
+      display: inline-block;
+      margin-right: 50px;
+      margin-left: 50px;
+      color: #007bff;
+      font-size: 35px;
+      transition: color 0.3s ease;
+    }
+
+.social-media-icons a:hover {
+  color: blue;
+}
+
+/*comment section*/
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+    h1 {
+  text-align: center;
+}
+
+#comment-container {
+  margin-top: -90px;
+  padding: 130px;
+
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#comment-form input,
+#comment-form textarea {
+  margin-bottom: 5px;
+  padding: 15px;
+}
+
+#comment-form button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#comment-list {
+  border: none;
+  padding: 5px;
+}
+
+.comment-item {
+  margin-bottom: 10px;
+}
+
+.comment-item strong {
+  font-weight: bold;
+}
+
+.comment-item span {
+  margin-left: 10px;
+  color: #777;
+}
+
+   /* Style footer */
+   footer {
+      background-color: black;
+      padding: 25px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 15px;
+    }     
+
+    /* Styles for mobile devices */
+
+@media screen and (max-width: 768px) {
+  .top-image {
+    width: 100%;
+    height: auto;
+  }
+
+  header {
+    padding: 25px;
+  }
+
+  nav ul li {
+    margin-right: -10px;
+    margin-left: -4;
+    margin-bottom: 0;
+  }
+
+  .description {
+    margin-left: 20px;
+  }
+
+  .image-container {
+    flex-direction: column;
+  }
+
+  .image img {
+    max-height: 400px;
+    padding: 0;
+    margin: 10px auto;
+  }
+
+  #subscribe-form {
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  #subscribe-form button {
+    padding: 8px 30px;
+    font-size: 12px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
+
+  .social-media-icons a {
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 30px;
+  }
+
+  #comment-container {
+    margin-top: 0;
+    padding: 20px;
+  }
+
+  #comment-form input,
+  #comment-form textarea {
+    padding: 10px;
+  }
+
+  #comment-form button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  footer {
+    padding: 15px;
+    font-size: 12px;
+  }
+}
+
+    /* Media Queries */
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 24px;
+  
+    }
+
+    img {
+      width: 100%;
+      margin: 50px;
+
+    }
+
+    div[style*="display: flex; align-items: center;"] {
+      flex-direction: column;
+    }
+
+    div[style*="display: flex; align-items: center;"] img {
+flex-direction: column-reverse;   
+
+}
+ .social-media-card {
+        text-align: center;
+      margin-top: -50px;
+      margin-bottom: 10px;
+    }
+  }
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  #comment-container {
+    padding: 50px;
+    margin-top: -90px;
+  }
+}
+
+
+</style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projectsummary.html">Projects</a></li>
+        <li><a href="blogstab.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="blog">
+    <div class="container">
+      <br><h2 style="text-align: center;">Addressing Bias in Venture Capital: The Story of Reach Capital</h2><br><br>
+      <img src="images/Screenshot 2023-06-25 191021.png" alt="Top Image" class="top-image">
+      <article class="blog-article">
+        <h3></h3>
+        <p class="blog-date">Published on June 25, 2023</p> <br> 
+<p style="text-align:justify;">   <font size="4px">
+    In the fast-paced world of venture capital, where funding decisions shape the future of countless innovative ideas, biases can inadvertently limit opportunities for underrepresented founders. Reach Capital, a five-year-old education technology venture firm, found itself at a critical juncture in May 2020. As the COVID-19 pandemic forced schools to close and protests against racial injustice erupted worldwide, Reach Capital realized the urgent need to address bias and increase funding for diverse founders. This blog article delves into the inspiring story of Reach Capital and how they embarked on a journey to tackle bias in venture capital.
+<br>
+</p></font>
+<p><br><br>
+    <h2 style="text-align: center;"> Understanding the Link between Racial Equity and Socioeconomic Mobility:</h2><br>
+        <p style="text-align: justify;"><font size="4px">
+            Reach Capital's mission to increase access to opportunity through education goes beyond mere words. With a team comprised of Black, female, and Latino leaders, many of whom are immigrants or children of immigrants, first-generation college graduates, educators, and entrepreneurs, Reach Capital embodies diversity and lived experiences. They understand firsthand the power of education as a catalyst for change and the crucial connection between racial equity and socioeconomic mobility.
+
+        </p><br><br></font>
+        <h2 style="text-align: center;">Recognizing Bias as a Roadblock: 
+        </h2><br>
+        <p style="text-align: justify;"><font size ="4px">
+            To truly empower diverse learners of all ages, Reach Capital acknowledged the need to invest in founders who intimately comprehend the challenges these learners face. By having lived these challenges themselves, founders from underrepresented backgrounds bring a unique perspective and insight that can transform education technology. The team recognized bias as a roadblock to increased funding for Black founders and made it their mission to tackle this issue head-on.
+        </p></font>
+</p>
+</article>
+</div>
+<div id="new-section">
+    <div class="image-container">
+      <div class="description">
+                <h2>Step-by-step process outlining how Reach Capital mitigated bias in venture capital:</h2>
+                <br>
+                <p style="text-align: justify;"><b><li><font size="4">Recognize the Need for Change:</font></b> Reach Capital acknowledged the presence of bias in venture capital and understood the importance of <BR> addressing it to create a more inclusive investment landscape.</li></p><br>
+
+                <p style="text-align: justify;"><b><li><font size="4"> Educate the Team about Bias:</font></b> The team underwent education and training to raise awareness about different types of biases and their impact <BR> on investment decisions, fostering a shared understanding and language to address bias effectively.</li></p><br>
+                
+                <p style="text-align: justify;"><b><li><font size="4"> Review and Revise Selection Criteria:</font></b>Reach Capital critically examined their investment selection criteria to identify and eliminate any biases. <BR>They adjusted the criteria to focus on the potential and merits of the founder's idea rather than predetermined markers of success.</li></p><br>
+                
+                <p style="text-align: justify;"><b><li><font size="4"> Diversify the Investment Pipeline:</font></b>Proactively seeking out underrepresented entrepreneurs, Reach Capital diversified their investment pipeline.<BR> They attended targeted events, engaged with organizations supporting underrepresented founders, and leveraged their networks to discover talented<BR> individuals who may have been overlooked.</li></p><br>
+                
+                <p style="text-align: justify;"><b><li><font size="4"> Provide Support and Mentorship:</font></b> Recognizing the unique challenges faced by underrepresented founders, Reach Capital implemented robust <BR> support and mentorship programs. They provided resources, guidance, and networking opportunities to level the playing field and assist founders <BR>in navigating the complexities of building and scaling their ventures.</li> 
+                </p><br>
+                
+                <p style="text-align: justify;"><b><li><font size="4"> Invest in Founders with Lived Experience:</font></b>Reach Capital prioritized investing in founders who had personal experience with the challenges <BR> faced by diverse learners. This approach enabled them to support founders who intimately understood the needs and aspirations of the target audience.</li></p><br>
+                
+                <p style="text-align: justify;"><b><li><font size="4"> Continuously Evaluate and Improve:</font></b> Reach Capital maintained a commitment to continuous evaluation and improvement. They regularly <BR> assessed their practices, gathered feedback from founders and stakeholders, and made adjustments to ensure their efforts to mitigate bias remained <BR>effective.
+
+                </li></p><br>
+                
+                <pstyle="text-align: justify;"><b><li><font size="4"> MAdvocate and Share Best Practices:</font></b>  Reach Capital actively shared their journey and best practices through various channels. They spoke at <BR> industry conferences, participated in panel discussions, and used online platforms to raise awareness and encourage other venture capital firms to<BR> address bias and promote inclusion.</li></p><br>
+            
+            </div>
+              <div class="image">
+              </div>
+            </div>
+          </div>          
+  </section><br>  
+  <section id="blog">
+    <div class="container">
+          <article class="blog-article">
+            <h2 style="text-align: center;" >Reexamining the Investment Process:</h2><br>
+            <p style="text-align: justify;"> <font size="4px">
+                Reach Capital's journey began with a comprehensive reexamination of their investment process and criteria. They recognized the importance of reviewing their selection criteria to ensure they were not inadvertently favoring certain groups. By understanding and addressing implicit biases, they aimed to create a fairer and more inclusive investment landscape. This process required introspection, open conversations, and a commitment to challenging conventional norms.
+            </p><br><br> </font>
+          
+            <h2 style="text-align: center;">Investing in Founders with Deep Understanding:</h2><br>
+            <div style="display: flex; align-items: center;">
+              <img src="images/GettyImages-1372797979.jpg" alt="vertical-align" height="220" width="290" style="margin-right: 50px;">
+              <p style="text-align: justify;"> <font size="4px">
+                Reach Capital firmly believed that investing in founders who had personally experienced the challenges faced by diverse learners was crucial. These founders possessed an unparalleled understanding of the needs, nuances, and potential solutions in the education technology space. By backing these founders, Reach Capital not only supported their ventures but also contributed to a more inclusive and impactful edtech ecosystem.
+                Example: Reach Capital emphasized investing in founders who had firsthand experience with the challenges faced by diverse learners. They sought out founders who had overcome similar obstacles in their educational journeys or had a personal connection to the target audience. By investing in these founders, Reach Capital recognized the value of their unique insights, empathy, and passion to drive meaningful change in the education technology space.
+                
+              </p></font>
+            </div>
+            <br>
+            <br>
+            <h2>Conclusions:</h2>
+            <div style="display: flex; align-items: center;">
+              <p style="text-align: justify; flex: 1;"><font size ="4px">
+                The inspiring story of Reach Capital serves as a beacon of hope in the venture capital landscape. By recognizing and addressing bias, they have taken significant steps towards creating a more equitable and inclusive environment for diverse founders. Their journey exemplifies the power of diverse perspectives, empathy, and a commitment to social impact. As we move forward, let us draw inspiration from Reach Capital's story and work collectively to dismantle biases and create a more inclusive future for all entrepreneurs. Together, we can unlock the true potential of innovative ideas and drive positive change in education and beyond.
+              </p> </font>
+              <img src="images/blog33.png" alt="vertical-align" width="380" style="margin-left: 50px;">
+            </div>
+            
+<div class="social-media-card">
+  <p class="share-text"></p>
+  <div class="social-media-icons">
+    <a href="https://medium.com/" target="_blank" class="social-media-medium"><i class="fab fa-medium"></i></a>
+    <a href="https://www.facebook.com/" target="_blank" class="social-media-facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.linkedin.com/signup/cold-join" target="_blank" class="social-media-linkedin"><i class="fab fa-linkedin"></i></a>
+    <a href="https://twitter.com/intent/tweet?url=YOUR_BLOG_URL" target="_blank" class="social-media-twitter"><i class="fab fa-twitter"></i></a>
+  </div>
+</div>
+<form id="subscribe-form">
+  <button type="submit">Subscribe</button>
+</form>
+</section>       
+  <div id="comment-container">
+    <h2 style="text-align: center;">We would love to hear your thoughts! Please feel free to leave a comment below </h2><br><br>
+    
+    <form id="comment-form">
+      <input type="text" id="name-input" placeholder="Your Name" required>
+      <textarea id="comment-input" placeholder="Your Comment" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="comment-list">
+      <!-- Comment items will be dynamically added here -->
+    </div>
+  </div>
+  <script>
+    document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+  
+      // Display a popup message
+      alert('Thank you for subscribing!');
+
+     // Refresh the page and scroll to the top
+     location.reload();
+    window.scrollTo(0, 0);
+  });
+  
+  </script>
+<script>
+  document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    var email = document.getElementById('email-input').value; // Get the entered email address
+
+    // Call the Mailchimp API to subscribe the user
+    fetch('https://api.mailchimp.com/3.0/lists/{YOUR_LIST_ID}/members', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'apikey {YOUR_API_KEY}'
+      },
+      body: JSON.stringify({
+        email_address: email,
+        status: 'subscribed'
+      })
+    })
+    .then(function(response) {
+      if (response.ok) {
+        // Subscription successful, display a success message or redirect to a thank-you page
+        alert('Thank you for subscribing!');
+      } else {
+        // Subscription failed, display an error message
+        alert('Thank you for subscribing!');
+      }
+    })
+    .catch(function(error) {
+      console.error('Error:', error);
+    });
+  });
+</script>
+<script>
+    document.getElementById("comment-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get input values
+  var name = document.getElementById("name-input").value;
+  var comment = document.getElementById("comment-input").value;
+
+  // Create new comment item
+  var commentItem = document.createElement("div");
+  commentItem.classList.add("comment-item");
+  commentItem.innerHTML = "<strong>" + name + ":</strong> <span>" + comment + "</span>";
+
+  // Append new comment item to the comment list
+  document.getElementById("comment-list").appendChild(commentItem);
+
+  // Clear input values
+  document.getElementById("name-input").value = "";
+  document.getElementById("comment-input").value = "";
+});
+</script>
+<footer>
+    <p>&copy; 2023 Akshit RamPershad. All rights reserved.</p>
+    </footer>
+</body>
+</html>

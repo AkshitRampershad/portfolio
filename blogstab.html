@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>blogsummary</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Reset default margin and padding */
+    body, h1, h2, h3, p, ul, li, form {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set background color and text color */
+    body {
+      background-color: whitesmoke;
+      background-image: url(images/background2.png);
+      background-repeat: no-repeat;
+      background-size: center;
+      background-attachment: fixed;
+      color: black;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    /* Style header and navigation */
+    header {
+      background-color: black;
+      padding: 35px;
+      display: flex;
+      justify-content: center; /* Align navigation in the middle */
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center; /* Align list items in the middle */
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 15px;
+      margin-bottom: -70px;
+      margin-left: 30px;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: large;
+      transition: all 0.3s ease;
+      white-space: nowrap; /* Prevent line breaks */
+    }
+
+    nav ul li:not(:last-child) a {
+      margin-right: 70px; /* Add space between each word */
+    }
+
+    nav ul li a:hover {
+      color: #007bff;
+    }
+
+    /* Style sections */
+    section {
+      padding: 20px 0;
+    }
+
+    .container {
+      width: 85%;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 15px;
+    }
+
+    /* Style projects */
+    .project {
+      max-height: 150%;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column; /* Updated to stack elements vertically */
+      align-items: center;
+      background-color: whitesmoke;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .project-info {
+      flex: 1;
+      margin-bottom: 20px; /* Add margin at the bottom for spacing */
+    }
+
+    .project-info h3 {
+      margin-bottom: 15px;
+    }
+
+    .project-info h3 a {
+      color: blue;
+    }
+
+    .project-image {
+      width: 100%;
+      height: auto;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    a.read-more {
+      color: black;
+    }
+    
+    /* Media Queries */
+    @media screen and (max-width: 768px) {
+      /* Existing styles */
+    }
+
+    /* Style footer */
+    footer {
+      background-color: black;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer p {
+      color: #fff;
+    }
+    nav ul li {
+    margin-right: 10px;
+    margin-left: -10PX;
+    margin-bottom: 0;
+  }
+
+    .social-media-card {
+      background-color: transparent;
+      border: none;
+      border-radius: 5px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .social-media-icons {
+      display: flex;
+      justify-content: center;
+    }
+
+    .social-media-icons a {
+      display: inline-block;
+      margin-right: 50px;
+      margin-left: 50px;
+      color: #007bff;
+      font-size: 35px;
+      transition: color 0.3s ease;
+    }
+
+.social-media-icons a:hover {
+  color: blue;
+}
+#subscribe-form {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh; /* Adjust this value based on your layout */
+  margin-bottom: -90px; /* Add or adjust this line to control the space below the button */
+
+}
+
+#subscribe-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+#subscribe-form button:hover {
+  background-color: blue;
+}
+
+    /* Horizontal Tabs */
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 15px 0;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab:hover {
+      background-color: #0056b3;
+    }
+
+    .tab.active {
+      background-color: blue;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-content.active {
+      display:block;
+    }
+
+    #subscribe-form {
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  #subscribe-form button {
+    padding: 8px 30px;
+    font-size: 12px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
+
+  .social-media-icons a {
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 30px;
+  }
+</style>
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projectsummary.html">Projects</a></li>
+        <li><a href="blogstab.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="projects">
+    <div class="container">
+      <div class="tabs">
+        <div class="tab active" onclick="changeTab(0)">Blog 1</div>
+        <div class="tab" onclick="changeTab(1)">Blog 2</div>
+        <div class="tab" onclick="changeTab(2)">Blog 3</div>
+      </div>
+
+      <div class="tab-content active">
+        <div class="project">
+          <div class="project-info">
+            <h3>Designing AI for All: Addressing Bias in Artificial Intelligence Systems</h3>
+            <p style="text-align: justify;">Artificial intelligence (AI) is revolutionizing our lives, from virtual assistants like Siri and Alexa to self-driving cars. However, the pervasive nature of AI does not make it immune to bias. Bias in AI refers to the systematic skewing of predictions and decisions in favor of or against particular groups. This bias can stem from the training data, algorithms, and the biases of designers and developers. Addressing bias is crucial to ensure fairness, integrity, and equitable outcomes in AI systems. <a href="blogsummary.html" target="_self">Read More</a>
+            </p>
+          </div>
+          <div class="project-image">
+            <img src="images/blog1.jpg" alt="Project 1 Coverage Image">
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content">
+        <div class="project">
+          <div class="project-info">
+            <h3>Addressing Bias in Venture Capital: The Story of Reach Capital</h3>
+            <p style="text-align: justify;">In the fast-paced world of venture capital, where funding decisions shape the future of countless innovative ideas, biases can inadvertently limit opportunities for underrepresented founders. Reach Capital, a five-year-old education technology venture firm, found itself at a critical juncture in May 2020. As the COVID-19 pandemic forced schools to close and disrupted education systems worldwide, Reach Capital stepped up to address bias and support education entrepreneurs who were navigating the crisis. <a href="Blog2.html"_self">Read More</a>
+            </p>
+          </div>
+          <div class="project-image">
+            <img src="images/Screenshot 2023-06-25 191021.png" alt="Project 2 Coverage Image">
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content">
+        <div class="project">
+          <div class="project-info">
+            <h3>Building Inclusive Design Systems: A Framework for Human-Centered AI</h3>
+            <p style="text-align: justify;">In today's rapidly evolving technological landscape, artificial intelligence (AI) is playing an increasingly prominent role. From virtual assistants to recommendation algorithms, AI systems are shaping our daily lives. However, as these systems become more pervasive, it is essential to ensure that they are designed in a way that is inclusive and considerate of all users. Building inclusive design systems for AI is crucial to avoid bias, discrimination, and exclusion. This article explores the concept of inclusive design systems and presents a framework for developing human-centered AI.
+
+         <a href="Blog3.html" target="_self">Read More</a>
+            </p>
+          </div>
+          <div class="project-image">
+            <img src="images/human-centered.png" alt="Project 3 Coverage Image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function changeTab(tabIndex) {
+      const tabs = document.querySelectorAll('.tab');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      // Remove "active" class from all tabs and tab contents
+      tabs.forEach(tab => tab.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+
+      // Add "active" class to selected tab and tab content
+      tabs[tabIndex].classList.add('active');
+      tabContents[tabIndex].classList.add('active');
+    }
+  </script>
+<div class="social-media-card">
+  <p class="share-text"></p>
+  <div class="social-media-icons">
+    <a href="https://medium.com/" target="_blank" class="social-media-medium"><i class="fab fa-medium"></i></a>
+    <a href="https://www.facebook.com/" target="_blank" class="social-media-facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.linkedin.com/signup/cold-join" target="_blank" class="social-media-linkedin"><i class="fab fa-linkedin"></i></a>
+    <a href="https://twitter.com/intent/tweet?url=YOUR_BLOG_URL" target="_blank" class="social-media-twitter"><i class="fab fa-twitter"></i></a>
+  </div>
+</div>
+<form id="subscribe-form">
+  <button type="submit">Subscribe</button>
+</form>
+</section>       
+ 
+  <script>
+    document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+  
+      // Display a popup message
+      alert('Thank you for subscribing!');
+
+     // Refresh the page and scroll to the top
+     location.reload();
+    window.scrollTo(0, 0);
+  });
+  
+  </script>
+<script>
+  document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    var email = document.getElementById('email-input').value; // Get the entered email address
+
+    // Call the Mailchimp API to subscribe the user
+    fetch('https://api.mailchimp.com/3.0/lists/{YOUR_LIST_ID}/members', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'apikey {YOUR_API_KEY}'
+      },
+      body: JSON.stringify({
+        email_address: email,
+        status: 'subscribed'
+      })
+    })
+    .then(function(response) {
+      if (response.ok) {
+        // Subscription successful, display a success message or redirect to a thank-you page
+        alert('Thank you for subscribing!');
+      } else {
+        // Subscription failed, display an error message
+        alert('Thank you for subscribing!');
+      }
+    })
+    .catch(function(error) {
+      console.error('Error:', error);
+    });
+  });
+</script>
+<script>
+    document.getElementById("comment-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get input values
+  var name = document.getElementById("name-input").value;
+  var comment = document.getElementById("comment-input").value;
+
+  // Create new comment item
+  var commentItem = document.createElement("div");
+  commentItem.classList.add("comment-item");
+  commentItem.innerHTML = "<strong>" + name + ":</strong> <span>" + comment + "</span>";
+
+  // Append new comment item to the comment list
+  document.getElementById("comment-list").appendChild(commentItem);
+
+  // Clear input values
+  document.getElementById("name-input").value = "";
+  document.getElementById("comment-input").value = "";
+});
+
+</script>
+<footer>
+    <p>&copy; 2023 Akshit RamPershad. All rights reserved.</p>
+    </footer>
+</body>
+</html>

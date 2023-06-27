@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AkshitRamPershad</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Your CSS styles here */
+
+    /* Reset default margin and padding */
+    body, h1, h2, h3, p, ul, li, form {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set background color and text color */
+    body {
+      background-color: #f1f1f1;
+      background-image: url(images/background2.png);
+      image-rendering: optimizeQuality;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      color: whitesmoke;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
+
+   /* Style header and navigation */
+   header {
+      background-color: black;
+      padding: 35px;
+      display: flex;
+      justify-content: center; /* Align navigation in the middle */
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center; /* Align list items in the middle */
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 15px;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: large;
+      transition: all 0.3s ease;
+      white-space: nowrap; /* Prevent line breaks */
+    }
+
+    nav ul li:not(:last-child) a {
+    margin-right: 50px; /* Add space between each word */
+}
+
+    nav ul li a:hover {
+      color: #007bff;
+    }
+
+    /* Style sections */
+    section {
+      padding: 50px 0;
+    }
+
+    .container {
+      width: 85%;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .profile-description {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .profile-picture {
+      width: 250px;
+      height: 340px;
+      background-image: url("images/akshitrampershad.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+    }
+
+  
+   /*quote*/
+
+    #quote {
+    background-color: transparent;
+    padding: 15px;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+
+  blockquote {
+    font-size: 36px;
+    line-height: 1.5;
+    color: #007bff;
+    margin: 0;
+  }
+
+  blockquote p {
+    font-style: italic;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  blockquote footer {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: right;
+    background-color: transparent;
+  }
+
+  blockquote footer cite {
+    font-style: normal;
+    color: #888;
+    margin-bottom: 0px;
+  }
+  
+    .description {
+      flex: 1;
+      margin-left: 80px;
+    }
+
+    h1,h2,h3 {
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      margin-top: 10;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-right: 30px;
+      margin-bottom: 20px;
+      color: #007bff;
+      font-size: 35px;
+      transition: all 0.3s ease;
+      vertical-align: middle;
+    }
+
+    .social-links a:last-child {
+      margin-right: 0;
+    }
+
+    .social-links a:hover {
+      color: #0056b3;
+    }
+
+    .download-resume {
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      padding: 10px 65px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: normal;
+      transition: all 0.3s ease;
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+
+    #collaborate {
+      background-color: transparent;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .connect-section {
+      margin-bottom: 10px;
+    }
+
+    .connect-section h2 {
+      font-size: 50px;
+      color: #007bff;
+      margin-bottom: 10px;
+      margin-top: -50px;
+    }
+
+    .connect-section p {
+      font-size: 18px;
+      color: whitesmoke;
+      margin-bottom: 30px;
+    }
+
+    .email-input {
+      display: inline-block;
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      border-color: none;
+    }
+
+    .email-button {
+      display: inline-block;
+      padding: 11px 20px;
+      background-color: #007bff;
+      color: whitesmoke;
+      text-decoration: none;
+      border-radius: 5px;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .email-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Style footer */
+    footer {
+      background-color: black;
+      padding: 5px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+    /* Media queries for responsive design */
+    @media (max-width: 768px) {
+      nav ul li {
+        display: inline-block;
+        padding: 0px;
+        text-align: center;
+        margin-right: -10px;
+        margin-left: -4;
+        margin-bottom: 0;
+      }
+
+
+      .profile-description {
+        flex-direction: column;
+      }
+
+      .profile-picture {
+        width: 200px;
+        height: 350px;
+        margin-bottom: 30px;
+      }
+
+      .description {
+        margin-left: 0;
+      }
+
+      .download-resume {
+        padding: 10px 40px;
+      }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5WXYL00Z6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-E5WXYL00Z6');
+  </script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projectsummary.html">Projects</a></li>
+        <li><a href="blogstab.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="quote">
+    <div class="container">
+      <blockquote>
+        <p>To succeed in life and achieve results, you must understand and master three mighty forces—desire, belief, and expectation.</p>
+        <footer>― A.P.J. Abdul Kalam <cite>Wings of Fire</cite></footer>
+      </blockquote>
+    </div>
+  </section>
+  <section id="home">
+    <div class="container">
+      <div class="profile-description">
+        <div class="profile-picture"></div>
+        <div class="description">
+          <h1>HI, I AM AKSHIT</h1>
+          <p style="text-align: justify;">A graduate student studying business analytics and information systems at Muma College of Business at the University of South Florida. I am keen to put my analytical and visualization skills into practice and improve my possibilities of pursuing a career as a data analyst in the healthcare industry. The primary objective of this website is to demonstrate my creativity, technical proficiency, problem-solving abilities, and the value I can bring to potential organizations through my knowledge and experience.</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/akshit-rampershad/" target="_blank" rel="noopener noreferrer"><i
+                class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/AkshitRampershad" target="_blank" rel="noopener noreferrer"><i
+                class="fab fa-github"></i></a>
+                <a href="https://www.kaggle.com/akshitmathur01" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-kaggle fa-sm"></i>
+                </a>
+                
+          </div>
+          <button class="download-resume" onclick="downloadResume()">Resume</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    function downloadResume() {
+      // Create a link element
+      var link = document.createElement('a');
+      link.href = "https://acrobat.adobe.com/link/review?uri=urn:aaid:scds:US:a91f8e28-ec92-39d5-811c-2efbf1ef6b67"; // Replace 'path/to/resume.pdf' with the actual path to your resume file
+      link.target = '_blank';
+      link.download = 'akshitrampershadresume.pdf'; // Specify the desired file name for the download
+
+      // Append the link to the document body
+      document.body.appendChild(link);
+
+      // Trigger the click event on the link to start the download
+      link.click();
+
+      // Remove the link from the document body
+      document.body.removeChild(link);
+    }
+    </script>
+    
+    <script>
+    function submitEmail() {
+    var emailInput = document.querySelector('.email-input');
+    var email = emailInput.value;
+    
+    // Make a POST request to the server with the email address
+    fetch('your-server-url', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: email })
+    })
+    .then(response => {
+      if (response.ok) {
+        // Display a success message to the user
+        alert('Email submitted successfully!');
+
+        // Refresh the page and scroll to the top
+        window.location.reload();
+        window.scrollTo(0, 0);
+      } else {
+        // Handle the error case
+        alert('Email submitted successfully!');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Email submitted successfully','Looking forward to the possibility of working together.');
+
+      // Refresh the page and scroll to the top
+      window.location.reload();
+      window.scrollTo(0, 0);
+    });
+
+    // Clear the input field after submission
+    emailInput.value = '';
+  }
+
+  document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    submitEmail();
+  });
+</script>
+  </script>
+</body>
+</html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AboutMe</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Reset default margin and padding */
+    body, h1, h2, h3, p, ul, li, form {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set background color and text color */
+    body {
+      background-color: black;
+      background-image: url(images/background2.png);
+      background-repeat: no-repeat;
+      background-size: center;
+      background-attachment: fixed;
+      color: whitesmoke;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
+
+    /* Style header and navigation */
+    header {
+      background-color: black;
+      padding: 35px;
+      display: flex;
+      justify-content: center; /* Align navigation in the middle */
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center; /* Align list items in the middle */
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 15px;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: large;
+      transition: all 0.3s ease;
+      white-space: nowrap; /* Prevent line breaks */
+    }
+
+    nav ul li:not(:last-child) a {
+      margin-right: 50px; /* Add space between each word */
+    }
+
+    nav ul li a:hover {
+      color: #007bff;
+    }
+
+    /* Style sections */
+    section {
+      padding: 20px 0;
+    }
+
+    .container {
+      width: 85%;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 15px;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-image {
+      background-color: transparent;
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-left: -300px;
+      margin-right: -70px;
+      margin-top: 50px;
+    }
+
+    .about-image img {
+      max-height: 100%;
+      max-width: 500%;
+
+    }
+
+    /* Media Queries for timeline img */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-image {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .about-image img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+    .decoration {
+      position: absolute; /* Position the decoration element absolutely within the container */
+      top: 0;
+      right: -20px; /* Adjust the value to control the distance from the image */
+      width: 40px; /* Adjust the width of the decoration element */
+      height: 100%; /* Make the decoration element cover the full height of the container */
+      background-color: #f00; /* Set the background color of the decoration element */
+    }
+
+    /* Add styling for the about section */
+    #about p {
+      margin-bottom: 20px;
+    }
+
+    /* Style skills graph */
+    .skill-chart {
+      margin-bottom: 20px;
+    }
+
+    .skill-label {
+      margin-bottom: 5px;
+    }
+
+    .bar-container {
+      height: 25px;
+      background-color: whitesmoke;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      background-color:#007bff;
+    }
+
+    /* Style certification cards */
+    .card {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-right: -50px;
+  margin-left: 70px;
+  position: relative;
+  width: calc(35% - 20px); /* Adjust the width as per your layout */
+  display: inline-block; /* Display cards in a single row */
+
+}
+
+/* Media queries for mobile devices */
+@media (max-width: 768px) {
+  .card {
+    width: 90%; /* Set the width to 100% for mobile devices */
+    margin: 10px 0; /* Adjust the margins as per your layout */
+  }
+}
+
+    .card-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #007bff;
+    }
+
+    .card-description {
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
+    .card-link {
+      color: #007bff;
+      text-decoration: solid;
+      font-weight: bold;
+    }
+
+
+    /* Style footer */
+    footer {
+      background-color: black;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer p {
+      color: whitesmoke;
+    }
+
+    /* Media queries for responsive design */
+    @media (max-width: 768px) {
+      nav ul li {
+        display: inline-block;
+        padding: 0px;
+        text-align: center;
+        margin-right: -10px;
+        margin-left: -4;
+        margin-bottom: 0;
+      }
+
+      }
+  </style>
+</head>
+<body>
+  <section id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p style="text-align: justify;">Over the years, I have honed my skills as a Software Quality Engineer in an agile product development team through web development, SDLC, Quality Assurance principles, and Software Testing. Through this experience, I gained a deep understanding of development lifecycles, product management, collaboration across cross-functional teams, and understanding Analytics and statistical methods which has resulted in improved productivity and an enhanced customer experience.</p>
+    
+          <br>
+          <h2>Future Objectives: To Work in Healthcare Division as a Data Analyst</h2>
+          <p style="text-align: justify;">
+            As a Software quality engineer, I can smoothly shift into a data analyst role in the healthcare industry.
+            <br><br>
+            My data analysis, quality assurance, process improvement, compliance, and security expertise would be instrumental in this field. I am confident that I can analyze data and identify patterns efficiently which can be further applied to healthcare data sets such as electronic health records and clinical trial data. This will enable me to uncover valuable insights and trends related to disease patterns, patient risk assessment, treatment effectiveness, resource optimization, and health management. My expertise in quality assurance ensures that my analysis results are accurate and reliable, while my process improvement background helps streamline data workflows. By combining my domain knowledge and analytical skills, software quality engineers can significantly impact healthcare data analytics. This can drive evidence-based decision-making and improve patient outcomes, which is ultimately the goal of any healthcare organization.
+            <br>
+            <br>
+            In the coming years, the balance between the role of data analysis in healthcare will become increasingly important. The ability to detect disease patterns and evaluate treatment effectiveness will continue to play a crucial role in enhancing patient care and improving outcomes. Through my exposure to various analytical approaches, I have gained the confidence to pursue a career as a Data Analyst. My education at USF has equipped me with new skill sets, including Data Mining Tools, SQL, Machine Learning, and Predictive Modeling using Python programming. I have had the opportunity to display these skills through my academic projects and visualization through Tableau boot camps held at USF. My interest in statistics and analytical methods has been a driving force for me. I am eager to apply my professional experience and education to advance my career as a Data Analyst.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="images/timeline.jpg" alt="About Me Image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>Skills Set</h2>
+      <div class="skill-chart">
+        <p class="skill-label">Data Analysis and Interpretation</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-chart">
+        <p class="skill-label">Data Visualization</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 90%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-chart">
+        <p class="skill-label">Machine Learning</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 85%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-chart">
+        <p class="skill-label">Communication and Collaboration</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 95%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-chart">
+        <p class="skill-label">Web Development</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 90%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="container">
+      <h2>Recent Certifications</h2>
+            <div class="card">
+        <h3 class="card-title">Tableau Bootcamp Certificate</h3>
+        <h3>
+          <p class="card-description">Skills Acquired</p>
+        </h3>
+        <ul>
+          <p style="color: black;">Building Interactive Dashboards</p>
+          <p style="color: black;">Foundations of Tableau</p>
+          <p style="color: black;">Creating Insightful Data Visualizations</p>
+          <p style="color: black;">Fundamentals of Data Modeling</p>
+        </ul><br>
+        <a href="https://www.credly.com/badges/4fc614a8-41d7-4ffe-b814-fa136dd0313d/linked_in_profile" class="card-link">View Certification</a>
+      </div>
+      
+      <div class="card">
+        <h3 class="card-title">Python Data Science Toolbox</h3>
+        <h3>
+          <p class="card-description">Skills Acquired</p>
+        </h3>
+        <ul>
+        <p style="color: black;">Python Fundamentals </p> 
+          <p style="color: black;">Cleaning Data</p>
+          <p style="color: black;">Data Manipulation with Pandas</p>
+          <p style="color: black;">Data Visualization with Matplotlib</p>
+        </ul><br>
+        <a href="https://www.datacamp.com/statement-of-accomplishment/course/c711b7e02ade0e4acafc8a0fb3d2eccfdfc0fa47" class="card-link">View Certification</a>
+      </div>
+  
+      <div class="card">
+        <h3 class="card-title">Introduction to Data Visualization</h3>
+        <h3>
+          <p class="card-description">Skills Acquired</p>
+        </h3>
+        <ul>
+          <p style="color: black;">Introduction to Plotly</p>
+          <p style="color: black;">Customizing Plots</p>
+          <p style="color: black;">Advanced Customization with Plotly graphs</p>
+          <p style="color: black;">Advanced Interactivity</p>
+        </ul><br>
+        <a href="https://www.datacamp.com/statement-of-accomplishment/course/f73cc22f8dca4bd4f090b8b2fa613bb891cce82c" class="card-link">View Certification</a>
+      </div>
+    <div class="card">
+        <h3 class="card-title">Data Manipulation with Pandas</h3>
+        <h3>
+          <p class="card-description">Skills Acquired</p>
+        </h3>
+        <ul>
+          <p style="color: black;">Transforming DataFrames</p>
+          <p style="color: black;">Aggregating DataFrames</p>
+          <p style="color: black;">Slicing and Indexing DataFrames</p>
+          <p style="color: black;">Creating and Visualizing DataFrames</p>
+        </ul><br>
+        <a href="https://www.datacamp.com/statement-of-accomplishment/course/d75fe17947dd360cf7d6be17d118f64581302b48" class="card-link">View Certification</a>
+      </div>
+  </section>
+
+  <section id="collaborate">
+    <div class="container">
+      <div class="connect-section">
+        <h2>Let's collaborate and create something amazing!</h2>
+        <p>Email me to get in touch!</p>
+        <div class="email-section">
+          <input type="email" class="email-input" placeholder="Enter your email address">
+          <button class="email-button" onclick="submitEmail()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2023 Akshit RamPershad All rights reserved.</p>
+  </footer>
+</body>
+</html>
