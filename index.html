@@ -865,6 +865,200 @@
         flex-direction: column;
       }
     }
+
+    /* Chatbot widget */
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #2f8fff, #0056b3);
+      color: #ffffff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 86, 179, 0.4);
+      z-index: 200;
+      transition: transform 0.2s ease;
+    }
+
+    .chatbot-toggle:hover {
+      transform: scale(1.06);
+    }
+
+    .chatbot-panel {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      width: 340px;
+      max-width: calc(100vw - 32px);
+      height: 460px;
+      max-height: calc(100vh - 140px);
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 200;
+    }
+
+    .chatbot-panel.open {
+      display: flex;
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, #2f8fff, #0056b3);
+      color: #ffffff;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .chatbot-header-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .chatbot-header-title .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #2ecc71;
+      box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.3);
+      flex-shrink: 0;
+    }
+
+    .chatbot-close {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.85;
+    }
+
+    .chatbot-close:hover {
+      opacity: 1;
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chatbot-msg {
+      max-width: 85%;
+      padding: 9px 13px;
+      border-radius: 14px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .chatbot-msg.bot {
+      align-self: flex-start;
+      background-color: rgba(47, 143, 255, 0.1);
+      color: var(--card-text);
+      border: 1px solid rgba(47, 143, 255, 0.2);
+      border-bottom-left-radius: 4px;
+    }
+
+    .chatbot-msg.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #2f8fff, #0056b3);
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chatbot-msg a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    .chatbot-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 0 14px 10px;
+      flex-shrink: 0;
+    }
+
+    .chatbot-suggestion {
+      background-color: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 20px;
+      padding: 5px 11px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chatbot-suggestion:hover {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .chatbot-input-row {
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+      border-top: 1px solid var(--header-border);
+      flex-shrink: 0;
+    }
+
+    .chatbot-input {
+      flex: 1;
+      border: 1px solid var(--header-border);
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      border-radius: 20px;
+      padding: 9px 14px;
+      font-size: 13.5px;
+      outline: none;
+    }
+
+    .chatbot-send {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #2f8fff, #0056b3);
+      color: #ffffff;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+      .chatbot-panel {
+        right: 16px;
+        bottom: 88px;
+        width: calc(100vw - 32px);
+      }
+
+      .chatbot-toggle {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5WXYL00Z6"></script>
@@ -1364,6 +1558,185 @@
       });
     }, { threshold: 0.15 });
     targets.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
+
+<button class="chatbot-toggle" id="chatbot-toggle" type="button" aria-label="Chat with Akshit's portfolio assistant">
+  <i class="fas fa-comment-dots"></i>
+</button>
+
+<div class="chatbot-panel" id="chatbot-panel">
+  <div class="chatbot-header">
+    <div class="chatbot-header-title"><span class="dot"></span>Ask about Akshit</div>
+    <button class="chatbot-close" id="chatbot-close" type="button" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="chatbot-messages" id="chatbot-messages"></div>
+  <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
+  <div class="chatbot-input-row">
+    <input class="chatbot-input" id="chatbot-input" type="text" placeholder="Ask a question..." autocomplete="off">
+    <button class="chatbot-send" id="chatbot-send" type="button" aria-label="Send"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var KB = [
+      {
+        keywords: ['who is akshit', 'who are you', 'about akshit', 'tell me about akshit', 'introduce', 'summary', 'bio'],
+        answer: "Akshit Rampershad is an AI Engineer turning enterprise operations into scalable, AI-native systems. He builds multi-agent AI systems and RAG pipelines that automate high-stakes enterprise workflows, with a background spanning data engineering, business analytics, and quality assurance."
+      },
+      {
+        keywords: ['current role', 'current job', 'where does he work', 'where do you work', 'cambrian', 'present job', 'currently working', 'now working'],
+        answer: "Akshit currently works as an AI Engineer at Cambrian Lab in San Francisco, CA (May 2026 – Present). He architects hybrid-retrieval matching systems, calibrates vector search pipelines, and builds LLM orchestration workflows that automate enterprise supply-chain and data operations."
+      },
+      {
+        keywords: ['experience', 'work history', 'career', 'jobs', 'employment', 'background'],
+        answer: "Akshit's experience: AI Engineer at Cambrian Lab (San Francisco, May 2026–Present) → Data Engineer/AI Solutions Delivery at 22nd Century Technology Inc. (McLean, VA, Sept 2025–Mar 2026) → Data Engineer/AI Practitioner at Surge Infotech (Boston, MA, Sept 2024–Sept 2025) → Business Data Analyst at UKG (India, Oct 2020–Aug 2022). See the Experience section above for full details on each role."
+      },
+      {
+        keywords: ['22nd century', 'mclean', 'federal proposal', 'sharepoint'],
+        answer: "At 22nd Century Technology Inc. (McLean, VA, Sept 2025–Mar 2026), Akshit spearheaded delivery of a secure enterprise RAG platform accelerating federal proposal development across a 20K+ SharePoint knowledge corpus, using Python, PySpark, Qdrant, LlamaIndex, and LangChain."
+      },
+      {
+        keywords: ['surge', 'infotech', 'boston', 'real estate', 'site ranking', 'urban development'],
+        answer: "At Surge Infotech (Boston, MA, Sept 2024–Sept 2025), Akshit engineered spatial data ingestion pipelines and an ML site-ranking engine using Databricks AutoML and MLflow, achieving 92% prediction accuracy for real estate site selection, and processed 50M+ parcel/zoning records through Medallion pipelines."
+      },
+      {
+        keywords: ['ukg', 'business data analyst', 'talk', 'india'],
+        answer: "At UKG (India, Oct 2020–Aug 2022), Akshit was a Business Data Analyst who led requirements analysis for UKG TALK, supporting 10,000+ enterprise users, and used SQL/Python funnel analysis to boost premium feature conversion by 29%."
+      },
+      {
+        keywords: ['education', 'degree', 'university', 'school', 'college', 'study', 'studied', 'usf', 'gitam', 'masters', 'bachelors'],
+        answer: "Akshit holds an MS in Business Analytics and Information Systems from the University of South Florida, Tampa, FL (May 2024), and a BS in Computer Science and Engineering from GITAM University, India (July 2020)."
+      },
+      {
+        keywords: ['skills', 'tech stack', 'technologies', 'programming', 'languages', 'tools'],
+        answer: "Akshit's skills span LLM & Agentic AI (OpenAI, Claude, Gemini, MCP), RAG & Retrieval (Qdrant, embeddings, reranking), AI Evaluation, AI Engineering (Python, FastAPI, LangChain, LlamaIndex), Data Engineering (PySpark, SQL, Databricks), Cloud & Platforms (AWS, Snowflake, Docker), ML & Analytics (MLflow, Tableau, Power BI), and AI Solution Engineering. See the Skills section above for the full breakdown."
+      },
+      {
+        keywords: ['competencies', 'strengths', 'expertise', 'specialize', 'specialise', 'specialty'],
+        answer: "Akshit's key competencies are LLM & Agentic AI, RAG & Information Retrieval, AI Evaluation & Reliability, Data Engineering & Cloud, and AI Solution Engineering."
+      },
+      {
+        keywords: ['projects', 'built', 'portfolio projects', 'github projects', 'work built'],
+        answer: "Akshit's featured projects include CYBER-GPT (a GenAI RAG solution for cybersecurity threat response), Project Management AI Systems (a multi-agent workflow for technical project management), Credit Risk & Portfolio Optimization (SAS-based financial modeling), and Contradictory My Dear Watson (multilingual NLP, 6th out of 64 in a Kaggle competition). See the Projects section above for details and GitHub links."
+      },
+      {
+        keywords: ['cyber-gpt', 'cybergpt', 'cyber gpt', 'cybersecurity project', 'soc'],
+        answer: "CYBER-GPT is a Generative AI solution that helps SOC analysts detect, investigate, and respond to cyber threats faster, combining LLMs with RAG over threat intelligence feeds and frameworks like MITRE ATT&CK. <a href=\"https://github.com/AkshitRampershad/CYBER-GPT\" target=\"_blank\" rel=\"noopener noreferrer\">View on GitHub</a>."
+      },
+      {
+        keywords: ['project management ai', 'agentic workflow', 'multi-agent project'],
+        answer: "Project Management AI Systems is a reusable multi-agent workflow that converts a raw product spec into structured user stories, features, and engineering tasks, using seven cooperating agent classes. <a href=\"https://github.com/AkshitRampershad/ai-agentic-workflow-project\" target=\"_blank\" rel=\"noopener noreferrer\">View on GitHub</a>."
+      },
+      {
+        keywords: ['credit risk', 'portfolio optimization', 'sas project', 'financial analytics'],
+        answer: "Credit Risk & Portfolio Optimization applies advanced SAS statistical methods to build a credit scoring model and optimize an investment portfolio across 2.5M+ loan records. <a href=\"https://github.com/AkshitRampershad/SAS-Financial-Project\" target=\"_blank\" rel=\"noopener noreferrer\">View on GitHub</a>."
+      },
+      {
+        keywords: ['watson', 'contradictory', 'nlp project', 'kaggle', 'xlm'],
+        answer: "Contradictory, My Dear Watson is a multilingual Natural Language Inference project built for a Kaggle competition, classifying sentence pairs across 15 languages with an ensemble of fine-tuned XLM-RoBERTa models that reached 90.06% accuracy — 6th out of 64 teams. <a href=\"https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson\" target=\"_blank\" rel=\"noopener noreferrer\">View on GitHub</a>."
+      },
+      {
+        keywords: ['certifications', 'certificates', 'credentials', 'certified'],
+        answer: "Akshit holds 12 certifications including Model Context Protocol, Claude with Amazon Bedrock, Claude with Google Cloud's Vertex AI, Building with the Claude API, and Introduction to Subagents (all Anthropic), plus credentials from Databricks, Snowflake, Wolfram, Docker, Atlassian, Microsoft, and McKinsey & Company. See the Certifications section above for the full list."
+      },
+      {
+        keywords: ['contact', 'reach', 'email', 'get in touch', 'hire', 'linkedin', 'connect'],
+        answer: "You can connect with Akshit on <a href=\"https://www.linkedin.com/in/akshit-rampershad/\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a>, check out his work on <a href=\"https://github.com/AkshitRampershad\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>, or use the “Let's collaborate” form at the bottom of this page."
+      },
+      {
+        keywords: ['resume', 'cv', 'download'],
+        answer: "You can download Akshit's full resume using the “Resume” button near the top of the page."
+      },
+      {
+        keywords: ['available', 'availability', 'open to work', 'hiring', 'looking for a job', 'job opportunities', 'relocate', 'relocation'],
+        answer: "Akshit is open to AI Engineering opportunities. Reach out via LinkedIn or the contact form at the bottom of this page to get in touch."
+      }
+    ];
+
+    var FALLBACK = "I don't have a specific answer for that yet — try asking about Akshit's experience, skills, projects, education, or how to get in touch. You can also browse the sections above or download his resume directly.";
+
+    var SUGGESTIONS = ['Experience', 'Skills', 'Projects', 'Education', 'Contact'];
+
+    function findAnswer(input) {
+      var text = input.toLowerCase();
+      var best = null;
+      var bestScore = 0;
+      for (var i = 0; i < KB.length; i++) {
+        var score = 0;
+        for (var j = 0; j < KB[i].keywords.length; j++) {
+          if (text.indexOf(KB[i].keywords[j]) !== -1) score++;
+        }
+        if (score > bestScore) {
+          bestScore = score;
+          best = KB[i];
+        }
+      }
+      return best ? best.answer : FALLBACK;
+    }
+
+    var toggleBtn = document.getElementById('chatbot-toggle');
+    var closeBtn = document.getElementById('chatbot-close');
+    var panel = document.getElementById('chatbot-panel');
+    var messagesEl = document.getElementById('chatbot-messages');
+    var suggestionsEl = document.getElementById('chatbot-suggestions');
+    var inputEl = document.getElementById('chatbot-input');
+    var sendBtn = document.getElementById('chatbot-send');
+    var started = false;
+
+    function addMessage(text, sender) {
+      var msg = document.createElement('div');
+      msg.className = 'chatbot-msg ' + sender;
+      msg.innerHTML = text;
+      messagesEl.appendChild(msg);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function renderSuggestions() {
+      suggestionsEl.innerHTML = '';
+      SUGGESTIONS.forEach(function (label) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'chatbot-suggestion';
+        btn.textContent = label;
+        btn.addEventListener('click', function () { handleUserInput(label); });
+        suggestionsEl.appendChild(btn);
+      });
+    }
+
+    function handleUserInput(text) {
+      text = (text || '').trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      inputEl.value = '';
+      setTimeout(function () {
+        addMessage(findAnswer(text), 'bot');
+      }, 350);
+    }
+
+    function openChat() {
+      panel.classList.add('open');
+      if (!started) {
+        started = true;
+        addMessage("Hi! I'm a quick assistant that can answer questions about Akshit's experience, skills, projects, education, and how to get in touch. What would you like to know?", 'bot');
+        renderSuggestions();
+      }
+      inputEl.focus();
+    }
+
+    function closeChat() {
+      panel.classList.remove('open');
+    }
+
+    toggleBtn.addEventListener('click', function () {
+      if (panel.classList.contains('open')) closeChat(); else openChat();
+    });
+    closeBtn.addEventListener('click', closeChat);
+    sendBtn.addEventListener('click', function () { handleUserInput(inputEl.value); });
+    inputEl.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') handleUserInput(inputEl.value);
+    });
   })();
 </script>
 </body>
