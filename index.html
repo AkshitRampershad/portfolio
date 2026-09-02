@@ -660,11 +660,21 @@
       transform: translateY(-3px);
     }
 
-    .repo-card-image {
+    .repo-card-image-wrap {
       width: calc(100% + 40px);
       margin: -20px -20px 15px -20px;
-      height: 160px;
-      object-fit: cover;
+      height: 180px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .repo-card-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
       display: block;
     }
 
@@ -683,10 +693,14 @@
     }
 
     .repo-card p {
-      flex: 1;
       font-size: 15px;
       color: var(--card-text-secondary);
       margin-bottom: 15px;
+    }
+
+    .repo-desc {
+      flex: 1;
+      text-align: justify;
     }
 
     .repo-tagline {
@@ -1028,16 +1042,18 @@
       <h3 class="project-group-heading">Featured AI Systems</h3>
       <div class="repo-grid">
         <div class="repo-card">
-          <img class="repo-card-image" src="images/cyber-gpt.png" alt="CYBER-GPT project graphic">
+          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/cyber-gpt.png" alt="CYBER-GPT project graphic"></div>
           <h3><a href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer">CYBER-GPT</a></h3>
           <p class="repo-tagline">RAG &middot; LLM &middot; Agentic Workflows &middot; Cybersecurity</p>
+          <p class="repo-desc">A Generative AI solution that helps SOC analysts detect, investigate, and respond to cyber threats faster. Combines LLMs with Retrieval-Augmented Generation over historical incident data, real-time threat intelligence feeds, and frameworks like MITRE ATT&amp;CK to generate dynamic response playbooks for rare, unpredictable "black swan" incidents.</p>
           <a class="repo-link" href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
         </div>
 
         <div class="repo-card">
-          <img class="repo-card-image" src="images/project-management-ai.png" alt="Project Management AI Systems graphic">
+          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/project-management-ai.png" alt="Project Management AI Systems graphic"></div>
           <h3><a href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer">Project Management AI Systems</a></h3>
           <p class="repo-tagline">Multi-Agent Systems &middot; RAG &middot; Evaluation &middot; Orchestration</p>
+          <p class="repo-desc">A reusable multi-agent workflow for technical project management that converts a raw product specification into structured user stories, features, and engineering tasks. Implements seven cooperating agent classes &mdash; direct prompting, knowledge augmentation, RAG-backed prompting, evaluation, routing, and action planning &mdash; orchestrated end-to-end and validated with pytest.</p>
           <a class="repo-link" href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
         </div>
       </div>
@@ -1045,16 +1061,18 @@
       <h3 class="project-group-heading">Selected Data &amp; ML Work</h3>
       <div class="repo-grid">
         <div class="repo-card">
-          <img class="repo-card-image" src="images/sas-credit-risk.png" alt="Credit Risk & Portfolio Optimization project graphic">
+          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/sas-credit-risk.png" alt="Credit Risk & Portfolio Optimization project graphic"></div>
           <h3><a href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer">Credit Risk &amp; Portfolio Optimization</a></h3>
           <p class="repo-tagline">Statistical Modeling &middot; Optimization &middot; Financial Analytics</p>
+          <p class="repo-desc">Applies advanced SAS statistical methods to build a credit scoring model and optimize an investment portfolio for a mid-sized financial institution, spanning 2.5M+ loan records. Covers ETL pipelines, PROC LOGISTIC classification and factor analysis, PROC OPTMODEL portfolio optimization, time-series forecasting, stress testing, and regulatory capital reporting.</p>
           <a class="repo-link" href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
         </div>
 
         <div class="repo-card">
-          <img class="repo-card-image" src="images/contradictory-watson.png" alt="Contradictory, My Dear Watson project graphic">
+          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/contradictory-watson.png" alt="Contradictory, My Dear Watson project graphic"></div>
           <h3><a href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer">Contradictory, My Dear Watson</a></h3>
           <p class="repo-tagline">NLP &middot; XLM-R &middot; Multilingual Classification</p>
+          <p class="repo-desc">A multilingual Natural Language Inference project built for a Kaggle competition, classifying sentence pairs across 15 languages as entailment, contradiction, or neutral. An ensemble of fine-tuned XLM-RoBERTa models reached 90.06% test accuracy, placing 6th out of 64 teams.</p>
           <a class="repo-link" href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
         </div>
       </div>
@@ -1093,6 +1111,10 @@
         <div class="skill-group">
           <h3>ML &amp; Analytics</h3>
           <p>MLflow &middot; Databricks AutoML &middot; Machine Learning &middot; Tableau &middot; Power BI</p>
+        </div>
+        <div class="skill-group">
+          <h3>AI Solution Engineering</h3>
+          <p>Solution Architecture &middot; Technical Design &middot; Project Management &middot; Requirements Engineering &middot; System Integration &middot; AI Product Delivery</p>
         </div>
       </div>
     </div>
