@@ -749,10 +749,6 @@
           <div class="competency-icon"><i class="fas fa-cogs"></i></div>
           <h3>Solution Engineering</h3>
         </div>
-        <div class="competency-card">
-          <div class="competency-icon"><i class="fas fa-tasks"></i></div>
-          <h3>Project Management</h3>
-        </div>
       </div>
     </div>
   </section>
@@ -766,8 +762,10 @@
         <div class="timeline-meta"><span>San Francisco, CA</span><span>May 2026 &ndash; Present</span></div>
         <ul>
           <li>Architected an end-to-end PCN&ndash;MPN matching system using a 4-leg hybrid retriever (exact, fuzzy, prefix, vector) feeding a bounded LLM ranking pass, with a short-circuit exact-match mechanism resolving unambiguous hits at 0 LLM cost.</li>
-          <li>Built PcnAutoIntake, an LLM orchestration pipeline automating 29+ daily supplier change intake via structured extraction, entity resolution, and confidence-gated human review &mdash; cutting PCN analysis from 2 hours to 10 seconds per notice.</li>
-          <li>Validated hybrid-retrieval candidate matches using Claude-based confidence scoring, achieving 0 false auto-confirmations across 81 validation runs.</li>
+          <li>Calibrated the internal matching system by integrating OpenAI text-embedding-3-small (1536-d) across 4 supply chain fields, using HNSW top-K search and a 3-band score+margin policy, sustaining a flat 0.36s match latency on a 50K+ corpus.</li>
+          <li>Validated hybrid-retrieval candidate matches using Claude Sonnet 5-based confidence scoring to reduce mismatched-part risk in PCNs, achieving 0 false auto-confirmations across 81 validation runs and automating unambiguous matches.</li>
+          <li>Eliminated manual assembly and finished-good tracing by building a recursive "where-used" BOM engine with parent-traversal graph algorithms and cycle-detection guards, fully automating downstream impact analysis for matched parts.</li>
+          <li>Built PcnAutoIntake, an LLM orchestration pipeline automating 29+ daily supplier change intake via structured extraction, entity resolution, and confidence-gated human review &mdash; cutting PCN analysis from 2 hours to 10 seconds per notice, saving 19 hours/day.</li>
         </ul>
       </div>
 
@@ -775,9 +773,11 @@
         <h3>Data Engineer / AI Solutions Delivery &mdash; 22nd Century Technology Inc.</h3>
         <div class="timeline-meta"><span>McLean, VA</span><span>Sept 2025 &ndash; Mar 2026</span></div>
         <ul>
-          <li>Spearheaded the end-to-end technical delivery of a secure enterprise RAG platform accelerating federal proposal development across a 20K+ SharePoint knowledge corpus.</li>
-          <li>Built a hybrid ingestion engine (Python, PySpark, Graph API) indexing the corpus into a 1,024-dim Qdrant vector database using BGE-Large-EN-v1.5 embeddings for section-aware retrieval.</li>
-          <li>Designed a LlamaIndex retrieval pipeline with five-field metadata filtering and cross-encoder re-ranking, feeding LangChain prompt orchestration for RFP-scoped drafts.</li>
+          <li>Spearheaded the end-to-end technical delivery of a secure enterprise RAG platform to accelerate multi-million dollar federal proposal development cycles and intelligence generation workloads across a 20K+ SharePoint knowledge corpus.</li>
+          <li>Built a hybrid ingestion engine using Python, PySpark, and Graph API to index the 20K+ SharePoint corpus into a 1,024-dim Qdrant vector database, using BGE-Large-EN-v1.5 embeddings for section-aware retrieval.</li>
+          <li>Designed a LlamaIndex retrieval pipeline narrowing 30 candidates to 8 through five-field metadata filtering and cross-encoder re-ranking, feeding LangChain prompt orchestration to return RFP-scoped drafts sourced from prior wins.</li>
+          <li>Managed project dependencies and technical ambiguity for 4 cross-functional teams through Jira, driving stakeholder collaboration across AI, engineering, and proposal teams to deliver structured RAG features across 8 continuous sprints.</li>
+          <li>Developed AI adoption runbooks and led technical enablement sessions with business stakeholders and 14 proposal writers, improving organizational data literacy and scaling RAG application adoption by 45% across business teams.</li>
         </ul>
       </div>
 
@@ -785,8 +785,11 @@
         <h3>Data Engineer / AI Practitioner &mdash; Surge Infotech</h3>
         <div class="timeline-meta"><span>Boston, MA</span><span>Sept 2024 &ndash; Sept 2025</span></div>
         <ul>
-          <li>Engineered high-throughput spatial data ingestion pipelines and an ML site-ranking engine using Databricks AutoML and MLflow, achieving 92% prediction accuracy for real estate site selection.</li>
-          <li>Built FastAPI extraction services ingesting 50M+ parcel and zoning records into AWS S3, orchestrating Medallion (Bronze/Silver/Gold) pipelines with automated schema evolution and quality validation.</li>
+          <li>Engineered high-throughput spatial data ingestion pipelines and an ML site-ranking engine using Databricks AutoML and MLflow, surfacing optimal urban development parcels for real estate clients with 92% prediction accuracy.</li>
+          <li>Built FastAPI data extraction services to ingest 50M+ parcel and zoning records into AWS S3, leveraging Databricks Auto Loader for incremental file discovery and schema inference and DLT for governed ingestion and automated quality checks.</li>
+          <li>Orchestrated multi-stage Medallion pipelines (Bronze/Silver/Gold) using Databricks LakeFlow and DLT, processing 50M+ spatial and zoning records with automated schema evolution and real-time quality validation.</li>
+          <li>Leveraged OpenAI GPT-4 APIs to build an automated intelligence engine that synthesized complex pipeline metrics into executive-ready business reports, accelerating C-suite strategic planning cycles by 75%.</li>
+          <li>Presented smart city market adoption trends to executive leadership, aligning foundational model capabilities with commercial demands to secure executive buy-in for a multi-quarter AI engineering product roadmap.</li>
         </ul>
       </div>
 
@@ -794,9 +797,11 @@
         <h3>Business Data Analyst &mdash; UKG</h3>
         <div class="timeline-meta"><span>India</span><span>Oct 2020 &ndash; Aug 2022</span></div>
         <ul>
-          <li>Led requirements analysis for UKG TALK post-acquisition, supporting 10,000+ active enterprise users worldwide.</li>
-          <li>Used SQL and Python funnel analysis to detect onboarding drop-offs, boosting premium feature conversion by 29% and trial-to-paid conversion by 25%.</li>
-          <li>Designed interactive Tableau and Power BI dashboards reporting real-time campaign ROI to executive stakeholders.</li>
+          <li>Led business and technical requirements analysis for UKG TALK post-acquisition, identifying key product gaps and shaping strategic data-backed product roadmaps, successfully supporting 10,000+ active enterprise users worldwide.</li>
+          <li>Leveraged SQL queries and Python funnel analysis to detect user onboarding drop-offs, executing process optimization techniques that boosted premium feature monthly conversion rates by 29% and trial-to-paid conversions by 25%.</li>
+          <li>Developed JIRA defect tracking dashboards monitoring production/staging issues, enabling 4 cross-functional teams to unblock dependencies and critical bugs, resulting in a 43% improvement in phased sign-offs with a 94% sprint delivery rate.</li>
+          <li>Designed interactive Tableau and Power BI dashboards using advanced parameters and calculated fields to report real-time campaign ROI and segment conversion metrics to non-technical stakeholders during executive quarterly reviews.</li>
+          <li>Led cross-functional UAT loops, post-production checks, and product marketing launch documentation to control critical integration friction for high-value Fortune 500 clients, boosting platform adoption rates by 2X within 12 months.</li>
         </ul>
       </div>
     </div>
