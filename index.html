@@ -336,9 +336,9 @@
     }
 
     .education-logo {
-      height: 56px;
-      min-width: 56px;
-      max-width: 130px;
+      height: 68px;
+      min-width: 68px;
+      max-width: 140px;
       border-radius: 10px;
       background: #ffffff;
       display: flex;
@@ -346,7 +346,7 @@
       justify-content: center;
       flex-shrink: 0;
       overflow: hidden;
-      padding: 8px;
+      padding: 10px;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
     }
 
@@ -357,42 +357,16 @@
     }
 
     .education-info h4 {
-      font-size: 15px;
-      margin-bottom: 4px;
+      font-size: 17px;
+      line-height: 1.35;
+      margin-bottom: 6px;
       color: var(--card-text);
     }
 
     .education-info p {
-      font-size: 13px;
+      font-size: 14px;
       margin-bottom: 0;
       color: var(--card-text-secondary);
-    }
-
-    /* Diplomas */
-    .diploma-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 20px;
-    }
-
-    .diploma-card {
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: var(--card-shadow);
-      padding: 14px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .diploma-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .diploma-card img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
     }
 
     /* Key competencies */
@@ -554,11 +528,14 @@
     }
 
     .cert-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
       background-color: var(--card-bg);
       color: var(--card-text);
-      border-radius: 5px;
+      border-radius: 8px;
       box-shadow: var(--card-shadow);
-      padding: 18px 20px;
+      padding: 20px 22px;
       transition: background-color 0.3s ease, transform 0.25s ease;
     }
 
@@ -566,8 +543,39 @@
       transform: translateY(-3px);
     }
 
+    .cert-logo {
+      height: 46px;
+      min-width: 46px;
+      max-width: 100px;
+      border-radius: 8px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      padding: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .cert-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .cert-logo i {
+      font-size: 22px;
+      color: #14171f;
+    }
+
+    .cert-info {
+      min-width: 0;
+    }
+
     .cert-card h3 {
       font-size: 18px;
+      line-height: 1.35;
       color: var(--accent-dark);
       margin-bottom: 6px;
     }
@@ -579,7 +587,7 @@
     }
 
     .cert-card p.cert-date {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--card-text-secondary);
       opacity: 0.75;
       margin-top: 4px;
@@ -873,16 +881,6 @@
           </div>
         </div>
       </div>
-
-      <h3>Diplomas</h3>
-      <div class="diploma-grid">
-        <div class="diploma-card">
-          <img src="images/logos/usf-diploma.png" alt="University of South Florida Master of Science diploma">
-        </div>
-        <div class="diploma-card">
-          <img src="images/logos/gitam-diploma.png" alt="GITAM University Bachelor of Technology diploma">
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1027,15 +1025,6 @@
           </div>
           <a class="repo-link" href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
         </div>
-
-        <div class="repo-card">
-          <h3><a href="https://github.com/AkshitRampershad/HEARTBEAT-PREDICTION-MODEL-USING-MACHINE-LEARNING-" target="_blank" rel="noopener noreferrer">Heartbeat Prediction Model Using Machine Learning</a></h3>
-          <p>Determines whether a heartbeat measurement is normal or shows abnormalities by comparing multiclass classification models &mdash; Cross-Sectional Neural Network, LSTM, Deep LSTM, GRU, and Deep GRU &mdash; on healthcare time-series data. Focuses on tuning model parameters to improve predictive accuracy for early detection and risk assessment.</p>
-          <div class="repo-tags">
-            <span>Python</span><span>LSTM</span><span>GRU</span><span>Healthcare AI</span>
-          </div>
-          <a class="repo-link" href="https://github.com/AkshitRampershad/HEARTBEAT-PREDICTION-MODEL-USING-MACHINE-LEARNING-" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
-        </div>
       </div>
     </div>
   </section>
@@ -1069,54 +1058,100 @@
       <h2>Recent Certifications</h2>
       <div class="cert-grid">
         <div class="cert-card">
-          <h3>Model Context Protocol</h3>
-          <p>Anthropic</p>
-          <p class="cert-date">Issued Apr 2026</p>
+          <div class="cert-logo"><img src="images/logos/anthropic.svg" alt="Anthropic logo"></div>
+          <div class="cert-info">
+            <h3>Model Context Protocol</h3>
+            <p>Anthropic</p>
+            <p class="cert-date">Issued Apr 2026</p>
+          </div>
         </div>
         <div class="cert-card">
-          <h3>Claude with Amazon Bedrock</h3>
-          <p>Anthropic</p>
-          <p class="cert-date">Issued May 2026</p>
+          <div class="cert-logo"><img src="images/logos/anthropic.svg" alt="Anthropic logo"></div>
+          <div class="cert-info">
+            <h3>Claude with Amazon Bedrock</h3>
+            <p>Anthropic</p>
+            <p class="cert-date">Issued May 2026</p>
+          </div>
         </div>
         <div class="cert-card">
-          <h3>Claude with Google Cloud's Vertex AI</h3>
-          <p>Anthropic</p>
-          <p class="cert-date">Issued Apr 2026</p>
+          <div class="cert-logo"><img src="images/logos/anthropic.svg" alt="Anthropic logo"></div>
+          <div class="cert-info">
+            <h3>Claude with Google Cloud's Vertex AI</h3>
+            <p>Anthropic</p>
+            <p class="cert-date">Issued Apr 2026</p>
+          </div>
         </div>
         <div class="cert-card">
-          <h3>Building with the Claude API</h3>
-          <p>Anthropic</p>
-          <p class="cert-date">Issued Apr 2026</p>
+          <div class="cert-logo"><img src="images/logos/anthropic.svg" alt="Anthropic logo"></div>
+          <div class="cert-info">
+            <h3>Building with the Claude API</h3>
+            <p>Anthropic</p>
+            <p class="cert-date">Issued Apr 2026</p>
+          </div>
         </div>
         <div class="cert-card">
-          <h3>Introduction to Subagents</h3>
-          <p>Anthropic</p>
-          <p class="cert-date">Issued May 2026</p>
+          <div class="cert-logo"><img src="images/logos/anthropic.svg" alt="Anthropic logo"></div>
+          <div class="cert-info">
+            <h3>Introduction to Subagents</h3>
+            <p>Anthropic</p>
+            <p class="cert-date">Issued May 2026</p>
+          </div>
         </div>
         <div class="cert-card">
-          <h3>Generative AI Fundamentals</h3>
-          <p>Databricks</p>
-          <p class="cert-date">Issued Apr 2025</p>
+          <div class="cert-logo"><img src="images/logos/databricks.svg" alt="Databricks logo"></div>
+          <div class="cert-info">
+            <h3>Generative AI Fundamentals</h3>
+            <p>Databricks</p>
+            <p class="cert-date">Issued Apr 2025</p>
+          </div>
         </div>
         <div class="cert-card">
-          <h3>Hands-On Essentials: Data Engineering Workshop</h3>
-          <p>Snowflake</p>
-          <p class="cert-date">Issued Dec 2024</p>
+          <div class="cert-logo"><img src="images/logos/snowflake.svg" alt="Snowflake logo"></div>
+          <div class="cert-info">
+            <h3>Hands-On Essentials: Data Engineering Workshop</h3>
+            <p>Snowflake</p>
+            <p class="cert-date">Issued Dec 2024</p>
+          </div>
         </div>
         <div class="cert-card">
-          <h3>Certified Machine Learning Professional</h3>
-          <p>Wolfram</p>
-          <p class="cert-date">Issued Oct 2024</p>
+          <div class="cert-logo"><img src="images/logos/wolfram.svg" alt="Wolfram logo"></div>
+          <div class="cert-info">
+            <h3>Certified Machine Learning Professional</h3>
+            <p>Wolfram</p>
+            <p class="cert-date">Issued Oct 2024</p>
+          </div>
         </div>
         <div class="cert-card">
-          <h3>Docker Foundations Professional Certificate</h3>
-          <p>Docker, Inc</p>
-          <p class="cert-date">Issued Oct 2024</p>
+          <div class="cert-logo"><img src="images/logos/docker.svg" alt="Docker logo"></div>
+          <div class="cert-info">
+            <h3>Docker Foundations Professional Certificate</h3>
+            <p>Docker, Inc</p>
+            <p class="cert-date">Issued Oct 2024</p>
+          </div>
         </div>
         <div class="cert-card">
-          <h3>Atlassian Agile Project Management Professional Certificate</h3>
-          <p>Atlassian</p>
-          <p class="cert-date">Issued Sep 2024</p>
+          <div class="cert-logo"><img src="images/logos/atlassian.svg" alt="Atlassian logo"></div>
+          <div class="cert-info">
+            <h3>Atlassian Agile Project Management Professional Certificate</h3>
+            <p>Atlassian</p>
+            <p class="cert-date">Issued Sep 2024</p>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-logo"><i class="fab fa-microsoft"></i></div>
+          <div class="cert-info">
+            <h3>Responsible AI Principles and Practices</h3>
+            <p>Microsoft</p>
+            <p class="cert-date">Issued Apr 2026</p>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-logo"><i class="fas fa-landmark"></i></div>
+          <div class="cert-info">
+            <h3>McKinsey.org Forward Program</h3>
+            <p>McKinsey &amp; Company</p>
+            <p class="cert-date">Issued Jun 2026</p>
+          </div>
         </div>
       </div>
 
