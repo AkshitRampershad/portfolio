@@ -645,6 +645,23 @@
       margin-bottom: 8px;
     }
 
+
+.two-column-wrapper {
+  display: flex;
+  gap: 2rem; /* Adjusts the space between the two columns */
+}
+
+.recognition-list {
+  flex: 1; /* Gives equal width to both columns */
+}
+
+/* Optional: Stack vertically on mobile screens */
+@media (max-width: 600px) {
+  .two-column-wrapper {
+    flex-direction: column;
+  }
+}
+
     /* Projects grid */
     .repo-grid {
       display: grid;
@@ -1468,24 +1485,31 @@
           </div>
         </div>
       </div>
-
-      <div class="recognition-list">
-        <h3>Leadership</h3>
-        <ul>
-          <li>Graduate Assistant &mdash; University of South Florida (2024)</li>
-          <li>Data Science Club &mdash; University of South Florida (2023)</li>
-          <li>PMI Volunteer &mdash; Tampa (2022)</li>
-        </ul>
-      </div>
-      <div class="recognition-list">
-        <h3>Recognition</h3>
-        <ul>
-          <li>Exceptional Performer Award &mdash; UKG (2022)</li>
-          <li>Technical Excellence Award &mdash; UKG (2021)</li>
-        </ul>
-      </div>
     </div>
   </section>
+
+  <section class="section-container">
+  <h2>Leadership & Recognition</h2>
+  
+  <div class="two-column-wrapper">
+    <div class="recognition-list">
+      <h3>Leadership</h3>
+      <ul>
+        <li>Graduate Assistant &mdash; University of South Florida (2024)</li>
+        <li>Data Science Club &mdash; University of South Florida (2023)</li>
+        <li>PMI Volunteer &mdash; Tampa (2022)</li>
+      </ul>
+    </div>
+
+    <div class="recognition-list">
+      <h3>Recognition</h3>
+      <ul>
+        <li>Exceptional Performer Award &mdash; UKG (2022)</li>
+        <li>Technical Excellence Award &mdash; UKG (2021)</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
   <section id="collaborate">
     <div class="container reveal">
