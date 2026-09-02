@@ -682,6 +682,12 @@
       display: block;
     }
 
+    .repo-card-image.contain-fit {
+      object-fit: contain;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
     .repo-card-body {
       flex: 1;
       min-width: 0;
@@ -1258,7 +1264,7 @@
       <h3 class="project-group-heading">Featured AI Systems</h3>
       <div class="repo-grid">
         <div class="repo-card">
-          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/cyber-gpt.png" alt="CYBER-GPT: Enhancing Cyber-Threat Analysis Using Generative AI graphic"></div>
+          <div class="repo-card-image-wrap"><img class="repo-card-image contain-fit" src="images/cyber-gpt.png" alt="CYBER-GPT: Enhancing Cyber-Threat Analysis Using Generative AI graphic"></div>
           <div class="repo-card-body">
             <h3><a href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer">CYBER-GPT: Enhancing Cyber-Threat Analysis Using Generative AI</a></h3>
             <p class="repo-tagline">RAG &middot; LLM &middot; Agentic Workflows &middot; Cybersecurity</p>
