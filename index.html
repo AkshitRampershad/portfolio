@@ -520,29 +520,34 @@
     /* Skills */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
-    .skill-chip {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(135deg, #2f8fff, #0056b3);
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 0.2px;
+    .skill-group {
+      background-color: var(--card-bg);
+      color: var(--card-text);
       border-radius: 8px;
-      padding: 18px 16px;
-      box-shadow: 0 8px 20px rgba(0, 86, 179, 0.28);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      padding: 20px 22px;
+      box-shadow: var(--card-shadow);
+      transition: background-color 0.3s ease, transform 0.25s ease;
     }
 
-    .skill-chip:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 28px rgba(0, 86, 179, 0.4);
+    .skill-group:hover {
+      transform: translateY(-3px);
+    }
+
+    .skill-group h3 {
+      font-size: 17px;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .skill-group p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--card-text-secondary);
+      margin-bottom: 0;
     }
 
     /* Certification cards */
@@ -679,25 +684,26 @@
 
     .repo-card p {
       flex: 1;
-      text-align: justify;
       font-size: 15px;
       color: var(--card-text-secondary);
       margin-bottom: 15px;
     }
 
-    .repo-tags {
-      margin-bottom: 15px;
+    .repo-tagline {
+      color: var(--accent-dark);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.2px;
     }
 
-    .repo-tags span {
-      display: inline-block;
-      background-color: var(--accent);
-      color: #fff;
-      font-size: 12px;
-      font-weight: bold;
-      border-radius: 3px;
-      padding: 3px 8px;
-      margin: 0 6px 6px 0;
+    .project-group-heading {
+      font-size: 22px;
+      color: var(--text-primary);
+      margin: 10px 0 16px;
+    }
+
+    .repo-grid + .project-group-heading {
+      margin-top: 40px;
     }
 
     .repo-link {
@@ -919,15 +925,15 @@
       <div class="competency-grid">
         <div class="competency-card">
           <div class="competency-icon llm"><i class="fas fa-brain"></i></div>
-          <h3>LLM &amp; Agentic Systems</h3>
+          <h3>LLM &amp; Agentic AI</h3>
         </div>
         <div class="competency-card">
           <div class="competency-icon rag"><i class="fas fa-search"></i></div>
-          <h3>RAG &amp; Retrieval</h3>
+          <h3>RAG &amp; Information Retrieval</h3>
         </div>
         <div class="competency-card">
           <div class="competency-icon eval"><i class="fas fa-shield-alt"></i></div>
-          <h3>Evaluation &amp; Reliability</h3>
+          <h3>AI Evaluation &amp; Reliability</h3>
         </div>
         <div class="competency-card">
           <div class="competency-icon data"><i class="fas fa-database"></i></div>
@@ -935,7 +941,7 @@
         </div>
         <div class="competency-card">
           <div class="competency-icon solution"><i class="fas fa-cogs"></i></div>
-          <h3>Solution Engineering</h3>
+          <h3>AI Solution Engineering</h3>
         </div>
       </div>
     </div>
@@ -1018,44 +1024,37 @@
   <section id="projects">
     <div class="container reveal">
       <h2>Projects</h2>
+
+      <h3 class="project-group-heading">Featured AI Systems</h3>
       <div class="repo-grid">
         <div class="repo-card">
           <img class="repo-card-image" src="images/cyber-gpt.png" alt="CYBER-GPT project graphic">
           <h3><a href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer">CYBER-GPT</a></h3>
-          <p>A Generative AI solution that helps SOC analysts detect, investigate, and respond to cyber threats faster. Combines LLMs with Retrieval-Augmented Generation over historical incident data, real-time threat intelligence feeds, and frameworks like MITRE ATT&amp;CK to generate dynamic response playbooks for rare, unpredictable "black swan" incidents.</p>
-          <div class="repo-tags">
-            <span>Generative AI</span><span>RAG</span><span>Cybersecurity</span>
-          </div>
+          <p class="repo-tagline">RAG &middot; LLM &middot; Agentic Workflows &middot; Cybersecurity</p>
           <a class="repo-link" href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
         </div>
 
         <div class="repo-card">
           <img class="repo-card-image" src="images/project-management-ai.png" alt="Project Management AI Systems graphic">
           <h3><a href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer">Project Management AI Systems</a></h3>
-          <p>A reusable multi-agent workflow for technical project management that converts a raw product specification into structured user stories, features, and engineering tasks. Implements seven cooperating agent classes &mdash; direct prompting, knowledge augmentation, RAG-backed prompting, evaluation, routing, and action planning &mdash; orchestrated end-to-end and validated with pytest.</p>
-          <div class="repo-tags">
-            <span>Python</span><span>Multi-Agent</span><span>RAG</span><span>Pytest</span>
-          </div>
+          <p class="repo-tagline">Multi-Agent Systems &middot; RAG &middot; Evaluation &middot; Orchestration</p>
           <a class="repo-link" href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
         </div>
+      </div>
 
+      <h3 class="project-group-heading">Selected Data &amp; ML Work</h3>
+      <div class="repo-grid">
         <div class="repo-card">
-          <img class="repo-card-image" src="images/sas-credit-risk.png" alt="Credit Risk Assessment and Portfolio Optimization Using SAS graphic">
-          <h3><a href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer">Credit Risk Assessment and Portfolio Optimization Using SAS</a></h3>
-          <p>Applies advanced SAS statistical methods to build a credit scoring model and optimize an investment portfolio for a mid-sized financial institution, spanning 2.5M+ loan records. Covers ETL pipelines, PROC LOGISTIC classification and factor analysis, PROC OPTMODEL portfolio optimization, time-series forecasting, stress testing, and regulatory capital reporting.</p>
-          <div class="repo-tags">
-            <span>SAS</span><span>Credit Risk</span><span>Portfolio Optimization</span><span>Predictive Modeling</span>
-          </div>
+          <img class="repo-card-image" src="images/sas-credit-risk.png" alt="Credit Risk & Portfolio Optimization project graphic">
+          <h3><a href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer">Credit Risk &amp; Portfolio Optimization</a></h3>
+          <p class="repo-tagline">Statistical Modeling &middot; Optimization &middot; Financial Analytics</p>
           <a class="repo-link" href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
         </div>
 
         <div class="repo-card">
           <img class="repo-card-image" src="images/contradictory-watson.png" alt="Contradictory, My Dear Watson project graphic">
           <h3><a href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer">Contradictory, My Dear Watson</a></h3>
-          <p>A multilingual Natural Language Inference project built for a Kaggle competition, classifying sentence pairs across 15 languages as entailment, contradiction, or neutral. An ensemble of fine-tuned XLM-RoBERTa models reached 90.06% test accuracy, placing 6th out of 64 teams.</p>
-          <div class="repo-tags">
-            <span>NLP</span><span>XLM-RoBERTa</span><span>Ensemble Learning</span><span>Kaggle</span>
-          </div>
+          <p class="repo-tagline">NLP &middot; XLM-R &middot; Multilingual Classification</p>
           <a class="repo-link" href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
         </div>
       </div>
@@ -1067,21 +1066,34 @@
       <h2>Skills</h2>
       <p class="section-subtitle">The stack behind agentic AI systems, retrieval pipelines, and enterprise-scale data engineering.</p>
       <div class="skills-grid">
-        <div class="skill-chip">Claude API</div>
-        <div class="skill-chip">GPT-4 &amp; LLM Orchestration</div>
-        <div class="skill-chip">LangChain</div>
-        <div class="skill-chip">LlamaIndex</div>
-        <div class="skill-chip">Model Context Protocol</div>
-        <div class="skill-chip">RAG &amp; Hybrid Retrieval</div>
-        <div class="skill-chip">Vector Search (Qdrant)</div>
-        <div class="skill-chip">Prompt Engineering</div>
-        <div class="skill-chip">Multi-Agent Systems</div>
-        <div class="skill-chip">Python</div>
-        <div class="skill-chip">PySpark</div>
-        <div class="skill-chip">SQL</div>
-        <div class="skill-chip">Databricks</div>
-        <div class="skill-chip">AWS (S3 / EC2)</div>
-        <div class="skill-chip">Snowflake</div>
+        <div class="skill-group">
+          <h3>LLM &amp; Agentic AI</h3>
+          <p>OpenAI &middot; Anthropic Claude &middot; Gemini &middot; LLM Orchestration &middot; Agentic Workflows &middot; Multi-Agent Systems &middot; MCP</p>
+        </div>
+        <div class="skill-group">
+          <h3>RAG &amp; Retrieval</h3>
+          <p>Hybrid Retrieval &middot; Semantic Search &middot; Vector Search &middot; Embeddings &middot; Reranking &middot; Qdrant &middot; HNSW/ANN</p>
+        </div>
+        <div class="skill-group">
+          <h3>AI Evaluation</h3>
+          <p>LLM Evaluation &middot; Retrieval Evaluation &middot; Confidence Scoring &middot; Groundedness &middot; Error Analysis &middot; Human-in-the-Loop</p>
+        </div>
+        <div class="skill-group">
+          <h3>AI Engineering</h3>
+          <p>Python &middot; FastAPI &middot; REST APIs &middot; LangChain &middot; LlamaIndex &middot; Prompt Engineering</p>
+        </div>
+        <div class="skill-group">
+          <h3>Data Engineering</h3>
+          <p>PySpark &middot; SQL &middot; Databricks &middot; Delta Lake &middot; ETL/ELT &middot; Medallion Architecture &middot; Data Quality</p>
+        </div>
+        <div class="skill-group">
+          <h3>Cloud &amp; Platforms</h3>
+          <p>AWS &middot; S3 &middot; EC2 &middot; Snowflake &middot; Docker &middot; Git/Bitbucket</p>
+        </div>
+        <div class="skill-group">
+          <h3>ML &amp; Analytics</h3>
+          <p>MLflow &middot; Databricks AutoML &middot; Machine Learning &middot; Tableau &middot; Power BI</p>
+        </div>
       </div>
     </div>
   </section>
