@@ -524,6 +524,41 @@
       color: var(--text-primary);
     }
 
+    /* Organizations */
+    .org-item {
+      background-color: var(--surface-alt);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 20px 28px;
+      margin-bottom: 18px;
+      box-shadow: var(--card-shadow);
+      transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .org-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .org-item h3 {
+      color: var(--text-primary);
+      margin-bottom: 2px;
+      font-size: 22px;
+    }
+
+    .org-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .org-detail {
+      color: var(--text-primary);
+      margin: 0;
+    }
+
     /* Skills */
     .skills-grid {
       display: grid;
@@ -790,6 +825,20 @@
       font-size: 16px;
       border-radius: 5px;
       border: none;
+    }
+
+    .message-input {
+      display: block;
+      margin: 0 0 15px;
+      padding: 10px;
+      width: 300px;
+      max-width: 90%;
+      height: 90px;
+      font-size: 16px;
+      font-family: inherit;
+      border-radius: 5px;
+      border: none;
+      resize: vertical;
     }
 
     .email-button {
@@ -1092,6 +1141,7 @@
         <li><a href="index.html#projects">Projects</a></li>
         <li><a href="index.html#skills">Skills</a></li>
         <li><a href="index.html#certifications">Certifications</a></li>
+        <li><a href="index.html#organizations">Organizations</a></li>
       </ul>
     </nav>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between dark and light theme">
@@ -1170,11 +1220,11 @@
           <h3>AI Evaluation &amp; Reliability</h3>
         </div>
         <div class="competency-card">
-          <div class="competency-icon data"><img src="images/competencies/data-engineering-cloud.png" alt="Data Engineering & Cloud"></div>
+          <div class="competency-icon data"><img src="images/competencies/data-engineering-cloud-icon.png" alt="Data Engineering & Cloud"></div>
           <h3>Data Engineering &amp; Cloud</h3>
         </div>
         <div class="competency-card">
-          <div class="competency-icon solution"><img src="images/competencies/solution-engineering.png" alt="AI Solution Engineering"></div>
+          <div class="competency-icon solution"><img src="images/competencies/solution-engineering-icon.png" alt="AI Solution Engineering"></div>
           <h3>AI Solution Engineering</h3>
         </div>
         <div class="competency-card">
@@ -1473,12 +1523,37 @@
     </div>
   </section>
 
+  <section id="organizations">
+    <div class="container reveal">
+      <h2>Organization</h2>
+
+      <div class="org-item">
+        <h3>Project Management Institute</h3>
+        <div class="org-meta"><span>Volunteer &middot; Jul 2024 &ndash; Dec 2024</span></div>
+        <p class="org-detail">New Hampshire, Massachusetts Chapter</p>
+      </div>
+
+      <div class="org-item">
+        <h3>Project Management Institute</h3>
+        <div class="org-meta"><span>Volunteer &middot; Mar 2024 &ndash; Jun 2024</span></div>
+        <p class="org-detail">Tampa Bay, Florida Chapter</p>
+      </div>
+
+      <div class="org-item">
+        <h3>Data Science Club</h3>
+        <div class="org-meta"><span>Volunteer &middot; Jan 2023 &ndash; Dec 2023</span></div>
+        <p class="org-detail">Associated with University of South Florida Muma College of Business</p>
+      </div>
+    </div>
+  </section>
+
   <section id="collaborate">
     <div class="container reveal">
       <div class="connect-section">
         <h2>Let's collaborate and create something amazing!</h2>
         <p>Email me to get in touch!</p>
         <div class="email-section">
+          <textarea class="message-input" placeholder="Type your message here..."></textarea>
           <input type="email" class="email-input" placeholder="Enter your email address">
           <button class="email-button" onclick="submitEmail()">Submit</button>
         </div>
@@ -1492,15 +1567,17 @@
   <script>
     function submitEmail() {
     var emailInput = document.querySelector('.email-input');
+    var messageInput = document.querySelector('.message-input');
     var email = emailInput.value;
+    var message = messageInput.value;
 
-    // Make a POST request to the server with the email address
+    // Make a POST request to the server with the email address and message
     fetch('your-server-url', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email: email })
+      body: JSON.stringify({ email: email, message: message })
     })
     .then(response => {
       if (response.ok) {
@@ -1524,8 +1601,9 @@
       window.scrollTo(0, 0);
     });
 
-    // Clear the input field after submission
+    // Clear the input fields after submission
     emailInput.value = '';
+    messageInput.value = '';
   }
 
   // Theme toggle
