@@ -262,21 +262,17 @@
 
     .social-links {
       margin-top: 10px;
-      display: inline-block;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
     }
 
     .social-links a {
-      display: inline-block;
-      margin-right: 30px;
-      margin-bottom: 20px;
+      display: inline-flex;
       color: var(--accent);
-      font-size: 35px;
+      font-size: 32px;
       transition: all 0.3s ease;
-      vertical-align: middle;
-    }
-
-    .social-links a:last-child {
-      margin-right: 0;
     }
 
     .social-links a:hover {
@@ -305,9 +301,50 @@
     }
 
     /* Section headings */
-    #about h2, #experience h2, #skills h2, #certifications h2, #projects h2 {
+    #about h2, #experience h2, #skills h2, #certifications h2, #projects h2, #competencies h2 {
       font-size: 40px;
       color: var(--accent);
+    }
+
+    /* Key competencies */
+    .competency-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .competency-card {
+      background-color: var(--card-bg);
+      color: var(--card-text);
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+      padding: 30px 20px;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.25s ease;
+    }
+
+    .competency-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .competency-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2f8fff, #0056b3);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 8px 18px rgba(0, 86, 179, 0.3);
+    }
+
+    .competency-card h3 {
+      font-size: 17px;
+      margin-bottom: 0;
+      color: var(--card-text);
     }
 
     .section-subtitle {
@@ -639,6 +676,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#competencies">Competencies</a></li>
         <li><a href="index.html#experience">Experience</a></li>
         <li><a href="index.html#projects">Projects</a></li>
         <li><a href="index.html#skills">Skills</a></li>
@@ -670,10 +708,6 @@
                 class="fab fa-linkedin"></i></a>
             <a href="https://github.com/AkshitRampershad" target="_blank" rel="noopener noreferrer"><i
                 class="fab fa-github"></i></a>
-                <a href="https://www.kaggle.com/akshitmathur01" target="_blank" rel="noopener noreferrer">
-                  <i class="fab fa-kaggle fa-sm"></i>
-                </a>
-
           </div>
           <a class="download-resume" href="Akshit_Rampershad_Resume.pdf" download="Akshit_Rampershad_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
         </div>
@@ -688,6 +722,38 @@
       <p style="text-align: justify;">
         I hold an MS in Business Analytics and Information Systems from the University of South Florida and a BS in Computer Science and Engineering from Gandhi Institute of Technology and Management. That mix of analytics and engineering is what drives my focus today: designing agentic AI and retrieval systems that are not just powerful, but calibrated, auditable, and genuinely trusted by the people who rely on them.
       </p>
+    </div>
+  </section>
+
+  <section id="competencies">
+    <div class="container reveal">
+      <h2>Key Competencies</h2>
+      <div class="competency-grid">
+        <div class="competency-card">
+          <div class="competency-icon"><i class="fas fa-brain"></i></div>
+          <h3>LLM &amp; Agentic Systems</h3>
+        </div>
+        <div class="competency-card">
+          <div class="competency-icon"><i class="fas fa-search"></i></div>
+          <h3>RAG &amp; Retrieval</h3>
+        </div>
+        <div class="competency-card">
+          <div class="competency-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Evaluation &amp; Reliability</h3>
+        </div>
+        <div class="competency-card">
+          <div class="competency-icon"><i class="fas fa-database"></i></div>
+          <h3>Data Engineering &amp; Cloud</h3>
+        </div>
+        <div class="competency-card">
+          <div class="competency-icon"><i class="fas fa-cogs"></i></div>
+          <h3>Solution Engineering</h3>
+        </div>
+        <div class="competency-card">
+          <div class="competency-icon"><i class="fas fa-tasks"></i></div>
+          <h3>Project Management</h3>
+        </div>
+      </div>
     </div>
   </section>
 
