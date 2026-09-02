@@ -90,7 +90,7 @@
       border-radius: 10px;
     }
 
-  
+
    /*quote*/
 
     #quote {
@@ -125,7 +125,7 @@
     color: #888;
     margin-bottom: 0px;
   }
-  
+
     .description {
       flex: 1;
       margin-left: 80px;
@@ -175,11 +175,127 @@
       cursor: pointer;
       font-weight: normal;
       transition: all 0.3s ease;
-      display: block;
+      display: inline-block;
       margin-top: 10px;
       text-align: left;
+      text-decoration: none;
     }
 
+    .download-resume:hover {
+      background-color: #0056b3;
+    }
+
+    /* About / Experience / Skills section headings */
+    #about h2, #experience h2, #skills h2, #certifications h2 {
+      font-size: 40px;
+      color: #007bff;
+    }
+
+    #about p, #experience p {
+      color: whitesmoke;
+    }
+
+    /* Experience timeline */
+    .timeline-item {
+      background-color: rgba(245, 245, 245, 0.08);
+      border-left: 4px solid #007bff;
+      border-radius: 4px;
+      padding: 20px 25px;
+      margin-bottom: 20px;
+    }
+
+    .timeline-item h3 {
+      color: #ffffff;
+      margin-bottom: 2px;
+      font-size: 22px;
+    }
+
+    .timeline-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      color: #007bff;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .timeline-item ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .timeline-item li {
+      margin-bottom: 8px;
+      text-align: justify;
+    }
+
+    /* Skills graph */
+    .skill-chart {
+      margin-bottom: 20px;
+    }
+
+    .skill-label {
+      margin-bottom: 5px;
+      color: whitesmoke;
+    }
+
+    .bar-container {
+      height: 25px;
+      background-color: whitesmoke;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      background-color: #007bff;
+    }
+
+    /* Certification cards */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .cert-card {
+      background-color: whitesmoke;
+      color: black;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      padding: 18px 20px;
+    }
+
+    .cert-card h3 {
+      font-size: 18px;
+      color: #007bff;
+      margin-bottom: 6px;
+    }
+
+    .cert-card p {
+      margin-bottom: 0;
+      color: #333;
+      font-size: 15px;
+    }
+
+    .recognition-list {
+      margin-top: 30px;
+    }
+
+    .recognition-list h3 {
+      color: #ffffff;
+      font-size: 22px;
+    }
+
+    .recognition-list ul {
+      list-style: disc;
+      padding-left: 20px;
+      color: whitesmoke;
+    }
+
+    .recognition-list li {
+      margin-bottom: 8px;
+    }
 
     #collaborate {
       background-color: transparent;
@@ -267,6 +383,10 @@
       .download-resume {
         padding: 10px 40px;
       }
+
+      .timeline-meta {
+        flex-direction: column;
+      }
     }
   </style>
   <!-- Google tag (gtag.js) -->
@@ -275,7 +395,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-  
+
     gtag('config', 'G-E5WXYL00Z6');
   </script>
 </head>
@@ -304,7 +424,7 @@
         <div class="profile-picture"></div>
         <div class="description">
           <h1>HI, I AM AKSHIT</h1>
-          <p style="text-align: justify;">A graduate student studying business analytics and information systems at Muma College of Business at the University of South Florida. I am keen to put my analytical and visualization skills into practice and improve my possibilities of pursuing a career as a data analyst in the healthcare industry. The primary objective of this website is to demonstrate my creativity, technical proficiency, problem-solving abilities, and the value I can bring to potential organizations through my knowledge and experience.</p>
+          <p style="text-align: justify;">I'm an AI Engineer turning enterprise operations into scalable, AI-native systems. I build multi-agent AI systems and RAG pipelines that automate high-stakes enterprise workflows &mdash; from hybrid-retrieval matching engines to LLM orchestration pipelines that cut hours of manual analysis down to seconds. My background spans data engineering, business analytics, and quality assurance, which shapes how I design AI systems: reliable, measurable, and built to earn stakeholder trust.</p>
           <div class="social-links">
             <a href="https://www.linkedin.com/in/akshit-rampershad/" target="_blank" rel="noopener noreferrer"><i
                 class="fab fa-linkedin"></i></a>
@@ -313,39 +433,187 @@
                 <a href="https://www.kaggle.com/akshitmathur01" target="_blank" rel="noopener noreferrer">
                   <i class="fab fa-kaggle fa-sm"></i>
                 </a>
-                
+
           </div>
-          <button class="download-resume" onclick="downloadResume()">Resume</button>
+          <a class="download-resume" href="Akshit_Rampershad_Resume.pdf" download="Akshit_Rampershad_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
         </div>
       </div>
     </div>
   </section>
 
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p style="text-align: justify;">I currently work as an AI Engineer at Cambrian Lab in San Francisco, where I architect hybrid-retrieval matching systems, calibrate vector search pipelines, and build LLM orchestration workflows that automate enterprise supply-chain and data operations. Before that, I delivered a secure enterprise RAG platform at 22nd Century Technology, built spatial data pipelines and ML site-ranking engines at Surge Infotech, and led product and data analytics for UKG's enterprise SaaS platform. Across every role, the common thread is the same: turning messy, high-volume enterprise data into systems that make faster, more confident decisions possible.</p>
+      <p style="text-align: justify;">
+        I hold an MS in Business Analytics and Information Systems from the University of South Florida and a BS in Computer Science and Engineering from Gandhi Institute of Technology and Management. That mix of analytics and engineering is what drives my focus today: designing agentic AI and retrieval systems that are not just powerful, but calibrated, auditable, and genuinely trusted by the people who rely on them.
+      </p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
+
+      <div class="timeline-item">
+        <h3>AI Engineer &mdash; Cambrian Lab</h3>
+        <div class="timeline-meta"><span>San Francisco, CA</span><span>May 2026 &ndash; Present</span></div>
+        <ul>
+          <li>Architected an end-to-end PCN&ndash;MPN matching system using a 4-leg hybrid retriever (exact, fuzzy, prefix, vector) feeding a bounded LLM ranking pass, with a short-circuit exact-match mechanism resolving unambiguous hits at 0 LLM cost.</li>
+          <li>Built PcnAutoIntake, an LLM orchestration pipeline automating 29+ daily supplier change intake via structured extraction, entity resolution, and confidence-gated human review &mdash; cutting PCN analysis from 2 hours to 10 seconds per notice.</li>
+          <li>Validated hybrid-retrieval candidate matches using Claude-based confidence scoring, achieving 0 false auto-confirmations across 81 validation runs.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Data Engineer / AI Solutions Delivery &mdash; 22nd Century Technology Inc.</h3>
+        <div class="timeline-meta"><span>McLean, VA</span><span>Sept 2025 &ndash; Mar 2026</span></div>
+        <ul>
+          <li>Spearheaded the end-to-end technical delivery of a secure enterprise RAG platform accelerating federal proposal development across a 20K+ SharePoint knowledge corpus.</li>
+          <li>Built a hybrid ingestion engine (Python, PySpark, Graph API) indexing the corpus into a 1,024-dim Qdrant vector database using BGE-Large-EN-v1.5 embeddings for section-aware retrieval.</li>
+          <li>Designed a LlamaIndex retrieval pipeline with five-field metadata filtering and cross-encoder re-ranking, feeding LangChain prompt orchestration for RFP-scoped drafts.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Data Engineer / AI Practitioner &mdash; Surge Infotech</h3>
+        <div class="timeline-meta"><span>Boston, MA</span><span>Sept 2024 &ndash; Sept 2025</span></div>
+        <ul>
+          <li>Engineered high-throughput spatial data ingestion pipelines and an ML site-ranking engine using Databricks AutoML and MLflow, achieving 92% prediction accuracy for real estate site selection.</li>
+          <li>Built FastAPI extraction services ingesting 50M+ parcel and zoning records into AWS S3, orchestrating Medallion (Bronze/Silver/Gold) pipelines with automated schema evolution and quality validation.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Business Data Analyst &mdash; UKG</h3>
+        <div class="timeline-meta"><span>India</span><span>Oct 2020 &ndash; Aug 2022</span></div>
+        <ul>
+          <li>Led requirements analysis for UKG TALK post-acquisition, supporting 10,000+ active enterprise users worldwide.</li>
+          <li>Used SQL and Python funnel analysis to detect onboarding drop-offs, boosting premium feature conversion by 29% and trial-to-paid conversion by 25%.</li>
+          <li>Designed interactive Tableau and Power BI dashboards reporting real-time campaign ROI to executive stakeholders.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skill-chart">
+        <p class="skill-label">LLM &amp; Agentic Systems (Claude, GPT-4, LangChain, LlamaIndex, MCP)</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 95%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-chart">
+        <p class="skill-label">RAG &amp; Retrieval (Qdrant, Vector Search, Embeddings, Re-ranking)</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 92%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-chart">
+        <p class="skill-label">Data Engineering &amp; Cloud (Python, PySpark, SQL, Databricks, AWS, Snowflake)</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 88%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-chart">
+        <p class="skill-label">Data Visualization (Tableau, Power BI)</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 90%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-chart">
+        <p class="skill-label">Stakeholder Management &amp; Solution Delivery</p>
+        <div class="bar-container">
+          <div class="bar" style="width: 95%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="container">
+      <h2>Recent Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <h3>Model Context Protocol</h3>
+          <p>Anthropic</p>
+        </div>
+        <div class="cert-card">
+          <h3>Claude with Amazon Bedrock</h3>
+          <p>Anthropic</p>
+        </div>
+        <div class="cert-card">
+          <h3>Claude with Google Cloud's Vertex AI</h3>
+          <p>Anthropic</p>
+        </div>
+        <div class="cert-card">
+          <h3>Building with Claude API</h3>
+          <p>Anthropic</p>
+        </div>
+        <div class="cert-card">
+          <h3>Introduction to Agent Skills</h3>
+          <p>Anthropic</p>
+        </div>
+        <div class="cert-card">
+          <h3>Introduction to Subagents</h3>
+          <p>Anthropic</p>
+        </div>
+        <div class="cert-card">
+          <h3>Snowflake Data Engineering</h3>
+          <p>Snowflake</p>
+        </div>
+        <div class="cert-card">
+          <h3>McKinsey Forward Learning</h3>
+          <p>McKinsey.org</p>
+        </div>
+      </div>
+
+      <div class="recognition-list">
+        <h3>Recognition</h3>
+        <ul>
+          <li>Exceptional Performer Award &mdash; UKG (2022)</li>
+          <li>Technical Excellence Award &mdash; UKG (2021)</li>
+        </ul>
+      </div>
+
+      <div class="recognition-list">
+        <h3>Leadership</h3>
+        <ul>
+          <li>Graduate Assistant &mdash; University of South Florida (2024)</li>
+          <li>Data Science Club &mdash; University of South Florida (2023)</li>
+          <li>PMI Volunteer &mdash; Tampa (2022)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="collaborate">
+    <div class="container">
+      <div class="connect-section">
+        <h2>Let's collaborate and create something amazing!</h2>
+        <p>Email me to get in touch!</p>
+        <div class="email-section">
+          <input type="email" class="email-input" placeholder="Enter your email address">
+          <button class="email-button" onclick="submitEmail()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2026 Akshit RamPershad All rights reserved.</p>
+  </footer>
 
   <script>
-    function downloadResume() {
-      // Create a link element
-      var link = document.createElement('a');
-      link.href = "https://acrobat.adobe.com/link/review?uri=urn%3Aaaid%3Ascds%3AUS%3A86a46329-7854-3c2d-b1e3-00621a1cda3d"; // Replace 'path/to/resume.pdf' with the actual path to your resume file
-      link.target = '_blank';
-      link.download = 'akshitrampershadresume.pdf'; // Specify the desired file name for the download
-
-      // Append the link to the document body
-      document.body.appendChild(link);
-
-      // Trigger the click event on the link to start the download
-      link.click();
-
-      // Remove the link from the document body
-      document.body.removeChild(link);
-    }
-    </script>
-    
-    <script>
     function submitEmail() {
     var emailInput = document.querySelector('.email-input');
     var email = emailInput.value;
-    
+
     // Make a POST request to the server with the email address
     fetch('your-server-url', {
       method: 'POST',
@@ -379,376 +647,6 @@
     // Clear the input field after submission
     emailInput.value = '';
   }
-
-  document.getElementById('subscribe-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
-    submitEmail();
-  });
 </script>
-  </script>
-</body>
-</html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AboutMe</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-    /* Reset default margin and padding */
-    body, h1, h2, h3, p, ul, li, form {
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Set background color and text color */
-    body {
-      background-color: black;
-      background-image: url(images/background2.png);
-      background-repeat: no-repeat;
-      background-size: center;
-      background-attachment: fixed;
-      color: whitesmoke;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
-    }
-
-    /* Style header and navigation */
-    header {
-      background-color: black;
-      padding: 35px;
-      display: flex;
-      justify-content: center; /* Align navigation in the middle */
-    }
-
-    nav ul {
-      list-style-type: none;
-      display: flex;
-      justify-content: center; /* Align list items in the middle */
-    }
-
-    nav ul li {
-      display: inline;
-      margin-right: 15px;
-    }
-
-    nav ul li a {
-      color: #ffffff;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      font-size: large;
-      transition: all 0.3s ease;
-      white-space: nowrap; /* Prevent line breaks */
-    }
-
-    nav ul li:not(:last-child) a {
-      margin-right: 50px; /* Add space between each word */
-    }
-
-    nav ul li a:hover {
-      color: #007bff;
-    }
-
-    /* Style sections */
-    section {
-      padding: 20px 0;
-    }
-
-    .container {
-      width: 85%;
-      margin: 0 auto;
-    }
-
-    h1, h2, h3 {
-      margin-bottom: 15px;
-    }
-
-    .about-content {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .about-text {
-      flex: 1;
-    }
-
-    .about-image {
-      background-color: transparent;
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      margin-left: -300px;
-      margin-right: -70px;
-      margin-top: 50px;
-    }
-
-    .about-image img {
-      max-height: 100%;
-      max-width: 500%;
-
-    }
-
-    /* Media Queries for timeline img */
-@media (max-width: 768px) {
-  .about-content {
-    flex-direction: column;
-  }
-
-  .about-image {
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-  }
-
-  .about-image img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-}
-
-    .decoration {
-      position: absolute; /* Position the decoration element absolutely within the container */
-      top: 0;
-      right: -20px; /* Adjust the value to control the distance from the image */
-      width: 40px; /* Adjust the width of the decoration element */
-      height: 100%; /* Make the decoration element cover the full height of the container */
-      background-color: #f00; /* Set the background color of the decoration element */
-    }
-
-    /* Add styling for the about section */
-    #about p {
-      margin-bottom: 20px;
-    }
-
-    /* Style skills graph */
-    .skill-chart {
-      margin-bottom: 20px;
-    }
-
-    .skill-label {
-      margin-bottom: 5px;
-    }
-
-    .bar-container {
-      height: 25px;
-      background-color: whitesmoke;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    .bar {
-      height: 100%;
-      background-color:#007bff;
-    }
-
-    /* Style certification cards */
-    .card {
-  background-color: whitesmoke;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 5px;
-  margin-right: -50px;
-  margin-left: 70px;
-  position: relative;
-  width: calc(35% - 20px); /* Adjust the width as per your layout */
-  display: inline-block; /* Display cards in a single row */
-
-}
-
-/* Media queries for mobile devices */
-@media (max-width: 768px) {
-  .card {
-    width: 90%; /* Set the width to 100% for mobile devices */
-    margin: 10px 0; /* Adjust the margins as per your layout */
-  }
-}
-
-    .card-title {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #007bff;
-    }
-
-    .card-description {
-      margin-bottom: 20px;
-      color: #007bff;
-    }
-
-    .card-link {
-      color: #007bff;
-      text-decoration: solid;
-      font-weight: bold;
-    }
-
-
-    /* Style footer */
-    footer {
-      background-color: black;
-      padding: 20px;
-      text-align: center;
-    }
-
-    footer p {
-      color: whitesmoke;
-    }
-
-    /* Media queries for responsive design */
-    @media (max-width: 768px) {
-      nav ul li {
-        display: inline-block;
-        padding: 0px;
-        text-align: center;
-        margin-right: -10px;
-        margin-left: -4;
-        margin-bottom: 0;
-      }
-
-      }
-  </style>
-</head>
-<body>
-  <section id="about">
-    <div class="container">
-      <div class="about-content">
-        <div class="about-text">
-          <h2>About Me</h2>
-          <p style="text-align: justify;">Over the years, I have honed my skills as a Software Quality Engineer in an agile product development team through web development, SDLC, Quality Assurance principles, and Software Testing. Through this experience, I gained a deep understanding of development lifecycles, product management, collaboration across cross-functional teams, and understanding Analytics and statistical methods which has resulted in improved productivity and an enhanced customer experience.</p>
-    
-          <br>
-          <h2>Future Objectives: To Work in Healthcare Division as a Business Analyst</h2>
-          <p style="text-align: justify;">
-            As a Software quality engineer, I can smoothly shift into a data analyst role in the healthcare industry.
-            <br><br>
-            My data analysis, quality assurance, process improvement, compliance, and security expertise would be instrumental in this field. I am confident that I can analyze data and identify patterns efficiently which can be further applied to healthcare data sets such as electronic health records and clinical trial data. This will enable me to uncover valuable insights and trends related to disease patterns, patient risk assessment, treatment effectiveness, resource optimization, and health management. My expertise in quality assurance ensures that my analysis results are accurate and reliable, while my process improvement background helps streamline data workflows. By combining my domain knowledge and analytical skills, software quality engineers can significantly impact healthcare business analytics. This can drive evidence-based decision-making and improve patient outcomes, which is ultimately the goal of any healthcare organization.
-            <br>
-            <br>
-            In the coming years, the balance between the role of busines analysis in healthcare will become increasingly important. The ability to detect disease patterns and evaluate treatment effectiveness will continue to play a crucial role in enhancing patient care and improving outcomes. Through my exposure to various analytical approaches, I have gained the confidence to pursue a career as a Business Analyst. My education at USF has equipped me with new skill sets, including Data Mining Tools, SQL, Machine Learning, and Predictive Modeling using Python programming. I have had the opportunity to display these skills through my academic projects and visualization through Tableau boot camps held at USF. My interest in statistics and analytical methods has been a driving force for me. I am eager to apply my professional experience and education to advance my career as a Business Analyst.
-          </p>
-        </div>
-        <div class="about-image">
-          <img src="images/timeline.jpg" alt="About Me Image">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="container">
-      <h2>Skills Set</h2>
-      <div class="skill-chart">
-        <p class="skill-label">Data Analysis and Interpretation</p>
-        <div class="bar-container">
-          <div class="bar" style="width: 80%;"></div>
-        </div>
-      </div>
-
-      <div class="skill-chart">
-        <p class="skill-label">Data Visualization</p>
-        <div class="bar-container">
-          <div class="bar" style="width: 90%;"></div>
-        </div>
-      </div>
-
-      <div class="skill-chart">
-        <p class="skill-label">Machine Learning</p>
-        <div class="bar-container">
-          <div class="bar" style="width: 85%;"></div>
-        </div>
-      </div>
-
-      <div class="skill-chart">
-        <p class="skill-label">Communication and Collaboration</p>
-        <div class="bar-container">
-          <div class="bar" style="width: 95%;"></div>
-        </div>
-      </div>
-
-      <div class="skill-chart">
-        <p class="skill-label">Web Development</p>
-        <div class="bar-container">
-          <div class="bar" style="width: 90%;"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="certifications">
-    <div class="container">
-      <h2>Recent Certifications</h2>
-            <div class="card">
-        <h3 class="card-title">Tableau Bootcamp Certificate</h3>
-        <h3>
-          <p class="card-description">Skills Acquired</p>
-        </h3>
-        <ul>
-          <p style="color: black;">Building Interactive Dashboards</p>
-          <p style="color: black;">Foundations of Tableau</p>
-          <p style="color: black;">Creating Insightful Data Visualizations</p>
-          <p style="color: black;">Fundamentals of Data Modeling</p>
-        </ul><br>
-        <a href="https://www.credly.com/badges/4fc614a8-41d7-4ffe-b814-fa136dd0313d/linked_in_profile" class="card-link">View Certification</a>
-      </div>
-      
-      <div class="card">
-        <h3 class="card-title">Python Data Science Toolbox</h3>
-        <h3>
-          <p class="card-description">Skills Acquired</p>
-        </h3>
-        <ul>
-        <p style="color: black;">Python Fundamentals </p> 
-          <p style="color: black;">Cleaning Data</p>
-          <p style="color: black;">Data Manipulation with Pandas</p>
-          <p style="color: black;">Data Visualization with Matplotlib</p>
-        </ul><br>
-        <a href="https://www.datacamp.com/statement-of-accomplishment/course/c711b7e02ade0e4acafc8a0fb3d2eccfdfc0fa47" class="card-link">View Certification</a>
-      </div>
-  
-      <div class="card">
-        <h3 class="card-title">Introduction to Data Visualization</h3>
-        <h3>
-          <p class="card-description">Skills Acquired</p>
-        </h3>
-        <ul>
-          <p style="color: black;">Introduction to Plotly</p>
-          <p style="color: black;">Customizing Plots</p>
-          <p style="color: black;">Advanced Customization with Plotly graphs</p>
-          <p style="color: black;">Advanced Interactivity</p>
-        </ul><br>
-        <a href="https://www.datacamp.com/statement-of-accomplishment/course/f73cc22f8dca4bd4f090b8b2fa613bb891cce82c" class="card-link">View Certification</a>
-      </div>
-    <div class="card">
-        <h3 class="card-title">Data Manipulation with Pandas</h3>
-        <h3>
-          <p class="card-description">Skills Acquired</p>
-        </h3>
-        <ul>
-          <p style="color: black;">Transforming DataFrames</p>
-          <p style="color: black;">Aggregating DataFrames</p>
-          <p style="color: black;">Slicing and Indexing DataFrames</p>
-          <p style="color: black;">Creating and Visualizing DataFrames</p>
-        </ul><br>
-        <a href="https://www.datacamp.com/statement-of-accomplishment/course/d75fe17947dd360cf7d6be17d118f64581302b48" class="card-link">View Certification</a>
-      </div>
-  </section>
-
-  <section id="collaborate">
-    <div class="container">
-      <div class="connect-section">
-        <h2>Let's collaborate and create something amazing!</h2>
-        <p>Email me to get in touch!</p>
-        <div class="email-section">
-          <input type="email" class="email-input" placeholder="Enter your email address">
-          <button class="email-button" onclick="submitEmail()">Submit</button>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <p>&copy; 2023 Akshit RamPershad All rights reserved.</p>
-  </footer>
 </body>
 </html>
