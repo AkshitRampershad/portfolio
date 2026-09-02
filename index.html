@@ -368,6 +368,33 @@
       color: var(--card-text-secondary);
     }
 
+    /* Diplomas */
+    .diploma-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .diploma-card {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      padding: 14px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .diploma-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .diploma-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
     /* Key competencies */
     .competency-grid {
       display: grid;
@@ -837,6 +864,16 @@
             <h4>BS in Computer Science and Engineering</h4>
             <p>GITAM University (Gandhi Institute of Technology and Management), India &middot; July 2020</p>
           </div>
+        </div>
+      </div>
+
+      <h3>Diplomas</h3>
+      <div class="diploma-grid">
+        <div class="diploma-card">
+          <img src="images/logos/usf-diploma.png" alt="University of South Florida Master of Science diploma">
+        </div>
+        <div class="diploma-card">
+          <img src="images/logos/gitam-diploma.png" alt="GITAM University Bachelor of Technology diploma">
         </div>
       </div>
     </div>
