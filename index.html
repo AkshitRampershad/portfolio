@@ -391,8 +391,8 @@
     }
 
     .competency-icon {
-      width: 56px;
-      height: 56px;
+      width: 64px;
+      height: 64px;
       margin: 0 auto 16px;
       border-radius: 50%;
       background: linear-gradient(135deg, #2f8fff, #0056b3);
@@ -400,8 +400,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
       font-size: 22px;
       box-shadow: 0 8px 18px rgba(0, 86, 179, 0.3);
+    }
+
+    .competency-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .competency-icon.llm {
@@ -639,19 +646,19 @@
 
     /* Projects grid */
     .repo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 20px;
     }
 
     .repo-card {
       background-color: var(--card-bg);
       color: var(--card-text);
-      border-radius: 5px;
+      border-radius: 8px;
       box-shadow: var(--card-shadow);
-      padding: 20px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: stretch;
       overflow: hidden;
       transition: background-color 0.3s ease, transform 0.25s ease;
     }
@@ -661,21 +668,25 @@
     }
 
     .repo-card-image-wrap {
-      width: calc(100% + 40px);
-      margin: -20px -20px 15px -20px;
-      height: 180px;
+      width: 300px;
+      flex-shrink: 0;
       background-color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
     }
 
     .repo-card-image {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
+    }
+
+    .repo-card-body {
+      flex: 1;
+      min-width: 0;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
     }
 
     .repo-card h3 {
@@ -733,6 +744,17 @@
 
     .repo-link:hover {
       text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .repo-card {
+        flex-direction: column;
+      }
+
+      .repo-card-image-wrap {
+        width: 100%;
+        height: 200px;
+      }
     }
 
     #collaborate {
@@ -938,23 +960,23 @@
       <h2>Key Competencies</h2>
       <div class="competency-grid">
         <div class="competency-card">
-          <div class="competency-icon llm"><i class="fas fa-brain"></i></div>
+          <div class="competency-icon llm"><img src="images/competencies/llm-agentic-ai.png" alt="LLM & Agentic AI"></div>
           <h3>LLM &amp; Agentic AI</h3>
         </div>
         <div class="competency-card">
-          <div class="competency-icon rag"><i class="fas fa-search"></i></div>
+          <div class="competency-icon rag"><img src="images/competencies/rag-retrieval.png" alt="RAG & Information Retrieval"></div>
           <h3>RAG &amp; Information Retrieval</h3>
         </div>
         <div class="competency-card">
-          <div class="competency-icon eval"><i class="fas fa-shield-alt"></i></div>
+          <div class="competency-icon eval"><img src="images/competencies/ai-evaluation.png" alt="AI Evaluation & Reliability"></div>
           <h3>AI Evaluation &amp; Reliability</h3>
         </div>
         <div class="competency-card">
-          <div class="competency-icon data"><i class="fas fa-database"></i></div>
+          <div class="competency-icon data"><img src="images/competencies/data-engineering-cloud.png" alt="Data Engineering & Cloud"></div>
           <h3>Data Engineering &amp; Cloud</h3>
         </div>
         <div class="competency-card">
-          <div class="competency-icon solution"><i class="fas fa-cogs"></i></div>
+          <div class="competency-icon solution"><img src="images/competencies/ai-solution-engineering.png" alt="AI Solution Engineering"></div>
           <h3>AI Solution Engineering</h3>
         </div>
       </div>
@@ -1043,18 +1065,22 @@
       <div class="repo-grid">
         <div class="repo-card">
           <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/cyber-gpt.png" alt="CYBER-GPT project graphic"></div>
-          <h3><a href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer">CYBER-GPT</a></h3>
-          <p class="repo-tagline">RAG &middot; LLM &middot; Agentic Workflows &middot; Cybersecurity</p>
-          <p class="repo-desc">A Generative AI solution that helps SOC analysts detect, investigate, and respond to cyber threats faster. Combines LLMs with Retrieval-Augmented Generation over historical incident data, real-time threat intelligence feeds, and frameworks like MITRE ATT&amp;CK to generate dynamic response playbooks for rare, unpredictable "black swan" incidents.</p>
-          <a class="repo-link" href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+          <div class="repo-card-body">
+            <h3><a href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer">CYBER-GPT</a></h3>
+            <p class="repo-tagline">RAG &middot; LLM &middot; Agentic Workflows &middot; Cybersecurity</p>
+            <p class="repo-desc">A Generative AI solution that helps SOC analysts detect, investigate, and respond to cyber threats faster. Combines LLMs with Retrieval-Augmented Generation over historical incident data, real-time threat intelligence feeds, and frameworks like MITRE ATT&amp;CK to generate dynamic response playbooks for rare, unpredictable "black swan" incidents.</p>
+            <a class="repo-link" href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+          </div>
         </div>
 
         <div class="repo-card">
           <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/project-management-ai.png" alt="Project Management AI Systems graphic"></div>
-          <h3><a href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer">Project Management AI Systems</a></h3>
-          <p class="repo-tagline">Multi-Agent Systems &middot; RAG &middot; Evaluation &middot; Orchestration</p>
-          <p class="repo-desc">A reusable multi-agent workflow for technical project management that converts a raw product specification into structured user stories, features, and engineering tasks. Implements seven cooperating agent classes &mdash; direct prompting, knowledge augmentation, RAG-backed prompting, evaluation, routing, and action planning &mdash; orchestrated end-to-end and validated with pytest.</p>
-          <a class="repo-link" href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+          <div class="repo-card-body">
+            <h3><a href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer">Project Management AI Systems</a></h3>
+            <p class="repo-tagline">Multi-Agent Systems &middot; RAG &middot; Evaluation &middot; Orchestration</p>
+            <p class="repo-desc">A reusable multi-agent workflow for technical project management that converts a raw product specification into structured user stories, features, and engineering tasks. Implements seven cooperating agent classes &mdash; direct prompting, knowledge augmentation, RAG-backed prompting, evaluation, routing, and action planning &mdash; orchestrated end-to-end and validated with pytest.</p>
+            <a class="repo-link" href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+          </div>
         </div>
       </div>
 
@@ -1062,18 +1088,22 @@
       <div class="repo-grid">
         <div class="repo-card">
           <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/sas-credit-risk.png" alt="Credit Risk & Portfolio Optimization project graphic"></div>
-          <h3><a href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer">Credit Risk &amp; Portfolio Optimization</a></h3>
-          <p class="repo-tagline">Statistical Modeling &middot; Optimization &middot; Financial Analytics</p>
-          <p class="repo-desc">Applies advanced SAS statistical methods to build a credit scoring model and optimize an investment portfolio for a mid-sized financial institution, spanning 2.5M+ loan records. Covers ETL pipelines, PROC LOGISTIC classification and factor analysis, PROC OPTMODEL portfolio optimization, time-series forecasting, stress testing, and regulatory capital reporting.</p>
-          <a class="repo-link" href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+          <div class="repo-card-body">
+            <h3><a href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer">Credit Risk &amp; Portfolio Optimization</a></h3>
+            <p class="repo-tagline">Statistical Modeling &middot; Optimization &middot; Financial Analytics</p>
+            <p class="repo-desc">Applies advanced SAS statistical methods to build a credit scoring model and optimize an investment portfolio for a mid-sized financial institution, spanning 2.5M+ loan records. Covers ETL pipelines, PROC LOGISTIC classification and factor analysis, PROC OPTMODEL portfolio optimization, time-series forecasting, stress testing, and regulatory capital reporting.</p>
+            <a class="repo-link" href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+          </div>
         </div>
 
         <div class="repo-card">
           <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/contradictory-watson.png" alt="Contradictory, My Dear Watson project graphic"></div>
-          <h3><a href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer">Contradictory, My Dear Watson</a></h3>
-          <p class="repo-tagline">NLP &middot; XLM-R &middot; Multilingual Classification</p>
-          <p class="repo-desc">A multilingual Natural Language Inference project built for a Kaggle competition, classifying sentence pairs across 15 languages as entailment, contradiction, or neutral. An ensemble of fine-tuned XLM-RoBERTa models reached 90.06% test accuracy, placing 6th out of 64 teams.</p>
-          <a class="repo-link" href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+          <div class="repo-card-body">
+            <h3><a href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer">Contradictory, My Dear Watson</a></h3>
+            <p class="repo-tagline">NLP &middot; XLM-R &middot; Multilingual Classification</p>
+            <p class="repo-desc">A multilingual Natural Language Inference project built for a Kaggle competition, classifying sentence pairs across 15 languages as entailment, contradiction, or neutral. An ensemble of fine-tuned XLM-RoBERTa models reached 90.06% test accuracy, placing 6th out of 64 teams.</p>
+            <a class="repo-link" href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+          </div>
         </div>
       </div>
     </div>
