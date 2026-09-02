@@ -645,6 +645,73 @@
       margin-bottom: 8px;
     }
 
+    .org-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background-color: var(--surface-alt);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--card-shadow);
+      transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .org-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .org-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .org-item-logo {
+      height: 44px;
+      min-width: 44px;
+      max-width: 90px;
+      border-radius: 8px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      padding: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .org-item-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .org-item-logo.org-item-icon {
+      color: var(--accent);
+      font-size: 20px;
+    }
+
+    .org-item-text {
+      min-width: 0;
+    }
+
+    .org-item-text h4 {
+      font-size: 16px;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .org-item-meta {
+      margin-bottom: 0;
+      color: var(--card-text-secondary);
+      font-size: 13.5px;
+    }
+
+    .org-item-meta .org-item-year {
+      color: var(--accent);
+      font-weight: 700;
+    }
 
     .two-column-wrapper {
     display: flex;
@@ -1604,19 +1671,45 @@
       <div class="two-column-wrapper">
         <div class="recognition-list">
           <h3>Leadership</h3>
-          <ul>
-            <li>Graduate Assistant &mdash; University of South Florida (2024)</li>
-            <li>Data Science Club &mdash; University of South Florida (2023)</li>
-            <li>PMI Volunteer &mdash; Tampa (2022)</li>
-          </ul>
+          <div class="org-item">
+            <div class="org-item-logo"><img src="images/logos/usf.png" alt="University of South Florida logo"></div>
+            <div class="org-item-text">
+              <h4>Graduate Assistant</h4>
+              <p class="org-item-meta">University of South Florida &middot; <span class="org-item-year">2024</span></p>
+            </div>
+          </div>
+          <div class="org-item">
+            <div class="org-item-logo"><img src="images/logos/usf.png" alt="University of South Florida logo"></div>
+            <div class="org-item-text">
+              <h4>Data Science Club</h4>
+              <p class="org-item-meta">University of South Florida &middot; <span class="org-item-year">2023</span></p>
+            </div>
+          </div>
+          <div class="org-item">
+            <div class="org-item-logo org-item-icon"><i class="fas fa-people-group"></i></div>
+            <div class="org-item-text">
+              <h4>PMI Volunteer</h4>
+              <p class="org-item-meta">Tampa &middot; <span class="org-item-year">2022</span></p>
+            </div>
+          </div>
         </div>
 
         <div class="recognition-list">
           <h3>Recognition</h3>
-          <ul>
-            <li>Exceptional Performer Award &mdash; UKG (2022)</li>
-            <li>Technical Excellence Award &mdash; UKG (2021)</li>
-          </ul>
+          <div class="org-item">
+            <div class="org-item-logo"><img src="images/logos/ukg.png" alt="UKG logo"></div>
+            <div class="org-item-text">
+              <h4>Exceptional Performer Award</h4>
+              <p class="org-item-meta">UKG &middot; <span class="org-item-year">2022</span></p>
+            </div>
+          </div>
+          <div class="org-item">
+            <div class="org-item-logo"><img src="images/logos/ukg.png" alt="UKG logo"></div>
+            <div class="org-item-text">
+              <h4>Technical Excellence Award</h4>
+              <p class="org-item-meta">UKG &middot; <span class="org-item-year">2021</span></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
