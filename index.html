@@ -941,27 +941,41 @@
     .repo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
+      gap: 28px;
       align-items: stretch;
     }
 
     .repo-card {
+      position: relative;
       background-color: var(--card-bg);
       color: var(--card-text);
-      border-radius: 8px;
-      border-top: 4px solid var(--accent);
+      border-radius: 16px;
+      border: 1px solid var(--badge-border);
       box-shadow: var(--card-shadow);
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      transition: background-color 0.3s ease, transform 0.25s ease;
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .repo-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #7dd6ff);
+      z-index: 2;
     }
 
     .repo-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.22);
     }
 
     .repo-card-image-wrap {
+      position: relative;
       width: 100%;
       height: 190px;
       flex-shrink: 0;
@@ -974,18 +988,32 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.4s ease;
     }
 
     .repo-card-image.contain-fit {
       object-fit: fill;
     }
 
+    .repo-card:hover .repo-card-image {
+      transform: scale(1.06);
+    }
+
     .repo-card-body {
       flex: 1;
       min-width: 0;
-      padding: 22px 24px;
+      padding: 24px 26px 22px;
       display: flex;
       flex-direction: column;
+    }
+
+    .repo-eyebrow {
+      color: var(--accent);
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
     .repo-card h3 {
@@ -1000,12 +1028,12 @@
     }
 
     .repo-card h3 a {
-      color: var(--accent-dark);
+      color: var(--card-text);
       text-decoration: none;
     }
 
     .repo-card h3 a:hover {
-      text-decoration: underline;
+      color: var(--accent-dark);
     }
 
     .repo-card p {
@@ -1016,18 +1044,31 @@
 
     .repo-desc {
       flex: 1;
-      text-align: justify;
+      text-align: left;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 5;
       overflow: hidden;
+      line-height: 1.55;
     }
 
-    .repo-tagline {
+    .repo-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .repo-tag {
+      background-color: var(--badge-bg);
+      border: 1px solid var(--badge-border);
       color: var(--accent-dark);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 12px;
       letter-spacing: 0.2px;
+      padding: 4px 11px;
+      border-radius: 20px;
+      white-space: nowrap;
     }
 
     .project-group-heading {
@@ -1037,22 +1078,104 @@
     }
 
     .repo-grid + .project-group-heading {
-      margin-top: 40px;
+      margin-top: 44px;
     }
 
-    .repo-link {
-      color: var(--card-text);
-      font-weight: bold;
+    .repo-status-row {
+      margin-bottom: 12px;
+    }
+
+    .repo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      padding: 4px 11px 4px 8px;
+      border-radius: 20px;
+    }
+
+    .repo-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .repo-badge-live {
+      background-color: rgba(46, 204, 113, 0.12);
+      border: 1px solid rgba(46, 204, 113, 0.4);
+      color: #1f9d57;
+    }
+
+    .repo-badge-live .dot {
+      background-color: #2ecc71;
+      box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.25);
+      animation: repo-live-pulse 1.8s ease-in-out infinite;
+    }
+
+    .repo-badge-neutral {
+      background-color: rgba(148, 163, 184, 0.14);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--card-text-secondary);
+    }
+
+    .repo-badge-neutral .dot {
+      background-color: #94a3b8;
+    }
+
+    @keyframes repo-live-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    .repo-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--badge-border);
+    }
+
+    .repo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 9px 16px;
+      border-radius: 8px;
       text-decoration: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
     }
 
-    .repo-link i {
-      margin-right: 6px;
-      color: var(--accent);
+    .repo-btn-primary {
+      background-color: var(--accent);
+      border: 1px solid var(--accent);
+      color: #ffffff;
     }
 
-    .repo-link:hover {
-      text-decoration: underline;
+    .repo-btn-primary:hover {
+      background-color: var(--accent-dark);
+      border-color: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .repo-btn-secondary {
+      background-color: transparent;
+      border: 1px solid var(--badge-border);
+      color: var(--card-text);
+    }
+
+    .repo-btn-secondary:hover {
+      background-color: var(--badge-bg);
+      border-color: var(--accent);
+      color: var(--accent-dark);
     }
 
     #collaborate {
@@ -1585,20 +1708,38 @@
         <div class="repo-card">
           <div class="repo-card-image-wrap"><img class="repo-card-image contain-fit" src="images/cyber-gpt.png" alt="CYBER-GPT: Enhancing Cyber-Threat Analysis Using Generative AI graphic"></div>
           <div class="repo-card-body">
+            <div class="repo-status-row"><span class="repo-badge repo-badge-neutral"><span class="dot"></span>Open Source</span></div>
+            <p class="repo-eyebrow">Generative AI &middot; Security</p>
             <h3><a href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer">CYBER-GPT: Enhancing Cyber-Threat Analysis Using Generative AI</a></h3>
-            <p class="repo-tagline">RAG &middot; LLM &middot; Agentic Workflows &middot; Cybersecurity</p>
+            <div class="repo-tags">
+              <span class="repo-tag">RAG</span>
+              <span class="repo-tag">LLM</span>
+              <span class="repo-tag">Agentic Workflows</span>
+              <span class="repo-tag">Cybersecurity</span>
+            </div>
             <p class="repo-desc">A Generative AI solution that helps SOC analysts detect, investigate, and respond to cyber threats faster. Combines LLMs with Retrieval-Augmented Generation over historical incident data, real-time threat intelligence feeds, and frameworks like MITRE ATT&amp;CK to generate dynamic response playbooks for rare, unpredictable "black swan" incidents.</p>
-            <a class="repo-link" href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+            <div class="repo-links">
+              <a class="repo-btn repo-btn-primary" href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+            </div>
           </div>
         </div>
 
         <div class="repo-card">
           <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/project-management-ai.png" alt="AI-Powered Agentic Workflow for Project Management graphic"></div>
           <div class="repo-card-body">
+            <div class="repo-status-row"><span class="repo-badge repo-badge-live"><span class="dot"></span>Live Demo</span></div>
+            <p class="repo-eyebrow">Agentic AI &middot; Automation</p>
             <h3><a href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer">AI-Powered Agentic Workflow for Project Management</a></h3>
-            <p class="repo-tagline">Multi-Agent Systems &middot; RAG &middot; Evaluation &middot; Orchestration</p>
-            <p class="repo-desc">A reusable multi-agent workflow for technical project management that converts a raw product specification into structured user stories, features, and engineering tasks. Implements seven cooperating agent classes &mdash; direct prompting, knowledge augmentation, RAG-backed prompting, evaluation, routing, and action planning &mdash; orchestrated end-to-end and validated with pytest.</p>
-            <a class="repo-link" href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+            <div class="repo-tags">
+              <span class="repo-tag">Multi-Agent Orchestration</span>
+              <span class="repo-tag">LLM-Driven Routing &amp; Planning</span>
+              <span class="repo-tag">Fault-Tolerant</span>
+            </div>
+            <p class="repo-desc">A multi-agent workflow that turns a raw product spec into user stories, features, and engineering tasks. Seven cooperating agents, including routing and planning agents whose decisions are genuinely made by the LLM (Groq-hosted Llama) rather than hardcoded &mdash; with a keyword fallback only if that call fails. Ships with automatic retry-with-backoff and a manual step-through mode, so a free-tier deployment stays reliable under real rate limits.</p>
+            <div class="repo-links">
+              <a class="repo-btn repo-btn-primary" href="https://ai-agentic-workflow-project-8psabv2fousknkms8zev8f.streamlit.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-play"></i>Try Live Demo</a>
+              <a class="repo-btn repo-btn-secondary" href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1606,22 +1747,40 @@
       <h3 class="project-group-heading">Selected Data &amp; ML Work</h3>
       <div class="repo-grid">
         <div class="repo-card">
-          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/sas-credit-risk.png" alt="Credit Risk Assessment and Portfolio Optimization Project Using SAS graphic"></div>
+          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/sas-credit-risk.png" alt="Credit Risk & Portfolio Optimization Dashboard graphic"></div>
           <div class="repo-card-body">
-            <h3><a href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer">Credit Risk Assessment and Portfolio Optimization Project Using SAS</a></h3>
-            <p class="repo-tagline">Statistical Modeling &middot; Optimization &middot; Financial Analytics</p>
-            <p class="repo-desc">Applies advanced SAS statistical methods to build a credit scoring model and optimize an investment portfolio for a mid-sized financial institution, spanning 2.5M+ loan records. Covers ETL pipelines, PROC LOGISTIC classification and factor analysis, PROC OPTMODEL portfolio optimization, time-series forecasting, stress testing, and regulatory capital reporting.</p>
-            <a class="repo-link" href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+            <div class="repo-status-row"><span class="repo-badge repo-badge-live"><span class="dot"></span>Live Demo</span></div>
+            <p class="repo-eyebrow">Applied ML &middot; Finance</p>
+            <h3><a href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer">Credit Risk &amp; Portfolio Optimization Dashboard</a></h3>
+            <div class="repo-tags">
+              <span class="repo-tag">Real Credit Risk Model</span>
+              <span class="repo-tag">Mean-Variance Optimization</span>
+              <span class="repo-tag">Basel Stress Testing</span>
+            </div>
+            <p class="repo-desc">A live dashboard that trains a real credit-risk classifier (scikit-learn, ~80% held-out AUC) and runs genuine mean-variance portfolio optimization (SciPy) &mdash; efficient frontier, max-Sharpe allocation, and a Basel II/III capital calculation stress-tested against recession scenarios. Runs on synthetic loan and market data, disclosed openly in-app; every figure shown is computed live, not hardcoded.</p>
+            <div class="repo-links">
+              <a class="repo-btn repo-btn-primary" href="https://sas-financial-project-zdscpk2fdck2fggdffqhpc.streamlit.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-play"></i>Try Live Demo</a>
+              <a class="repo-btn repo-btn-secondary" href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+            </div>
           </div>
         </div>
 
         <div class="repo-card">
-          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/image.png" alt="Multi-lingual Text Analysis using NLP with Ensemble Learning graphic"></div>
+          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/image.png" alt="Contradictory, My Dear Watson: Multilingual NLI & Fact-Checking graphic"></div>
           <div class="repo-card-body">
-            <h3><a href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer">Multi-lingual Text Analysis using NLP with Ensemble Learning</a></h3>
-            <p class="repo-tagline">NLP &middot; XLM-R &middot; Multilingual Classification</p>
-            <p class="repo-desc">A multilingual Natural Language Inference project built for a Kaggle competition, classifying sentence pairs across 15 languages as entailment, contradiction, or neutral. An ensemble of fine-tuned XLM-RoBERTa models reached 90.06% test accuracy, placing 6th out of 64 teams.</p>
-            <a class="repo-link" href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+            <div class="repo-status-row"><span class="repo-badge repo-badge-live"><span class="dot"></span>Live Demo</span></div>
+            <p class="repo-eyebrow">NLP &middot; Multilingual</p>
+            <h3><a href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer">Contradictory, My Dear Watson: Multilingual NLI &amp; Fact-Checking</a></h3>
+            <div class="repo-tags">
+              <span class="repo-tag">XLM-RoBERTa Ensemble</span>
+              <span class="repo-tag">90.06%, 6th/64 (Kaggle)</span>
+              <span class="repo-tag">Live Fact-Checking Tool</span>
+            </div>
+            <p class="repo-desc">An ensemble of fine-tuned XLM-RoBERTa models reached 90.06% accuracy across 15 languages, placing 6th of 64 teams in a real Kaggle competition. Alongside that notebook, a separate lightweight dashboard reopens the same task as a live fact-checking tool: paste reference statements and a new claim, and any contradictions are flagged in real time &mdash; no GPU required.</p>
+            <div class="repo-links">
+              <a class="repo-btn repo-btn-primary" href="https://contradictory-my-dear-watson-mahasvpajjdnaidui3jktw.streamlit.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-play"></i>Try Live Demo</a>
+              <a class="repo-btn repo-btn-secondary" href="https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>View Repository</a>
+            </div>
           </div>
         </div>
       </div>
@@ -2111,7 +2270,7 @@
       },
       {
         keywords: ['projects', 'built', 'portfolio projects', 'github projects', 'work built'],
-        answer: "Akshit's featured projects include CYBER-GPT (a GenAI RAG solution for cybersecurity threat response), Project Management AI Systems (a multi-agent workflow for technical project management), Credit Risk & Portfolio Optimization (SAS-based financial modeling), and Contradictory My Dear Watson (multilingual NLP, 6th out of 64 in a Kaggle competition). See the Projects section above for details and GitHub links."
+        answer: "Akshit's featured projects include CYBER-GPT (a GenAI RAG solution for cybersecurity threat response), an AI-Powered Agentic Workflow for project management (live dashboard, Groq-hosted LLM agents), a Credit Risk & Portfolio Optimization Dashboard (live, real scikit-learn/SciPy models), and Contradictory My Dear Watson (90.06% accuracy, 6th out of 64 in a Kaggle competition, plus a live fact-checking dashboard). See the Projects section above for details, live demos, and GitHub links."
       },
       {
         keywords: ['cyber-gpt', 'cybergpt', 'cyber gpt', 'cybersecurity project', 'soc'],
@@ -2119,15 +2278,15 @@
       },
       {
         keywords: ['project management ai', 'agentic workflow', 'multi-agent project'],
-        answer: "Project Management AI Systems is a reusable multi-agent workflow that converts a raw product spec into structured user stories, features, and engineering tasks, using seven cooperating agent classes. <a href=\"https://github.com/AkshitRampershad/ai-agentic-workflow-project\" target=\"_blank\" rel=\"noopener noreferrer\">View on GitHub</a>."
+        answer: "The AI-Powered Agentic Workflow is a multi-agent system that converts a raw product spec into structured user stories, features, and engineering tasks — with routing and planning genuinely decided by a Groq-hosted LLM, not hardcoded rules. <a href=\"https://ai-agentic-workflow-project-8psabv2fousknkms8zev8f.streamlit.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Try the live demo</a> or <a href=\"https://github.com/AkshitRampershad/ai-agentic-workflow-project\" target=\"_blank\" rel=\"noopener noreferrer\">view on GitHub</a>."
       },
       {
         keywords: ['credit risk', 'portfolio optimization', 'sas project', 'financial analytics'],
-        answer: "Credit Risk & Portfolio Optimization applies advanced SAS statistical methods to build a credit scoring model and optimize an investment portfolio across 2.5M+ loan records. <a href=\"https://github.com/AkshitRampershad/SAS-Financial-Project\" target=\"_blank\" rel=\"noopener noreferrer\">View on GitHub</a>."
+        answer: "The Credit Risk & Portfolio Optimization Dashboard is a live app that trains a real credit-risk model (scikit-learn, ~80% held-out AUC) and runs genuine mean-variance portfolio optimization (SciPy) with Basel II/III capital stress-testing. <a href=\"https://sas-financial-project-zdscpk2fdck2fggdffqhpc.streamlit.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Try the live demo</a> or <a href=\"https://github.com/AkshitRampershad/SAS-Financial-Project\" target=\"_blank\" rel=\"noopener noreferrer\">view on GitHub</a>."
       },
       {
         keywords: ['watson', 'contradictory', 'nlp project', 'kaggle', 'xlm'],
-        answer: "Contradictory, My Dear Watson is a multilingual Natural Language Inference project built for a Kaggle competition, classifying sentence pairs across 15 languages with an ensemble of fine-tuned XLM-RoBERTa models that reached 90.06% accuracy — 6th out of 64 teams. <a href=\"https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson\" target=\"_blank\" rel=\"noopener noreferrer\">View on GitHub</a>."
+        answer: "Contradictory, My Dear Watson is a multilingual Natural Language Inference project built for a Kaggle competition, classifying sentence pairs across 15 languages with an ensemble of fine-tuned XLM-RoBERTa models that reached 90.06% accuracy — 6th out of 64 teams. A separate lightweight dashboard reopens the same task as a live fact-checking tool. <a href=\"https://contradictory-my-dear-watson-mahasvpajjdnaidui3jktw.streamlit.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Try the live demo</a> or <a href=\"https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson\" target=\"_blank\" rel=\"noopener noreferrer\">view on GitHub</a>."
       },
       {
         keywords: ['certifications', 'certificates', 'credentials', 'certified'],
