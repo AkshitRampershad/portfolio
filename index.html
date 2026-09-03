@@ -296,6 +296,34 @@
       box-shadow: 0 8px 20px rgba(47, 143, 255, 0.3);
     }
 
+    .about-links-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .about-links-row .availability-badge {
+      margin-bottom: 0;
+    }
+
+    .about-links-row .download-resume {
+      margin-top: 0;
+      padding: 10px 32px;
+    }
+
+    .about-social-link {
+      display: inline-flex;
+      color: var(--accent);
+      font-size: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .about-social-link:hover {
+      color: var(--accent-dark);
+    }
+
     .download-resume:hover {
       background-color: var(--accent-dark);
       transform: translateY(-2px);
@@ -1394,6 +1422,13 @@
       <p style="text-align: justify;">
         That mix of analytics and engineering is what drives my focus today: designing agentic AI and retrieval systems that are not just powerful, but calibrated, auditable, and genuinely trusted by the people who rely on them.
       </p>
+
+      <div class="about-links-row">
+        <div class="availability-badge"><span class="dot"></span>Open to new Opportunities</div>
+        <a class="about-social-link" href="https://www.linkedin.com/in/akshit-rampershad/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+        <a class="about-social-link" href="https://github.com/AkshitRampershad" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a class="download-resume" href="Akshit_Rampershad_Resume.pdf" download="Akshit_Rampershad_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+      </div>
 
       <h3>Domains I&rsquo;ve Worked In</h3>
       <br>
