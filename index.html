@@ -1957,42 +1957,46 @@
     function submitEmail() {
     var emailInput = document.querySelector('.email-input');
     var messageInput = document.querySelector('.message-input');
-    var email = emailInput.value;
-    var message = messageInput.value;
+    var submitButton = document.querySelector('.email-button');
+    var email = emailInput.value.trim();
+    var message = messageInput.value.trim();
 
-    // Make a POST request to the server with the email address and message
-    fetch('your-server-url', {
+    if (!email || !message) {
+      alert('Please enter both your email address and a message.');
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    fetch('https://formspree.io/f/mkjnbpba', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({ email: email, message: message })
     })
-    .then(response => {
+    .then(function (response) {
       if (response.ok) {
-        // Display a success message to the user
-        alert('Email submitted successfully!');
-
-        // Refresh the page and scroll to the top
-        window.location.reload();
-        window.scrollTo(0, 0);
+        alert("Message sent! Thanks for reaching out — I'll get back to you soon.");
+        emailInput.value = '';
+        messageInput.value = '';
       } else {
-        // Handle the error case
-        alert('Email submitted successfully!');
+        return response.json().then(function (data) {
+          var errorMsg = (data && data.errors && data.errors.map(function (e) { return e.message; }).join(', ')) || 'Something went wrong. Please try again or email me directly.';
+          alert(errorMsg);
+        });
       }
     })
-    .catch(error => {
+    .catch(function (error) {
       console.error('Error:', error);
-      alert('Email submitted successfully','Looking forward to the possibility of working together.');
-
-      // Refresh the page and scroll to the top
-      window.location.reload();
-      window.scrollTo(0, 0);
+      alert('Something went wrong. Please try again or email me directly.');
+    })
+    .finally(function () {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Submit';
     });
-
-    // Clear the input fields after submission
-    emailInput.value = '';
-    messageInput.value = '';
   }
 
   // Theme toggle
