@@ -281,28 +281,58 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 20px;
+      gap: 14px;
       margin-top: 8px;
+    }
+
+    .hero-links-row .availability-badge,
+    .hero-links-row .download-resume,
+    .hero-links-row .hero-social-link {
+      height: 44px;
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background-color: var(--accent);
+      color: #ffffff;
+      border: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(47, 143, 255, 0.3);
+    }
+
+    .hero-links-row .availability-badge:hover,
+    .hero-links-row .download-resume:hover,
+    .hero-links-row .hero-social-link:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-2px);
     }
 
     .hero-links-row .availability-badge {
       margin-bottom: 0;
+      padding: 0 20px;
+      gap: 8px;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-links-row .availability-badge .dot {
+      background-color: #2ecc71;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
     }
 
     .hero-links-row .download-resume {
       margin-top: 0;
-      padding: 10px 32px;
+      padding: 0 32px;
+      text-align: center;
     }
 
     .hero-social-link {
-      display: inline-flex;
-      color: var(--accent);
-      font-size: 28px;
-      transition: all 0.3s ease;
-    }
-
-    .hero-social-link:hover {
-      color: var(--accent-dark);
+      font-size: 18px;
+      width: 44px;
+      padding: 0;
     }
 
     .download-resume:hover {
@@ -1384,10 +1414,10 @@
           <h1>HI, I AM AKSHIT</h1>
           <p style="text-align: justify;">I’m an AI Engineer who likes solving complicated problems. I build AI-native systems that turn messy enterprise operations into scalable, intelligent workflows, from multi-agent systems and RAG pipelines to hybrid-retrieval engines and LLM orchestration. My work is focused on taking processes that once required hours of manual analysis and turning them into reliable decisions in seconds. My background in AI engineering, data engineering and business analytics influences how I build. AI should be intelligent, but it should also be measurable, explainable, reliable, and trusted by the people who depend on it. And after all that reasoning, I believe in keeping one problem distinctly human which is figuring out what everyone wants to eat.</p>
           <div class="hero-links-row">
-            <div class="availability-badge"><span class="dot"></span>Open to new Opportunities</div>
             <a class="hero-social-link" href="https://www.linkedin.com/in/akshit-rampershad/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
             <a class="hero-social-link" href="https://github.com/AkshitRampershad" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
             <a class="download-resume" href="Akshit_Rampershad_Resume.pdf" download="Akshit_Rampershad_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+            <div class="availability-badge"><span class="dot"></span>Open to new Opportunities</div>
           </div>
         </div>
       </div>
