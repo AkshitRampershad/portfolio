@@ -1485,6 +1485,21 @@
       text-decoration: underline;
     }
 
+    .chatbot-msg p {
+      margin: 0 0 8px;
+    }
+
+    .chatbot-msg p:last-child {
+      margin-bottom: 0;
+    }
+
+    .chatbot-citation {
+      margin-top: 2px;
+      font-size: 11px;
+      opacity: 0.65;
+      font-style: italic;
+    }
+
     .chatbot-suggestions {
       display: flex;
       flex-wrap: wrap;
@@ -2360,7 +2375,161 @@
 
     var SUGGESTIONS = ['Experience', 'Skills', 'Projects', 'Education', 'Contact'];
 
-    function findAnswer(input) {
+    // ---- RAG retrieval (BM25 over a static corpus built from Akshit's resume,
+    // official transcript, certification curricula, project reports/READMEs,
+    // and the site's own content) — client-side only, no external API calls. ----
+    var BM25_K1 = 1.5;
+    var BM25_B = 0.75;
+    var RAG_MIN_SCORE = 1.0;
+    var STOPWORDS = {};
+    ('i me my myself we our ours ourselves you your yours yourself yourselves he him his himself ' +
+     'she her hers herself it its itself they them their theirs themselves what which who whom ' +
+     'this that these those am is are was were be been being have has had having do does did doing ' +
+     'a an the and but if or because as until while of at by for with about against between into ' +
+     'through during before after above below to from up down in out on off over under again ' +
+     'further then once here there when where why how all any both each few more most other some ' +
+     'such no nor not only own same so than too very can will just should now also please would ' +
+     'could get got tell know learn learned akshit key').split(' ').forEach(function (w) { STOPWORDS[w] = 1; });
+    var ragIndex = null;
+
+    function tokenize(str) {
+      var matches = (str || '').toLowerCase().match(/[a-z0-9][a-z0-9+.#-]*/g) || [];
+      var out = [];
+      for (var i = 0; i < matches.length; i++) {
+        if (matches[i].length > 1 && !STOPWORDS[matches[i]]) out.push(matches[i]);
+      }
+      return out;
+    }
+
+    function buildBM25(corpus) {
+      var N = corpus.length;
+      var docTokens = new Array(N);
+      var df = {};
+      var i, j;
+      for (i = 0; i < N; i++) {
+        var tokens = tokenize(corpus[i].text);
+        docTokens[i] = tokens;
+        var seen = {};
+        for (j = 0; j < tokens.length; j++) {
+          if (!seen[tokens[j]]) { seen[tokens[j]] = true; df[tokens[j]] = (df[tokens[j]] || 0) + 1; }
+        }
+      }
+      var idf = {};
+      for (var term in df) {
+        idf[term] = Math.log(1 + (N - df[term] + 0.5) / (df[term] + 0.5));
+      }
+      var totalLen = 0;
+      var docStats = new Array(N);
+      for (i = 0; i < N; i++) {
+        var tf = {};
+        for (j = 0; j < docTokens[i].length; j++) {
+          tf[docTokens[i][j]] = (tf[docTokens[i][j]] || 0) + 1;
+        }
+        docStats[i] = { tf: tf, len: docTokens[i].length };
+        totalLen += docTokens[i].length;
+      }
+      return { corpus: corpus, docStats: docStats, idf: idf, avgdl: totalLen / N };
+    }
+
+    function ragRetrieve(query, topK) {
+      if (!ragIndex) return [];
+      var rawTokens = tokenize(query);
+      var qTokens = [];
+      for (var i = 0; i < rawTokens.length; i++) {
+        if (qTokens.indexOf(rawTokens[i]) === -1) qTokens.push(rawTokens[i]);
+      }
+      if (!qTokens.length) return [];
+      // For longer queries, require at least 2 distinct query terms to
+      // actually appear in a chunk so one coincidental common-word hit can't
+      // surface an unrelated passage; a 1-2 word query is usually already a
+      // single distinctive term (e.g. "Snowflake"), so 1 match is enough.
+      var minMatches = qTokens.length <= 2 ? 1 : 2;
+      var scored = [];
+      for (var d = 0; d < ragIndex.corpus.length; d++) {
+        var stats = ragIndex.docStats[d];
+        var score = 0;
+        var matches = 0;
+        for (var t = 0; t < qTokens.length; t++) {
+          var term = qTokens[t];
+          var f = stats.tf[term];
+          if (!f) continue;
+          matches++;
+          var idf = ragIndex.idf[term] || 0;
+          var denom = f + BM25_K1 * (1 - BM25_B + BM25_B * (stats.len / ragIndex.avgdl));
+          score += idf * (f * (BM25_K1 + 1)) / denom;
+        }
+        if (matches >= minMatches && score > 0) {
+          scored.push({ score: score, doc: ragIndex.corpus[d] });
+        }
+      }
+      scored.sort(function (a, b) { return b.score - a.score; });
+      return scored.slice(0, topK || 3);
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function formatRagAnswer(results) {
+      if (!results.length) return null;
+      var top = results[0];
+      var passages = [top];
+      if (results[1] && results[1].score > top.score * 0.55 && results[1].doc.source !== top.doc.source) {
+        passages.push(results[1]);
+      }
+      var html = '';
+      var sources = [];
+      for (var i = 0; i < passages.length; i++) {
+        var body = escapeHtml(passages[i].doc.text).replace(/\n/g, '<br>');
+        html += '<p>' + body + '</p>';
+        if (sources.indexOf(passages[i].doc.source) === -1) sources.push(passages[i].doc.source);
+      }
+      html += '<div class="chatbot-citation">Source' + (sources.length > 1 ? 's' : '') + ': ' + sources.join('; ') + '</div>';
+      return html;
+    }
+
+    var ragReady = fetch('rag-corpus.json')
+      .then(function (res) { return res.json(); })
+      .then(function (data) { ragIndex = buildBM25(data); })
+      .catch(function () { ragIndex = null; });
+
+    // Stage 2 generation layer: a small Cloudflare Worker holds the Groq API
+    // key server-side and turns the retrieved passages into one fluent
+    // answer. Left blank until the Worker is deployed (see worker/README.md);
+    // with it blank, or if the call ever fails, the chatbot falls back to
+    // showing the retrieved passage directly (Stage 1 — never broken).
+    var RAG_WORKER_URL = 'https://portfolio-rag.akshitrampershad.workers.dev/';
+
+    function generateAnswer(query, results) {
+      if (!RAG_WORKER_URL) return Promise.resolve(null);
+      var passages = results.map(function (r) {
+        return { source: r.doc.source, text: r.doc.text };
+      });
+      var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      var timeoutId = controller ? setTimeout(function () { controller.abort(); }, 12000) : null;
+      return fetch(RAG_WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: query, passages: passages }),
+        signal: controller ? controller.signal : undefined
+      }).then(function (res) {
+        if (timeoutId) clearTimeout(timeoutId);
+        return res.ok ? res.json() : null;
+      }).then(function (data) {
+        if (!data || !data.answer) return null;
+        var sources = [];
+        results.forEach(function (r) {
+          if (sources.indexOf(r.doc.source) === -1) sources.push(r.doc.source);
+        });
+        var body = '<p>' + escapeHtml(data.answer).replace(/\n/g, '<br>') + '</p>';
+        return body + '<div class="chatbot-citation">Source' + (sources.length > 1 ? 's' : '') + ': ' + sources.join('; ') + '</div>';
+      }).catch(function () {
+        if (timeoutId) clearTimeout(timeoutId);
+        return null;
+      });
+    }
+
+    function getAnswer(input) {
       var text = input.toLowerCase();
       var best = null;
       var bestScore = 0;
@@ -2374,7 +2543,19 @@
           best = KB[i];
         }
       }
-      return best ? best.answer : FALLBACK;
+      // KB answers that carry a live link (named projects, contact, resume)
+      // stay authoritative — a plain-text RAG passage can't reproduce the
+      // clickable link, so any match on one of those short-circuits immediately.
+      if (best && /<a\s/i.test(best.answer)) return Promise.resolve(best.answer);
+
+      var ragResults = ragRetrieve(input, 3);
+      if (ragResults.length && ragResults[0].score >= RAG_MIN_SCORE) {
+        return generateAnswer(input, ragResults).then(function (generated) {
+          return generated || formatRagAnswer(ragResults);
+        });
+      }
+
+      return Promise.resolve(best ? best.answer : FALLBACK);
     }
 
     var toggleBtn = document.getElementById('chatbot-toggle');
@@ -2412,7 +2593,11 @@
       addMessage(text, 'user');
       inputEl.value = '';
       setTimeout(function () {
-        addMessage(findAnswer(text), 'bot');
+        ragReady.then(function () {
+          return getAnswer(text);
+        }).then(function (answer) {
+          addMessage(answer, 'bot');
+        });
       }, 350);
     }
 
@@ -2420,7 +2605,7 @@
       panel.classList.add('open');
       if (!started) {
         started = true;
-        addMessage("Hi! I'm a quick assistant that can answer questions about Akshit's experience, skills, projects, education, and how to get in touch. What would you like to know?", 'bot');
+        addMessage("Hi! I can answer detailed questions about Akshit's experience, skills, coursework, certifications, projects, and how to get in touch — including things not shown on this page. What would you like to know?", 'bot');
         renderSuggestions();
       }
       inputEl.focus();
