@@ -2498,7 +2498,7 @@
     // answer. Left blank until the Worker is deployed (see worker/README.md);
     // with it blank, or if the call ever fails, the chatbot falls back to
     // showing the retrieved passage directly (Stage 1 — never broken).
-    var RAG_WORKER_URL = '';
+    var RAG_WORKER_URL = 'https://portfolio-rag.akshitrampershad.workers.dev/';
 
     function generateAnswer(query, results) {
       if (!RAG_WORKER_URL) return Promise.resolve(null);
