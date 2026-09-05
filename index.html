@@ -2493,7 +2493,43 @@
       .then(function (data) { ragIndex = buildBM25(data); })
       .catch(function () { ragIndex = null; });
 
-    function findAnswer(input) {
+    // Stage 2 generation layer: a small Cloudflare Worker holds the Groq API
+    // key server-side and turns the retrieved passages into one fluent
+    // answer. Left blank until the Worker is deployed (see worker/README.md);
+    // with it blank, or if the call ever fails, the chatbot falls back to
+    // showing the retrieved passage directly (Stage 1 — never broken).
+    var RAG_WORKER_URL = '';
+
+    function generateAnswer(query, results) {
+      if (!RAG_WORKER_URL) return Promise.resolve(null);
+      var passages = results.map(function (r) {
+        return { source: r.doc.source, text: r.doc.text };
+      });
+      var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      var timeoutId = controller ? setTimeout(function () { controller.abort(); }, 12000) : null;
+      return fetch(RAG_WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: query, passages: passages }),
+        signal: controller ? controller.signal : undefined
+      }).then(function (res) {
+        if (timeoutId) clearTimeout(timeoutId);
+        return res.ok ? res.json() : null;
+      }).then(function (data) {
+        if (!data || !data.answer) return null;
+        var sources = [];
+        results.forEach(function (r) {
+          if (sources.indexOf(r.doc.source) === -1) sources.push(r.doc.source);
+        });
+        var body = '<p>' + escapeHtml(data.answer).replace(/\n/g, '<br>') + '</p>';
+        return body + '<div class="chatbot-citation">Source' + (sources.length > 1 ? 's' : '') + ': ' + sources.join('; ') + '</div>';
+      }).catch(function () {
+        if (timeoutId) clearTimeout(timeoutId);
+        return null;
+      });
+    }
+
+    function getAnswer(input) {
       var text = input.toLowerCase();
       var best = null;
       var bestScore = 0;
@@ -2510,14 +2546,16 @@
       // KB answers that carry a live link (named projects, contact, resume)
       // stay authoritative — a plain-text RAG passage can't reproduce the
       // clickable link, so any match on one of those short-circuits immediately.
-      if (best && /<a\s/i.test(best.answer)) return best.answer;
+      if (best && /<a\s/i.test(best.answer)) return Promise.resolve(best.answer);
 
       var ragResults = ragRetrieve(input, 3);
       if (ragResults.length && ragResults[0].score >= RAG_MIN_SCORE) {
-        return formatRagAnswer(ragResults);
+        return generateAnswer(input, ragResults).then(function (generated) {
+          return generated || formatRagAnswer(ragResults);
+        });
       }
 
-      return best ? best.answer : FALLBACK;
+      return Promise.resolve(best ? best.answer : FALLBACK);
     }
 
     var toggleBtn = document.getElementById('chatbot-toggle');
@@ -2556,7 +2594,9 @@
       inputEl.value = '';
       setTimeout(function () {
         ragReady.then(function () {
-          addMessage(findAnswer(text), 'bot');
+          return getAnswer(text);
+        }).then(function (answer) {
+          addMessage(answer, 'bot');
         });
       }, 350);
     }
