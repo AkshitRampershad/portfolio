@@ -1420,9 +1420,11 @@
     .chatbot-header-title {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
+      flex: 1;
+      min-width: 0;
     }
 
     .chatbot-header-title .dot {
@@ -1442,6 +1444,7 @@
       cursor: pointer;
       line-height: 1;
       opacity: 0.85;
+      flex-shrink: 0;
     }
 
     .chatbot-close:hover {
@@ -1502,7 +1505,7 @@
 
     .chatbot-suggestions {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 6px;
       padding: 0 14px 10px;
       flex-shrink: 0;
@@ -1512,9 +1515,11 @@
       background-color: transparent;
       border: 1px solid var(--accent);
       color: var(--accent);
-      border-radius: 20px;
-      padding: 5px 11px;
+      border-radius: 10px;
+      padding: 7px 11px;
       font-size: 12px;
+      line-height: 1.35;
+      text-align: left;
       cursor: pointer;
       transition: all 0.2s ease;
     }
@@ -2277,13 +2282,13 @@
   })();
 </script>
 
-<button class="chatbot-toggle" id="chatbot-toggle" type="button" aria-label="Chat with Akshit's portfolio assistant">
-  <i class="fas fa-comment-dots"></i>
+<button class="chatbot-toggle" id="chatbot-toggle" type="button" aria-label="Chat with Akshit's Personal RAG Assistant">
+  <span aria-hidden="true">🦇</span>
 </button>
 
 <div class="chatbot-panel" id="chatbot-panel">
   <div class="chatbot-header">
-    <div class="chatbot-header-title"><span class="dot"></span>Ask about Akshit</div>
+    <div class="chatbot-header-title"><span class="dot"></span>Akshit's Personal RAG Assistant</div>
     <button class="chatbot-close" id="chatbot-close" type="button" aria-label="Close chat">&times;</button>
   </div>
   <div class="chatbot-messages" id="chatbot-messages"></div>
@@ -2373,7 +2378,13 @@
 
     var FALLBACK = "I don't have a specific answer for that yet — try asking about Akshit's experience, skills, projects, education, or how to get in touch. You can also browse the sections above or download his resume directly.";
 
-    var SUGGESTIONS = ['Experience', 'Skills', 'Projects', 'Education', 'Contact'];
+    var SUGGESTIONS = [
+      'What did Akshit learn in the Snowflake certification workshops?',
+      "Tell me about Akshit's role in the Data Science Club at USF.",
+      'Where has Akshit applied AI evaluation and reliability skills?',
+      "What's the difference between the notebook and the live dashboard in the credit risk project?",
+      'What is Akshit currently working on with the Udacity Agentic AI Nanodegree?'
+    ];
 
     // ---- RAG retrieval (BM25 over a static corpus built from Akshit's resume,
     // official transcript, certification curricula, project reports/READMEs,
@@ -2392,11 +2403,25 @@
      'could get got tell know learn learned akshit key').split(' ').forEach(function (w) { STOPWORDS[w] = 1; });
     var ragIndex = null;
 
+    function stem(w) {
+      // Light suffix-stripping so "workshops"/"workshop", "certifications"/
+      // "certification" etc. hit the same term — this corpus is small
+      // enough that plural/verb-form mismatches otherwise cost real recall.
+      if (w.length > 6 && w.slice(-3) === 'ing') return w.slice(0, -3);
+      if (w.length > 5 && w.slice(-2) === 'ed') return w.slice(0, -2);
+      if (w.length > 5 && w.slice(-3) === 'ies') return w.slice(0, -3) + 'y';
+      if (w.length > 4 && w.slice(-2) === 'es' && /[sxz]$/.test(w.slice(0, -2))) return w.slice(0, -2);
+      if (w.length > 4 && w.slice(-1) === 's' && w.slice(-2) !== 'ss' && w.slice(-2) !== 'us') return w.slice(0, -1);
+      return w;
+    }
+
     function tokenize(str) {
-      var matches = (str || '').toLowerCase().match(/[a-z0-9][a-z0-9+.#-]*/g) || [];
+      // Split on any non-alphanumeric (hyphens included) so a compound like
+      // "sub-certifications" still matches a query for "certification".
+      var matches = (str || '').toLowerCase().match(/[a-z0-9]+/g) || [];
       var out = [];
       for (var i = 0; i < matches.length; i++) {
-        if (matches[i].length > 1 && !STOPWORDS[matches[i]]) out.push(matches[i]);
+        if (matches[i].length > 1 && !STOPWORDS[matches[i]]) out.push(stem(matches[i]));
       }
       return out;
     }
@@ -2605,7 +2630,7 @@
       panel.classList.add('open');
       if (!started) {
         started = true;
-        addMessage("Hi! I can answer detailed questions about Akshit's experience, skills, coursework, certifications, projects, and how to get in touch — including things not shown on this page. What would you like to know?", 'bot');
+        addMessage("Hi, I'm Akshit's Personal RAG Assistant 🦇 — I can answer detailed questions about his experience, skills, coursework, certifications, projects, and how to get in touch, including things not shown on this page. What would you like to know?", 'bot');
         renderSuggestions();
       }
       inputEl.focus();
