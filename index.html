@@ -1391,8 +1391,10 @@
       bottom: 96px;
       right: 24px;
       width: 340px;
+      min-width: 280px;
       max-width: calc(100vw - 32px);
       height: 460px;
+      min-height: 340px;
       max-height: calc(100vh - 140px);
       background-color: var(--card-bg);
       border-radius: 12px;
@@ -1400,6 +1402,7 @@
       display: none;
       flex-direction: column;
       overflow: hidden;
+      resize: both;
       z-index: 200;
     }
 
@@ -1466,6 +1469,8 @@
       border-radius: 14px;
       font-size: 13.5px;
       line-height: 1.5;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     .chatbot-msg.bot {
@@ -1508,7 +1513,8 @@
       flex-direction: column;
       gap: 6px;
       padding: 0 14px 10px;
-      flex-shrink: 0;
+      flex-shrink: 1;
+      overflow-y: auto;
     }
 
     .chatbot-suggestion {
@@ -1567,6 +1573,7 @@
         right: 16px;
         bottom: 88px;
         width: calc(100vw - 32px);
+        resize: none;
       }
 
       .chatbot-toggle {
@@ -2283,7 +2290,7 @@
 </script>
 
 <button class="chatbot-toggle" id="chatbot-toggle" type="button" aria-label="Chat with Akshit's Personal RAG Assistant">
-  <span aria-hidden="true">🦇</span>
+  <i class="fas fa-robot"></i>
 </button>
 
 <div class="chatbot-panel" id="chatbot-panel">
@@ -2630,7 +2637,7 @@
       panel.classList.add('open');
       if (!started) {
         started = true;
-        addMessage("Hi, I'm Akshit's Personal RAG Assistant 🦇 — I can answer detailed questions about his experience, skills, coursework, certifications, projects, and how to get in touch, including things not shown on this page. What would you like to know?", 'bot');
+        addMessage("Hi, I'm Akshit's Personal RAG Assistant — I can answer detailed questions about his experience, skills, coursework, certifications, projects, and how to get in touch, including things not shown on this page. What would you like to know?", 'bot');
         renderSuggestions();
       }
       inputEl.focus();
