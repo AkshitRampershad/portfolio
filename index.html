@@ -2402,7 +2402,7 @@
       },
       {
         keywords: ['cyber-gpt', 'cybergpt', 'cyber gpt', 'cybersecurity project', 'soc'],
-        answer: "CYBER-GPT is a Generative AI solution that helps SOC analysts detect, investigate, and respond to cyber threats faster, combining LLMs with RAG over threat intelligence feeds and frameworks like MITRE ATT&CK. <a href=\"https://github.com/AkshitRampershad/CYBER-GPT\" target=\"_blank\" rel=\"noopener noreferrer\">View on GitHub</a>."
+        answer: "CYBER-GPT is a research and system-design proposal (not a deployed codebase) for a Generative AI solution to help SOC analysts detect, investigate, and respond to cyber threats faster, combining LLMs with RAG over threat intelligence feeds and frameworks like MITRE ATT&CK. It's a 3-artifact package — proposal, technical report, and architecture diagram — with no implementation code. <a href=\"https://github.com/AkshitRampershad/CYBER-GPT\" target=\"_blank\" rel=\"noopener noreferrer\">View on GitHub</a>."
       },
       {
         keywords: ['project management ai', 'agentic workflow', 'multi-agent project'],
@@ -2557,7 +2557,7 @@
       if (!results.length) return null;
       var top = results[0];
       var passages = [top];
-      if (results[1] && results[1].score > top.score * 0.55 && results[1].doc.source !== top.doc.source) {
+      if (results[1] && results[1].score > top.score * 0.55 && results[1].doc.text !== top.doc.text) {
         passages.push(results[1]);
       }
       var html = '';
