@@ -1402,13 +1402,53 @@
       display: none;
       flex-direction: column;
       overflow: hidden;
-      resize: both;
       z-index: 200;
     }
 
     .chatbot-panel.open {
       display: flex;
     }
+
+    .chatbot-resize-handle {
+      position: absolute;
+      z-index: 5;
+      touch-action: none;
+    }
+
+    .chatbot-resize-handle.n,
+    .chatbot-resize-handle.s {
+      left: 12px;
+      right: 12px;
+      height: 10px;
+      cursor: ns-resize;
+    }
+
+    .chatbot-resize-handle.n { top: -5px; }
+    .chatbot-resize-handle.s { bottom: -5px; }
+
+    .chatbot-resize-handle.e,
+    .chatbot-resize-handle.w {
+      top: 12px;
+      bottom: 12px;
+      width: 10px;
+      cursor: ew-resize;
+    }
+
+    .chatbot-resize-handle.e { right: -5px; }
+    .chatbot-resize-handle.w { left: -5px; }
+
+    .chatbot-resize-handle.ne,
+    .chatbot-resize-handle.sw,
+    .chatbot-resize-handle.nw,
+    .chatbot-resize-handle.se {
+      width: 16px;
+      height: 16px;
+    }
+
+    .chatbot-resize-handle.ne { top: -5px; right: -5px; cursor: nesw-resize; }
+    .chatbot-resize-handle.sw { bottom: -5px; left: -5px; cursor: nesw-resize; }
+    .chatbot-resize-handle.nw { top: -5px; left: -5px; cursor: nwse-resize; }
+    .chatbot-resize-handle.se { bottom: -5px; right: -5px; cursor: nwse-resize; }
 
     .chatbot-header {
       background: linear-gradient(135deg, #2f8fff, #0056b3);
@@ -1573,7 +1613,10 @@
         right: 16px;
         bottom: 88px;
         width: calc(100vw - 32px);
-        resize: none;
+      }
+
+      .chatbot-resize-handle {
+        display: none;
       }
 
       .chatbot-toggle {
@@ -2290,10 +2333,18 @@
 </script>
 
 <button class="chatbot-toggle" id="chatbot-toggle" type="button" aria-label="Chat with Akshit's Personal RAG Assistant">
-  <i class="fas fa-robot"></i>
+  <i class="fas fa-comment-dots"></i>
 </button>
 
 <div class="chatbot-panel" id="chatbot-panel">
+  <div class="chatbot-resize-handle n" data-dir="n"></div>
+  <div class="chatbot-resize-handle s" data-dir="s"></div>
+  <div class="chatbot-resize-handle e" data-dir="e"></div>
+  <div class="chatbot-resize-handle w" data-dir="w"></div>
+  <div class="chatbot-resize-handle ne" data-dir="ne"></div>
+  <div class="chatbot-resize-handle nw" data-dir="nw"></div>
+  <div class="chatbot-resize-handle se" data-dir="se"></div>
+  <div class="chatbot-resize-handle sw" data-dir="sw"></div>
   <div class="chatbot-header">
     <div class="chatbot-header-title"><span class="dot"></span>Akshit's Personal RAG Assistant</div>
     <button class="chatbot-close" id="chatbot-close" type="button" aria-label="Close chat">&times;</button>
@@ -2655,6 +2706,88 @@
     inputEl.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') handleUserInput(inputEl.value);
     });
+
+    // Free-direction resize: drag from any edge or corner, not just one
+    // fixed corner. The panel starts anchored via CSS bottom/right; the
+    // first drag locks in explicit left/top (from its current on-screen
+    // position) so every edge can move independently after that.
+    var PANEL_MIN_W = 280;
+    var PANEL_MIN_H = 340;
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function pointerXY(e) {
+      var p = (e.touches && e.touches[0]) || e;
+      return { x: p.clientX, y: p.clientY };
+    }
+
+    function startPanelResize(e, dir) {
+      e.preventDefault();
+      var start = pointerXY(e);
+      var rect = panel.getBoundingClientRect();
+      var startLeft = rect.left, startTop = rect.top, startW = rect.width, startH = rect.height;
+      var maxW = window.innerWidth - 32;
+      var maxH = window.innerHeight - 140;
+
+      panel.style.right = 'auto';
+      panel.style.bottom = 'auto';
+      panel.style.left = startLeft + 'px';
+      panel.style.top = startTop + 'px';
+      panel.style.width = startW + 'px';
+      panel.style.height = startH + 'px';
+      document.body.style.userSelect = 'none';
+
+      function onMove(ev) {
+        var p = pointerXY(ev);
+        var dx = p.x - start.x;
+        var dy = p.y - start.y;
+        var newW = startW, newH = startH, newLeft = startLeft, newTop = startTop;
+
+        if (dir.indexOf('e') !== -1) {
+          newW = clamp(startW + dx, PANEL_MIN_W, maxW);
+        }
+        if (dir.indexOf('w') !== -1) {
+          newW = clamp(startW - dx, PANEL_MIN_W, maxW);
+          newLeft = startLeft + (startW - newW);
+        }
+        if (dir.indexOf('s') !== -1) {
+          newH = clamp(startH + dy, PANEL_MIN_H, maxH);
+        }
+        if (dir.indexOf('n') !== -1) {
+          newH = clamp(startH - dy, PANEL_MIN_H, maxH);
+          newTop = startTop + (startH - newH);
+        }
+
+        panel.style.width = newW + 'px';
+        panel.style.height = newH + 'px';
+        panel.style.left = newLeft + 'px';
+        panel.style.top = newTop + 'px';
+      }
+
+      function onEnd() {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onEnd);
+        document.removeEventListener('touchmove', onMove);
+        document.removeEventListener('touchend', onEnd);
+        document.body.style.userSelect = '';
+      }
+
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onEnd);
+      document.addEventListener('touchmove', onMove, { passive: false });
+      document.addEventListener('touchend', onEnd);
+    }
+
+    var resizeHandles = panel.querySelectorAll('.chatbot-resize-handle');
+    for (var h = 0; h < resizeHandles.length; h++) {
+      (function (handle) {
+        var dir = handle.getAttribute('data-dir');
+        handle.addEventListener('mousedown', function (e) { startPanelResize(e, dir); });
+        handle.addEventListener('touchstart', function (e) { startPanelResize(e, dir); }, { passive: false });
+      })(resizeHandles[h]);
+    }
   })();
 </script>
 </body>
