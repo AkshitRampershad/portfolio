@@ -1808,11 +1808,11 @@
           </div>
         </div>
         <ul>
-          <li>Architected an end-to-end PCN&ndash;MPN matching system using a 4-leg hybrid retriever (exact, fuzzy, prefix, vector) feeding a bounded LLM ranking pass, with a short-circuit exact-match mechanism resolving unambiguous hits at 0 LLM cost.</li>
-          <li>Calibrated the internal matching system by integrating OpenAI text-embedding-3-small (1536-d) across 4 supply chain fields, using HNSW top-K search and a 3-band score+margin policy, sustaining a flat 0.36s match latency on a 50K+ corpus.</li>
-          <li>Validated hybrid-retrieval candidate matches using Claude Sonnet 5-based confidence scoring to reduce mismatched-part risk in PCNs, achieving 0 false auto-confirmations across 81 validation runs and automating unambiguous matches.</li>
-          <li>Eliminated manual assembly and finished-good tracing by building a recursive "where-used" BOM engine with parent-traversal graph algorithms and cycle-detection guards, fully automating downstream impact analysis for matched parts.</li>
-          <li>Built PcnAutoIntake, an LLM orchestration pipeline automating 29+ daily supplier change intake via structured extraction, entity resolution, and confidence-gated human review &mdash; cutting PCN analysis from 2 hours to 10 seconds per notice, saving 19 hours/day.</li>
+          <li>Architected an end-to-end Product Change Notification(PCN) to Manufacture Part Number(MPN) matching system using a 4-leg hybrid retriever (exact, fuzzy, prefix, vector) with an LLM ranking pass and a 3-band score+margin policy.</li>
+          <li>Optimized vector search to a flat 0.36s match latency on a 70K+ corpus, embedding 4 manufacturing fields with OpenAI text-embedding-3-small 1536-d into unified cosine Qdrant collection with keyword payload indexes scoping HNSW topK.</li>
+          <li>Achieved 0 false auto-confirmations across 100+ validation runs by gating HNSW top-K retrieval candidates on score and margin thresholds, auto-confirming high-confidence matches and routing ambiguous ones to human steward review.</li>
+          <li>Eliminated manual assembly / finished good tracing by building a recursive where-used BOM engine with parent-traversal graph algorithms and cycle-detection guards, automating downstream impact analysis in SAP for matched parts.</li>
+          <li>Orchestrated 29+ daily supplier change intakes through PcnAutoIntake, an LLM pipeline chaining structured extraction, MPN matching and BOM impact analysis behind confidence-gated review, cutting analysis from 2hr to 10sec per notice.</li>
         </ul>
       </div>
 
