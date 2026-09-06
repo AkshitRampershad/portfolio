@@ -168,6 +168,73 @@
       text-align: left;
     }
 
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, #2f8fff, #0056b3);
+      z-index: 300;
+      transition: width 0.1s ease-out;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #2f8fff, #0056b3);
+      color: #ffffff;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 86, 179, 0.35);
+      z-index: 190;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .hero-typed {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      min-height: 34px;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .hero-typed .typed-word {
+      color: var(--accent);
+    }
+
+    .typed-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background-color: var(--accent);
+      vertical-align: -2px;
+      margin-left: 2px;
+      animation: typed-blink 1s steps(2) infinite;
+    }
+
+    @keyframes typed-blink {
+      50% { opacity: 0; }
+    }
+
     .profile-description {
       display: flex;
       justify-content: space-between;
@@ -1637,6 +1704,10 @@
 </head>
 
 <body>
+  <div class="scroll-progress" id="scroll-progress"></div>
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
   <header>
     <a class="brand" href="index.html">Akshit<span>.</span>RamPershad</a>
     <nav>
@@ -1666,6 +1737,7 @@
         <div class="profile-picture"></div>
         <div class="description">
           <h1>HI, I AM AKSHIT</h1>
+          <div class="hero-typed" aria-live="polite">I build <span class="typed-word" id="typed-word"></span><span class="typed-cursor"></span></div>
           <p style="text-align: justify;">I’m an AI Engineer who likes solving complicated problems. I build AI-native systems that turn messy enterprise operations into scalable, intelligent workflows, from multi-agent systems and RAG pipelines to hybrid-retrieval engines and LLM orchestration. My work is focused on taking processes that once required hours of manual analysis and turning them into reliable decisions in seconds. My background in AI engineering, data engineering and business analytics influences how I build. AI should be intelligent, but it should also be measurable, explainable, reliable, and trusted by the people who depend on it. And after all that reasoning, I believe in keeping one problem distinctly human which is figuring out what everyone wants to eat.</p>
           <div class="hero-links-row">
             <a class="hero-social-link" href="https://www.linkedin.com/in/akshit-rampershad/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
@@ -2329,6 +2401,53 @@
       });
     }, { threshold: 0.15 });
     targets.forEach(function (el) { observer.observe(el); });
+  })();
+
+  // Scroll progress bar + back-to-top button
+  (function () {
+    var progressBar = document.getElementById('scroll-progress');
+    var backToTopBtn = document.getElementById('back-to-top');
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function onScroll() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+      if (scrollTop > window.innerHeight) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    backToTopBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+    });
+  })();
+
+  // Typed headline rotator
+  (function () {
+    var el = document.getElementById('typed-word');
+    if (!el) return;
+    var words = ['multi-agent systems', 'RAG pipelines', 'hybrid-retrieval engines', 'LLM orchestration'];
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      el.textContent = words[0];
+      return;
+    }
+    var w = 0, c = 0, deleting = false;
+    (function tick() {
+      var word = words[w];
+      el.textContent = deleting ? word.slice(0, --c) : word.slice(0, ++c);
+      var wait = deleting ? 45 : 85;
+      if (!deleting && c === word.length) { wait = 1600; deleting = true; }
+      else if (deleting && c === 0) { deleting = false; w = (w + 1) % words.length; wait = 280; }
+      setTimeout(tick, wait);
+    })();
   })();
 </script>
 
