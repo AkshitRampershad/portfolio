@@ -27,6 +27,7 @@ A clean, responsive static site built with HTML5/CSS3 and hosted on GitHub Pages
   * **[Project Management AI Workflows](https://github.com/AkshitRampershad/ai-agentic-workflow-project):** Multi-agent specification-to-task pipeline.
   * **[Credit Risk & Portfolio Optimization](https://github.com/AkshitRampershad/SAS-Financial-Project):** Large-scale statistical modeling in SAS.
   * **[Contradictory, My Dear Watson](https://github.com/AkshitRampershad/Contradictory-My-Dear-Watson):** Multilingual NLI with fine-tuned XLM-RoBERTa.
+  * **[Personal RAG Assistant](https://github.com/AkshitRampershad/personal-rag-assistant):** the client-side BM25 retrieval + Cloudflare Worker generation engine behind this site's own chatbot, generalized as a reusable tool.
 * **Certifications & Credentials:** Verified coursework and certifications from Anthropic (Claude API, MCP, Subagents), Databricks, Snowflake, Docker, Wolfram, and Atlassian.
 
 ---
@@ -43,6 +44,8 @@ The chat widget on the site (bottom-right corner) is a real retrieval-augmented 
 **What it actually knows**, beyond what's visible on the page: which specific USF courses I took and the grades I got, the full sub-curriculum of every certification, exactly what I did vs. specified vs. designed at each job (title/dates/scope verified against my actual resume, not inflated), which industries I have — and explicitly don't have — real experience in, and how every technical skill, course, and certification connects back to a specific project or role rather than sitting on a list.
 
 **Cost:** effectively $0 — Cloudflare Workers and Groq's free tiers cover normal portfolio traffic; the panel is resizable from any edge or corner if you want more room to read a longer answer.
+
+**Engine source:** the retrieval engine and generation Worker are extracted into their own reusable, documented repo — **[personal-rag-assistant](https://github.com/AkshitRampershad/personal-rag-assistant)** — generalized so anyone can point it at their own resume/docs, not tied to this portfolio's specific content.
 
 ---
 
