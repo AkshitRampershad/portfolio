@@ -1958,21 +1958,22 @@
         </div>
 
         <div class="repo-card">
-          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/credit-risk-cover.webp" alt="Credit Risk & Portfolio Optimization Dashboard graphic"></div>
+          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/patchproof-cover.webp" alt="PatchProof: autonomous API-drift repair and verification agent graphic"></div>
           <div class="repo-card-body">
             <div class="repo-status-row"><span class="repo-badge repo-badge-live"><span class="dot"></span>Live Demo</span></div>
-            <h3><a href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer">Credit Risk &amp; Portfolio Optimization Dashboard</a></h3>
+            <h3><a href="https://github.com/AkshitRampershad/PatchProof" target="_blank" rel="noopener noreferrer">PatchProof: AI-Powered Safe Software Repair</a></h3>
 
             <div class="repo-tags">
-              <span class="repo-tag">Real Credit Risk Model</span>
-              <span class="repo-tag">Mean-Variance Optimization</span>
-              <span class="repo-tag">Basel Stress Testing</span>
+              <span class="repo-tag">API Contract Drift</span>
+              <span class="repo-tag">Autonomous Repair</span>
+              <span class="repo-tag">Verification Gate</span>
+              <span class="repo-tag">LLM + Tools</span>
             </div>
-            <p class="repo-desc">A live dashboard that trains a real credit-risk classifier (scikit-learn, ~80% held-out AUC) and runs genuine mean-variance portfolio optimization (SciPy) &mdash; efficient frontier, max-Sharpe allocation, and a Basel II/III capital calculation stress-tested against recession scenarios. Runs on synthetic loan and market data, disclosed openly in-app; every figure shown is computed live, not hardcoded.</p>
+            <p class="repo-desc">PatchProof detects when a service you depend on silently changes its API contract, proposes a fix, and refuses to apply it until a verification gate confirms the fix preserves what the integration used to do &mdash; the dangerous failure is the one that still validates and quietly does the wrong thing. Benchmarked against 71 real breaking changes mined from three years of Stripe's published API history: the naive fix (stop sending whatever broke) is unsafe on 71 of 71 cases, while the identical fix behind the gate is unsafe on zero. A Groq-hosted LLM reasoner roughly doubles correct auto-repairs over heuristics alone (7/27 to 14/27 solvable cases) at some cost to safety &mdash; a tradeoff the benchmark measures rather than hides.</p>
             <div class="repo-links">
-              <a class="repo-link" href="reports/credit-risk-portfolio-optimization-report.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Project Report </a>
-              <a class="repo-link repo-link-live" href="https://sas-financial-project-zdscpk2fdck2fggdffqhpc.streamlit.app/" target="_blank" rel="noopener noreferrer"><span class="dot"></span>RiskFolio</a>
-              <a class="repo-link" href="https://github.com/AkshitRampershad/SAS-Financial-Project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>GitHub</a>
+              <a class="repo-link" href="https://github.com/AkshitRampershad/PatchProof/blob/main/README.md" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-lines"></i> Architecture Docs</a>
+              <a class="repo-link repo-link-live" href="https://akshitrampershad.github.io/PatchProof/" target="_blank" rel="noopener noreferrer"><span class="dot"></span>PatchProof</a>
+              <a class="repo-link" href="https://github.com/AkshitRampershad/PatchProof" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>GitHub</a>
             </div>
           </div>
         </div>
@@ -2510,7 +2511,7 @@
       },
       {
         keywords: ['projects', 'built', 'portfolio projects', 'github projects', 'work built'],
-        answer: "Akshit's featured projects include CYBER-GPT (a GenAI RAG solution for cybersecurity threat response), an AI-Powered Agentic Workflow for project management (live dashboard, Groq-hosted LLM agents), a Credit Risk & Portfolio Optimization Dashboard (live, real scikit-learn/SciPy models), and IncidentLab (a multi-agent incident-investigation system with a benchmark harness proving multi-agent actually beats simpler baselines). See the Projects section above for details, live demos, and GitHub links."
+        answer: "Akshit's featured projects include CYBER-GPT (a GenAI RAG solution for cybersecurity threat response), an AI-Powered Agentic Workflow for project management (live dashboard, Groq-hosted LLM agents), PatchProof (an autonomous API-drift repair agent with a verification gate, benchmarked on 71 real Stripe breaking changes), and IncidentLab (a multi-agent incident-investigation system with a benchmark harness proving multi-agent actually beats simpler baselines). See the Projects section above for details, live demos, and GitHub links."
       },
       {
         keywords: ['cyber-gpt', 'cybergpt', 'cyber gpt', 'cybersecurity project', 'soc'],
@@ -2521,8 +2522,8 @@
         answer: "The AI-Powered Agentic Workflow is a multi-agent system that converts a raw product spec into structured user stories, features, and engineering tasks — with routing and planning genuinely decided by a Groq-hosted LLM, not hardcoded rules. <a href=\"https://ai-agentic-workflow-project-8psabv2fousknkms8zev8f.streamlit.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Try the live demo</a> or <a href=\"https://github.com/AkshitRampershad/ai-agentic-workflow-project\" target=\"_blank\" rel=\"noopener noreferrer\">view on GitHub</a>."
       },
       {
-        keywords: ['credit risk', 'portfolio optimization', 'sas project', 'financial analytics'],
-        answer: "The Credit Risk & Portfolio Optimization Dashboard is a live app that trains a real credit-risk model (scikit-learn, ~80% held-out AUC) and runs genuine mean-variance portfolio optimization (SciPy) with Basel II/III capital stress-testing. <a href=\"https://sas-financial-project-zdscpk2fdck2fggdffqhpc.streamlit.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Try the live demo</a> or <a href=\"https://github.com/AkshitRampershad/SAS-Financial-Project\" target=\"_blank\" rel=\"noopener noreferrer\">view on GitHub</a>."
+        keywords: ['patchproof', 'patch proof', 'api drift', 'api contract drift', 'software repair agent'],
+        answer: "PatchProof detects when a service you depend on silently changes its API contract, proposes a fix, and refuses to apply it until a verification gate confirms the fix preserves existing capabilities. Benchmarked against 71 real breaking changes mined from three years of Stripe's published API history: the naive fix is unsafe on 71 of 71 cases, while the identical fix behind the gate is unsafe on zero. <a href=\"https://akshitrampershad.github.io/PatchProof/\" target=\"_blank\" rel=\"noopener noreferrer\">Try the live demo</a> or <a href=\"https://github.com/AkshitRampershad/PatchProof\" target=\"_blank\" rel=\"noopener noreferrer\">view on GitHub</a>."
       },
       {
         keywords: ['incidentlab', 'incident lab', 'incident investigation', 'root cause', 'rca', 'sre project'],
