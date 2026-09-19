@@ -25,7 +25,7 @@ A clean, responsive static site built with HTML5/CSS3 and hosted on GitHub Pages
 * **Featured Repositories:**
   * **[CYBER-GPT](https://github.com/AkshitRampershad/CYBER-GPT):** RAG-powered SOC threat analysis and incident playbooks.
   * **[Project Management AI Workflows](https://github.com/AkshitRampershad/ai-agentic-workflow-project):** Multi-agent specification-to-task pipeline.
-  * **[Credit Risk & Portfolio Optimization](https://github.com/AkshitRampershad/SAS-Financial-Project):** Large-scale statistical modeling in SAS.
+  * **[PatchProof](https://github.com/AkshitRampershad/PatchProof):** Autonomous API-drift repair agent with a verification gate, benchmarked on 71 real Stripe breaking changes.
   * **[IncidentLab](https://github.com/AkshitRampershad/IncidentLab):** Multi-agent incident investigation with a benchmark harness proving whether multi-agent actually beats simpler baselines.
   * **[Personal RAG Assistant](https://github.com/AkshitRampershad/personal-rag-assistant):** the client-side BM25 retrieval + Cloudflare Worker generation engine behind this site's own chatbot, generalized as a reusable tool.
 * **Certifications & Credentials:** Verified coursework and certifications from Anthropic (Claude API, MCP, Subagents), Databricks, Snowflake, Docker, Wolfram, and Atlassian.
