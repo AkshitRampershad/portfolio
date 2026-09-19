@@ -1810,10 +1810,10 @@
           </div>
         </div>
         <ul>
-          <li>Architected an end-to-end Product Change Notification(PCN) to Manufacture Part Number(MPN) matching system using a 4-leg hybrid retriever (exact, fuzzy, prefix, vector) with an LLM ranking pass and a 3-band score+margin policy.</li>
+          <li>Architected an end-to-end Product Change Notification (PCN) to Manufacture Part Number (MPN) matching system using a 4-leg hybrid retriever (exact, fuzzy, prefix, vector) with an LLM ranking pass and a 3-band score+margin policy.</li>
           <li>Optimized vector search to a flat 0.36s match latency on a 70K+ corpus, embedding 4 manufacturing fields with OpenAI text-embedding-3-small 1536-d into unified cosine Qdrant collection with keyword payload indexes scoping HNSW topK.</li>
           <li>Achieved 0 false auto-confirmations across 100+ validation runs by gating HNSW top-K retrieval candidates on score and margin thresholds, auto-confirming high-confidence matches and routing ambiguous ones to human steward review.</li>
-          <li>Eliminated manual assembly / finished good tracing by building a recursive where-used BOM engine with parent-traversal graph algorithms and cycle-detection guards, automating downstream impact analysis in SAP for matched parts.</li>
+          <li>Eliminated manual assembly / finished good tracing by building a recursive where-used engine with parent-traversal graph algorithms and cycle-detection guards, automating downstream Bill of Materials (BOM) impact analysis in SAP.</li>
           <li>Orchestrated 29+ daily supplier change intakes through PcnAutoIntake, an LLM pipeline chaining structured extraction, MPN matching and BOM impact analysis behind confidence-gated review, cutting analysis from 2hr to 10sec per notice.</li>
         </ul>
       </div>
@@ -1827,11 +1827,11 @@
           </div>
         </div>
         <ul>
-          <li>Spearheaded the end-to-end technical delivery of a secure enterprise RAG platform to accelerate multi-million dollar federal proposal development cycles and intelligence generation workloads across a 20K+ SharePoint knowledge corpus.</li>
-          <li>Built a hybrid ingestion engine using Python, PySpark, and Graph API to index the 20K+ SharePoint corpus into a 1,024-dim Qdrant vector database, using BGE-Large-EN-v1.5 embeddings for section-aware retrieval.</li>
-          <li>Designed a LlamaIndex retrieval pipeline narrowing 30 candidates to 8 through five-field metadata filtering and cross-encoder re-ranking, feeding LangChain prompt orchestration to return RFP-scoped drafts sourced from prior wins.</li>
-          <li>Managed project dependencies and technical ambiguity for 4 cross-functional teams through Jira, driving stakeholder collaboration across AI, engineering, and proposal teams to deliver structured RAG features across 8 continuous sprints.</li>
-          <li>Developed AI adoption runbooks and led technical enablement sessions with business stakeholders and 14 proposal writers, improving organizational data literacy and scaling RAG application adoption by 45% across business teams.</li>
+          <li>Led technical architecture and delivery of a governed enterprise RAG system, translating complex multi-million dollar federal/state proposal requirements into a scalable knowledge-management platform across 20K+ document corpus.</li>
+          <li>Engineered a hybrid ingestion pipeline using Python, PySpark, and Graph API, indexing distributed SharePoint content  into a 1,024-dim Qdrant vector database with BGE-Large-EN-v1.5 embeddings and section-aware document chunking.</li>
+          <li>Designed LlamaIndex-based retrieval pipeline narrowing 30 candidates to 8 via 5-field metadata filtering, vector search, and Cross-Encoder re-ranking, feeding LangChain orchestration to return RFP-scoped drafts grounded in prior wins.</li>
+          <li>Validated retrieval against a held-out benchmark of 20 proposal queries, achieved a 75%+ hit rate with a 54% first-pass draft acceptance rate, reducing proposal draft assembly time from 7 days to under 4 hours across 20+ proposals.</li>
+          <li>Facilitated delivery across 4 cross-functional teams for 8 sprints, authored enterprise AI adoption runbooks, and led enablement sessions for proposal writers, achieving 88% sustained weekly adoption across 25+ cross-functional users.</li>
         </ul>
       </div>
 
@@ -1844,11 +1844,11 @@
           </div>
         </div>
         <ul>
-          <li>Engineered high-throughput spatial data ingestion pipelines and an ML site-ranking engine using Databricks AutoML and MLflow, surfacing optimal urban development parcels for real estate clients with 92% prediction accuracy.</li>
-          <li>Built FastAPI data extraction services to ingest 50M+ parcel and zoning records into AWS S3, leveraging Databricks Auto Loader for incremental file discovery and schema inference and DLT for governed ingestion and automated quality checks.</li>
-          <li>Orchestrated multi-stage Medallion pipelines (Bronze/Silver/Gold) using Databricks LakeFlow and DLT, processing 50M+ spatial and zoning records with automated schema evolution and real-time quality validation.</li>
-          <li>Leveraged OpenAI GPT-4 APIs to build an automated intelligence engine that synthesized complex pipeline metrics into executive-ready business reports, accelerating C-suite strategic planning cycles by 75%.</li>
-          <li>Presented smart city market adoption trends to executive leadership, aligning foundational model capabilities with commercial demands to secure executive buy-in for a multi-quarter AI engineering product roadmap.</li>
+          <li>Engineered high-throughput geospatial pipelines feeding an ML site-suitability model on Databricks AutoML+MLflow, scoring parcel buildability against zoning rules and geotechnical constraints at 72% accuracy vs site feasibility assessments.</li>
+          <li>Built FastAPI data extraction services ingesting 50M+ parcel and zoning records into AWS S3, leveraging Databricks Auto Loader for incremental file discovery and schema inference and DLT for governed ingestion and automated quality checks.</li>
+          <li>Designed and orchestrated a multi-stage Medallion data architecture (Bronze/Silver/Gold) on Databricks LakeFlow, establishing automated schema evolution and real-time quality validation gates across spatial and zoning records.</li>
+          <li>Developed OpenAI GPT-4-based reporting engine that synthesized pipeline and model metrics into executive-ready business intelligence summaries, replacing manual reporting and accelerating C-suite strategic planning cycles by 34%.</li>
+          <li>Aligned foundational model capabilities with commercial demands, presented smart city market adoption trends to executive leadership to secure multi-quarter budget buy-in for the core product roadmap.</li>
         </ul>
       </div>
 
@@ -1878,10 +1878,10 @@
           </div>
         </div>
         <ul>
-          <li>Led business and technical requirements analysis for UKG TALK post-acquisition, identifying key product gaps and shaping strategic data-backed product roadmaps, successfully supporting 10,000+ active enterprise users worldwide.</li>
-          <li>Leveraged SQL queries and Python funnel analysis to detect user onboarding drop-offs, executing process optimization techniques that boosted premium feature monthly conversion rates by 29% and trial-to-paid conversions by 25%.</li>
-          <li>Developed JIRA defect tracking dashboards monitoring production/staging issues, enabling 4 cross-functional teams to unblock dependencies and critical bugs, resulting in a 43% improvement in phased sign-offs with a 94% sprint delivery rate.</li>
-          <li>Designed interactive Tableau and Power BI dashboards using advanced parameters and calculated fields to report real-time campaign ROI and segment conversion metrics to non-technical stakeholders during executive quarterly reviews.</li>
+          <li>Led business and technical requirements analysis for UKG TALK post-acquisition, identifying key product gaps and shaping our strategic data backed product roadmaps, successfully supported 10,000+ active enterprise users worldwide.</li>
+          <li>Detected on-boarding drop-offs points using SQL funnel analysis and Python cohort segmentation, executing process optimization techniques that boosted premium feature monthly conversions rate by 29% and trial to paid rate by 25%.</li>
+          <li>Designed JIRA defect tracking dashboards monitoring production/staging issues, enabling 4 cross-functional teams to unblock dependencies and critical bugs, resulting a 43% improvement in phased sign-offs with 94% sprint delivery rate.</li>
+          <li>Developed interactive Tableau/Power BI dashboards using advanced parameters and calculated fields to report real time campaign ROI and segment conversion metrics to non-technical stakeholders during executive quarterly reviews.</li>
           <li>Led cross-functional UAT loops, post-production checks, and product marketing launch documentation to control critical integration friction for high-value Fortune 500 clients, boosting platform adoption rates by 2X within 12 months.</li>
         </ul>
       </div>
@@ -1914,50 +1914,8 @@
           </div>
         </div>
 
-        <div class="repo-card">
-          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/cyber-gpt-cover.webp" alt="CYBER-GPT: Enhancing Cyber-Threat Analysis Using Generative AI graphic"></div>
-          <div class="repo-card-body">
-            <div class="repo-status-row"><span class="repo-badge repo-badge-neutral"><span class="dot"></span>Research Proposal</span></div>
-            <h3><a href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer">Enhancing Cyber-Threat Analysis Using Gen AI</a></h3>
-            <div class="repo-tags">
-              <span class="repo-tag">RAG</span>
-              <span class="repo-tag">LLM</span>
-              <span class="repo-tag">Agentic Workflows</span>
-              <span class="repo-tag">Cybersecurity</span>
-            </div>
-            <p class="repo-desc">A Generative AI solution that helps SOC analysts detect, investigate, and respond to cyber threats faster. Combines LLMs with Retrieval Augmented Generation over historical incident data, real-time threat intelligence feeds, and frameworks like MITRE ATT&amp;CK to generate dynamic response playbooks for rare, unpredictable "black swan" incidents.</p>
-            <div class="repo-links">
-              <a class="repo-link" href="https://github.com/AkshitRampershad/CYBER-GPT/blob/main/CyberGPT%20Report.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Project Report </a>
-              <a class="repo-link repo-link-live" href="https://github.com/AkshitRampershad/CYBER-GPT/blob/main/GenAICyberSolution.png/" target="_blank" rel="noopener noreferrer"><span class="dot"></span> CyberGPT </a>
-              <a class="repo-link" href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>GitHub</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="repo-grid">
-        <div class="repo-card">
-          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/agentic-workflow-cover.webp" alt="AI-Powered Agentic Workflow for Project Management graphic"></div>
-          <div class="repo-card-body">
-            <div class="repo-status-row"><span class="repo-badge repo-badge-live"><span class="dot"></span>Live Demo</span></div>
-            <h3><a href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer">AI-Powered Agentic Workflow for Project Management</a></h3>
-
-            <div class="repo-tags">
-              <span class="repo-tag">Multi-Agent Orchestration</span>
-              <span class="repo-tag">LLM-Driven Routing &amp; Planning</span>
-              <span class="repo-tag">Fault-Tolerant</span>
-            </div>
-            <p class="repo-desc">A multi-agent workflow that turns a raw product spec into user stories, features, and engineering tasks. Seven cooperating agents, including routing and planning agents whose decisions are genuinely made by the LLM (Groq-hosted Llama) rather than hardcoded &mdash; with a keyword fallback only if that call fails. Ships with automatic retry-with-backoff and a manual step-through mode, so a free-tier deployment stays reliable under real rate limits.</p>
-            <div class="repo-links">
-              <a class="repo-link" href="reports/agentic-workflow-project-report.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i>Project Report</a>
-              <a class="repo-link repo-link-live" href="https://ai-agentic-workflow-project-8psabv2fousknkms8zev8f.streamlit.app/" target="_blank" rel="noopener noreferrer"><span class="dot"></span>SpecForge</a>
-              <a class="repo-link" href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="repo-card">
+        <div class="repo-card">    
+          <div class="repo-card">
           <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/patchproof-cover.webp" alt="PatchProof: autonomous API-drift repair and verification agent graphic"></div>
           <div class="repo-card-body">
             <div class="repo-status-row"><span class="repo-badge repo-badge-live"><span class="dot"></span>Live Demo</span></div>
@@ -1979,6 +1937,48 @@
         </div>
       </div>
     </div>
+      
+      <div class="repo-grid">
+        <div class="repo-card">
+          <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/agentic-workflow-cover.webp" alt="AI-Powered Agentic Workflow for Project Management graphic"></div>
+          <div class="repo-card-body">
+            <div class="repo-status-row"><span class="repo-badge repo-badge-live"><span class="dot"></span>Live Demo</span></div>
+            <h3><a href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer">AI-Powered Agentic Workflow for Project Management</a></h3>
+
+            <div class="repo-tags">
+              <span class="repo-tag">Multi-Agent Orchestration</span>
+              <span class="repo-tag">LLM-Driven Routing &amp; Planning</span>
+              <span class="repo-tag">Fault-Tolerant</span>
+            </div>
+            <p class="repo-desc">A multi-agent workflow that turns a raw product spec into user stories, features, and engineering tasks. Seven cooperating agents, including routing and planning agents whose decisions are genuinely made by the LLM (Groq-hosted Llama) rather than hardcoded &mdash; with a keyword fallback only if that call fails. Ships with automatic retry-with-backoff and a manual step-through mode, so a free-tier deployment stays reliable under real rate limits.</p>
+            <div class="repo-links">
+              <a class="repo-link" href="reports/agentic-workflow-project-report.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i>Project Report</a>
+              <a class="repo-link repo-link-live" href="https://ai-agentic-workflow-project-8psabv2fousknkms8zev8f.streamlit.app/" target="_blank" rel="noopener noreferrer"><span class="dot"></span>SpecForge</a>
+              <a class="repo-link" href="https://github.com/AkshitRampershad/ai-agentic-workflow-project" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>GitHub</a>
+            </div>
+          </div>
+        </div>
+
+  <div class="repo-card-image-wrap"><img class="repo-card-image" src="images/cyber-gpt-cover.webp" alt="CYBER-GPT: Enhancing Cyber-Threat Analysis Using Generative AI graphic"></div>
+          <div class="repo-card-body">
+            <div class="repo-status-row"><span class="repo-badge repo-badge-neutral"><span class="dot"></span>Research Proposal</span></div>
+            <h3><a href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer">Enhancing Cyber-Threat Analysis Using Gen AI</a></h3>
+            <div class="repo-tags">
+              <span class="repo-tag">RAG</span>
+              <span class="repo-tag">LLM</span>
+              <span class="repo-tag">Agentic Workflows</span>
+              <span class="repo-tag">Cybersecurity</span>
+            </div>
+            <p class="repo-desc">A Generative AI solution that helps SOC analysts detect, investigate, and respond to cyber threats faster. Combines LLMs with Retrieval Augmented Generation over historical incident data, real-time threat intelligence feeds, and frameworks like MITRE ATT&amp;CK to generate dynamic response playbooks for rare, unpredictable "black swan" incidents.</p>
+            <div class="repo-links">
+              <a class="repo-link" href="https://github.com/AkshitRampershad/CYBER-GPT/blob/main/CyberGPT%20Report.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Project Report </a>
+              <a class="repo-link repo-link-live" href="https://github.com/AkshitRampershad/CYBER-GPT/blob/main/GenAICyberSolution.png/" target="_blank" rel="noopener noreferrer"><span class="dot"></span> CyberGPT </a>
+              <a class="repo-link" href="https://github.com/AkshitRampershad/CYBER-GPT" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        
   </section>
 
   <section id="skills">
