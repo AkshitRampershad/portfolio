@@ -126,16 +126,16 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.6vw,64px);lin
 .pf .fr2{position:absolute;inset:auto auto -12px -12px;width:64px;height:64px;border-bottom:1px solid var(--amber);border-left:1px solid var(--amber)}
 
 /* marquee */
-.mq{margin-top:56px;border-block:1px solid var(--line);padding-block:18px;overflow:hidden;position:relative}
+.mq{margin-top:56px;border-block:1px solid var(--line);padding-block:22px;overflow:hidden;position:relative}
 .mq::before,.mq::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
 .mq::before{left:0;background:linear-gradient(90deg,var(--ink-900),transparent)}
 .mq::after{right:0;background:linear-gradient(270deg,var(--ink-900),transparent)}
-.mqt{display:flex;gap:56px;width:max-content;animation:mv 34s linear infinite}
+.mqt{display:flex;gap:62px;width:max-content;align-items:center;animation:mv 46s linear infinite}
 .mq:hover .mqt{animation-play-state:paused}
 @keyframes mv{to{transform:translateX(-50%)}}
-.mqi{display:flex;align-items:center;gap:11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);white-space:nowrap;transition:.25s}
-.mqi .tile{height:34px;width:auto;flex:none;display:grid;place-items:center;transition:.25s}
-.mqi img{height:34px;width:auto;max-width:130px;object-fit:contain}
+.mqi{display:flex;align-items:center;gap:13px;text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);white-space:nowrap;transition:.25s}
+.mqi .tile{height:54px;width:auto;min-width:54px;max-width:158px;flex:none;display:grid;place-items:center;transition:.25s}
+.mqi img{max-height:54px;max-width:158px;width:auto;height:auto;object-fit:contain;display:block}
 .mqi:hover{color:var(--bone)}
 .mqi:hover .tile{transform:translateY(-3px)}
 
@@ -772,13 +772,13 @@ document.documentElement.classList.add('js');
    setTimeout(tick,wait);})();}
 
  /* marquee */
- var orgs=[['cambrian-lab','Cambrian Lab'],['22nd','22nd Century'],['surge-it','Surge Infotech'],['cyberflorida','CyberFlorida'],['ukg','UKG'],['usf','USF'],['anthropic','Anthropic'],['databricks','Databricks'],['snowflake','Snowflake'],['docker','Docker'],['microsoft','Microsoft'],['mckinsey','McKinsey'],['atlassian','Atlassian'],['wolfram','Wolfram'],['udacityai','Udacity']];
- var ORGU={"cambrian-lab": "https://www.cambrianlab.net/", "22nd": "https://www.tscti.com/", "surge-it": "https://surgeit.com/", "cyberflorida": "https://cyberflorida.org/", "ukg": "https://www.ukg.com/", "usf": "https://www.usf.edu/", "anthropic": "https://www.anthropic.com/", "databricks": "https://www.databricks.com/", "snowflake": "https://www.snowflake.com/", "docker": "https://www.docker.com/", "microsoft": "https://www.microsoft.com/", "mckinsey": "https://www.mckinsey.com/", "atlassian": "https://www.atlassian.com/", "wolfram": "https://www.wolfram.com/", "udacityai": "https://www.udacity.com/"};
+ var orgs=[['cambrian-lab','Cambrian Lab'],['22nd','22nd Century'],['surge-it','Surge Infotech'],['cyberflorida','CyberFlorida'],['ukg','UKG'],['usf','USF'],['gitam','GITAM'],['anthropic','Anthropic'],['langchain','LangChain'],['qdrant','Qdrant'],['databricks','Databricks'],['snowflake','Snowflake'],['docker','Docker'],['microsoft','Microsoft'],['mckinsey','McKinsey'],['atlassian','Atlassian'],['wolfram','Wolfram'],['udacityai','Udacity']];
+ var ORGU={"cambrian-lab": "https://www.cambrianlab.net/", "22nd": "https://www.tscti.com/", "surge-it": "https://surgeit.com/", "cyberflorida": "https://cyberflorida.org/", "ukg": "https://www.ukg.com/", "usf": "https://www.usf.edu/", "anthropic": "https://www.anthropic.com/", "databricks": "https://www.databricks.com/", "snowflake": "https://www.snowflake.com/", "docker": "https://www.docker.com/", "microsoft": "https://www.microsoft.com/", "mckinsey": "https://www.mckinsey.com/", "atlassian": "https://www.atlassian.com/", "wolfram": "https://www.wolfram.com/", "udacityai": "https://www.udacity.com/", "langchain": "https://www.langchain.com/", "qdrant": "https://qdrant.tech/", "gitam": "https://www.gitam.edu/"};
  var INV_L=['atlassian','cambrian-lab','cyberflorida','udacityai'], INV_D=['anthropic'];
  var mqt=document.getElementById('mqt');
  function row(){return orgs.map(function(o){var iv=INV_L.indexOf(o[0])>=0?' lgo-l':(INV_D.indexOf(o[0])>=0?' lgo-d':'');
   var u=ORGU[o[0]]||'#';
-  return '<a class="mqi" href="'+u+'" target="_blank" rel="noopener"><span class="tile"><img class="lgo'+iv+'" src="images/logos_t/'+o[0]+'.png" alt="'+o[1]+'" loading="lazy"></span>'+o[1]+'</a>';}).join('');}
+  return '<a class="mqi" href="'+u+'" target="_blank" rel="noopener" title="'+o[1]+'"><span class="tile"><img class="lgo'+iv+'" src="images/logos_t/'+o[0]+'.png" alt="'+o[1]+'" decoding="async"></span>'+o[1]+'</a>';}).join('');}
  mqt.innerHTML=row()+row();
 
  /* certifications */
