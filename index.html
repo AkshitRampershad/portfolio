@@ -70,8 +70,11 @@ a{color:inherit}
 .cc:hover .vf{opacity:1}h1,h2,h3,h4{margin:0;text-wrap:balance}p{margin:0}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 img{max-width:100%}
-/* logos render in their own colours, unaltered */
-.lgo{max-width:100%;max-height:100%;object-fit:contain}
+/* logos: original files, original colours, on a uniform white chip so every
+   mark keeps its own brand tile and stays legible on both themes */
+.lgo{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;
+ background:#fff;padding:5px;border-radius:7px;box-sizing:border-box;
+ box-shadow:0 0 0 1px rgba(16,18,20,.10)}
 
 @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 
@@ -130,8 +133,9 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.6vw,64px);lin
 .mq:hover .mqt{animation-play-state:paused}
 @keyframes mv{to{transform:translateX(-50%)}}
 .mqi{display:flex;align-items:center;gap:13px;text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);white-space:nowrap;transition:.25s}
-.mqi .tile{height:54px;width:auto;min-width:54px;max-width:158px;flex:none;display:grid;place-items:center;transition:.25s}
-.mqi img{max-height:54px;max-width:158px;width:auto;height:auto;object-fit:contain;display:block;opacity:.9;transition:opacity .25s ease,transform .25s ease}
+.mqi .tile{height:54px;width:54px;flex:none;display:grid;place-items:center;transition:.25s}
+.mqi img{display:block;padding:6px;transition:transform .25s ease,box-shadow .25s ease}
+.mqi:hover img{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 1px rgba(16,18,20,.10)}
 .mqi:hover img{opacity:1}
 .mqi:hover{color:var(--bone)}
 .mqi:hover .tile{transform:translateY(-3px)}
@@ -272,7 +276,7 @@ summary .ar{color:var(--pc-c,var(--amber))}
 .cc{text-decoration:none;color:inherit}
 .cc .cct{transition:color .2s}
 .cc:hover .cct{color:var(--amber)}
-.ccl{width:38px;height:38px;flex:none;display:grid;place-items:center}
+.ccl{width:40px;height:40px;flex:none;display:grid;place-items:center}
 .ccl img{max-width:100%;max-height:100%;object-fit:contain}
 .ccl span{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--amber);letter-spacing:-.02em}
 .cct{font-size:13px;font-weight:600;line-height:1.35;color:var(--bone)}
@@ -283,7 +287,7 @@ summary .ar{color:var(--pc-c,var(--amber))}
 .lg>div+div{border-left:1px solid var(--line);padding-left:44px}
 .lgh{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--line)}
 .li{display:flex;gap:13px;padding-block:11px;font-size:13.5px;align-items:center}
-.lil{width:32px;height:32px;flex:none;display:grid;place-items:center}
+.lil{width:36px;height:36px;flex:none;display:grid;place-items:center}
 .lil img{max-width:100%;max-height:100%;object-fit:contain}
 .aw{font-weight:500}
 .or{color:var(--dim);font-size:12.5px}
@@ -293,7 +297,7 @@ summary .ar{color:var(--pc-c,var(--amber))}
 .edug{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .ed{background:var(--card);border:1px solid var(--line);padding:22px;display:flex;gap:16px;transition:.25s}
 .ed:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c-saas) 55%,var(--line))}
-.edl{width:56px;height:56px;flex:none;display:grid;place-items:center}
+.edl{width:58px;height:58px;flex:none;display:grid;place-items:center}
 .edl img{max-width:100%;max-height:100%;object-fit:contain}
 .edd{font-size:15.5px;font-weight:600;line-height:1.3}
 .eds{font-size:13.5px;color:var(--dim);margin-top:4px}
@@ -605,12 +609,12 @@ footer{border-top:1px solid var(--line);padding-block:28px;font-family:var(--mon
   <div class="cbh"><div><span class="cbt">Leadership &amp; Recognition</span><span class="cbs">— outside the job description</span></div><span class="cbn">4</span></div>
   <div class="cbb"><div class="lg">
    <div><div class="lgh">Leadership</div>
-    <div class="li"><span class="yr">2023</span><span class="lil"><img class="lgo" data-lg="usf-seal" src="images/logos_t/usf-seal.png" alt="USF" loading="lazy"></span><span><span class="aw">Data Science Club</span><br><span class="or"><a class="colink" href="https://www.usf.edu/" target="_blank" rel="noopener">University of South Florida</a></span></span></div>
-    <div class="li"><span class="yr">2022</span><span class="lil"><img class="lgo" data-lg="pmi" src="images/logos_t/pmi.png" alt="PMI" loading="lazy"></span><span><span class="aw">PMI Volunteer</span><br><span class="or"><a class="colink" href="https://www.pmi.org/" target="_blank" rel="noopener">Project Management Institute, Tampa</a></span></span></div></div>
+    <div class="li"><span class="yr">2023</span><span class="lil"><img class="lgo" data-lg="usf-seal" src="images/logos/usf-seal.png" alt="USF" loading="lazy"></span><span><span class="aw">Data Science Club</span><br><span class="or"><a class="colink" href="https://www.usf.edu/" target="_blank" rel="noopener">University of South Florida</a></span></span></div>
+    <div class="li"><span class="yr">2022</span><span class="lil"><img class="lgo" data-lg="pmi" src="images/logos/pmi.png" alt="PMI" loading="lazy"></span><span><span class="aw">PMI Volunteer</span><br><span class="or"><a class="colink" href="https://www.pmi.org/" target="_blank" rel="noopener">Project Management Institute, Tampa</a></span></span></div></div>
 
    <div><div class="lgh">Recognition</div>
-    <div class="li"><span class="yr">2022</span><span class="lil"><img class="lgo" data-lg="ukg" src="images/logos_t/ukg.png" alt="UKG" loading="lazy"></span><span><span class="aw" style="color:var(--amber)">Exceptional Performer Award</span><br><span class="or"><a class="colink" href="https://www.ukg.com/" target="_blank" rel="noopener">UKG</a></span></span></div>
-    <div class="li"><span class="yr">2021</span><span class="lil"><img class="lgo" data-lg="ukg" src="images/logos_t/ukg.png" alt="UKG" loading="lazy"></span><span><span class="aw" style="color:var(--amber)">Technical Excellence Award</span><br><span class="or"><a class="colink" href="https://www.ukg.com/" target="_blank" rel="noopener">UKG</a></span></span></div></div>
+    <div class="li"><span class="yr">2022</span><span class="lil"><img class="lgo" data-lg="ukg" src="images/logos/ukg.png" alt="UKG" loading="lazy"></span><span><span class="aw" style="color:var(--amber)">Exceptional Performer Award</span><br><span class="or"><a class="colink" href="https://www.ukg.com/" target="_blank" rel="noopener">UKG</a></span></span></div>
+    <div class="li"><span class="yr">2021</span><span class="lil"><img class="lgo" data-lg="ukg" src="images/logos/ukg.png" alt="UKG" loading="lazy"></span><span><span class="aw" style="color:var(--amber)">Technical Excellence Award</span><br><span class="or"><a class="colink" href="https://www.ukg.com/" target="_blank" rel="noopener">UKG</a></span></span></div></div>
 
   </div></div>
  </div>
@@ -622,9 +626,9 @@ footer{border-top:1px solid var(--line);padding-block:28px;font-family:var(--mon
   <div class="srole">Where the analytics foundation came from — a business-analytics master's on top of a computer-science degree, which is why I tend to ask what a system is for before asking how to build it.</div>
  </div></div>
  <div class="edug rv">
-  <div class="ed"><div class="edl"><img class="lgo" data-lg="usf" src="images/logos_t/usf.png" alt="University of South Florida" loading="lazy"></div>
+  <div class="ed"><div class="edl"><img class="lgo" data-lg="usf" src="images/logos/usf.png" alt="University of South Florida" loading="lazy"></div>
    <div><div class="edd">MS, Business Analytics &amp; Information Systems</div><div class="eds"><a class="colink" href="https://www.usf.edu/" target="_blank" rel="noopener">University of South Florida</a> · Tampa, FL</div><div class="edy">Aug 2022 — May 2024</div></div></div>
-  <div class="ed"><div class="edl"><img class="lgo" data-lg="gitam" src="images/logos_t/gitam.png" alt="GITAM University" loading="lazy"></div>
+  <div class="ed"><div class="edl"><img class="lgo" data-lg="gitam" src="images/logos/gitam.png" alt="GITAM University" loading="lazy"></div>
    <div><div class="edd">BS, Computer Science &amp; Engineering</div><div class="eds"><a class="colink" href="https://www.gitam.edu/" target="_blank" rel="noopener">GITAM University</a> · India</div><div class="edy">Aug 2016 — July 2020</div></div></div>
  </div>
 </section>
@@ -777,7 +781,7 @@ document.documentElement.classList.add('js');
  var mqt=document.getElementById('mqt');
  function row(){return orgs.map(function(o){var iv='';
   var u=ORGU[o[0]]||'#';
-  return '<a class="mqi" href="'+u+'" target="_blank" rel="noopener" title="'+o[1]+'"><span class="tile"><img class="lgo" data-lg="'+o[0]+'" src="images/logos_t/'+o[0]+'.png" alt="'+o[1]+'" decoding="async"></span>'+o[1]+'</a>';}).join('');}
+  return '<a class="mqi" href="'+u+'" target="_blank" rel="noopener" title="'+o[1]+'"><span class="tile"><img class="lgo" data-lg="'+o[0]+'" src="images/logos/'+o[0]+'.png" alt="'+o[1]+'" decoding="async"></span>'+o[1]+'</a>';}).join('');}
  mqt.innerHTML=row()+row();
 
  /* certifications */
@@ -800,7 +804,7 @@ document.documentElement.classList.add('js');
   ['Agentic AI Nanodegree Program','Udacity by Accenture','In-Progress','udacityai','https://www.udacity.com/course/agentic-ai--nd900?utm_source=paid-search&utm_medium=gem-dg-prospecting&utm_campaign=23840724448_individuals_campaigngtm&utm_term=&utm_content=agentic-ai-free-trial&utm_source=paid-search&utm_medium=gem-dg-prospecting&utm_campaign=23840724448_individuals_campaigngtm&utm_term=&utm_content=bau&gad_source=2&gad_campaignid=23840724448&gclid=CjwKCAjwuanRBhBSEiwAY5y6V3w5XkhWYCcgk0FUKEqWw43Cgk-Dw4jGr5J5p0hN1qz7Wp8_BZ9IORoCu7gQAvD_BwE']
  ];
  document.getElementById('certg').innerHTML=CERTS.map(function(c){
-  var logo = '<img class="lgo" data-lg="'+c[3]+'" src="images/logos_t/'+c[3]+'.png" alt="'+c[1]+'" loading="lazy">';
+  var logo = '<img class="lgo" data-lg="'+c[3]+'" src="images/logos/'+c[3]+'.png" alt="'+c[1]+'" loading="lazy">';
   var prog = c[2]==='In-Progress' ? ' prog-c' : '';
   return '<a class="cc" href="'+c[4]+'" target="_blank" rel="noopener"><div class="ccl">'+logo+'</div><div><div class="cct">'+c[0]+'</div><div class="cci">'+c[1]+'</div><div class="ccd'+prog+'">'+c[2]+' <span class="vf">verify \u2197</span></div></div></a>';
  }).join('');
