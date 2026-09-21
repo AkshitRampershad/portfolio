@@ -70,59 +70,8 @@ a{color:inherit}
 .cc:hover .vf{opacity:1}h1,h2,h3,h4{margin:0;text-wrap:balance}p{margin:0}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 img{max-width:100%}
-/* logo legibility: corrections measured from each mark's ink contrast vs the page ground */
+/* logos render in their own colours, unaltered */
 .lgo{max-width:100%;max-height:100%;object-fit:contain}
-.lgo[data-lg="anthropic"]{filter:invert(1) brightness(1.8)}
-.lgo[data-lg="atlassian"]{filter:brightness(1.2) saturate(1.06)}
-.lgo[data-lg="databricks"]{filter:brightness(1.05) saturate(1.02)}
-.lgo[data-lg="docker"]{filter:brightness(1.32) saturate(1.10)}
-.lgo[data-lg="mckinsey"]{filter:brightness(3.0) saturate(1.35)}
-.lgo[data-lg="pmi"]{filter:brightness(2.0) saturate(1.30)}
-.lgo[data-lg="qdrant"]{filter:brightness(1.83) saturate(1.25)}
-.lgo[data-lg="snowflake"]{filter:brightness(1.27) saturate(1.08)}
-.lgo[data-lg="surge-it"]{filter:brightness(1.87) saturate(1.26)}
-.lgo[data-lg="udacityai"]{filter:brightness(3.0) saturate(1.35)}
-.lgo[data-lg="ukg"]{filter:brightness(2.67) saturate(1.35)}
-.lgo[data-lg="usf"]{filter:brightness(1.62) saturate(1.19)}
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .lgo{filter:none}
- :root:not([data-theme="dark"]) .lgo[data-lg="docker"]{filter:brightness(.78) saturate(1.15)}
- :root:not([data-theme="dark"]) .lgo[data-lg="22nd"]{filter:brightness(0.68) saturate(1.1)}
- :root:not([data-theme="dark"]) .lgo[data-lg="cambrian-lab"]{filter:invert(1) brightness(.8)}
- :root:not([data-theme="dark"]) .lgo[data-lg="cyberflorida"]{filter:invert(1) brightness(.85)}
- :root:not([data-theme="dark"]) .lgo[data-lg="gitam"]{filter:brightness(.48) saturate(1.1)}
- :root:not([data-theme="dark"]) .lgo[data-lg="langchain"]{filter:brightness(.6) saturate(1.15)}
- :root:not([data-theme="dark"]) .lgo[data-lg="microsoft"]{filter:brightness(0.73) saturate(1.1)}
- :root:not([data-theme="dark"]) .lgo[data-lg="surge-it"]{filter:brightness(0.81) saturate(1.1)}
- :root:not([data-theme="dark"]) .lgo[data-lg="udacityai"]{filter:invert(1) brightness(.85)}
- :root:not([data-theme="dark"]) .lgo[data-lg="usf"]{filter:brightness(0.74) saturate(1.1)}
- :root:not([data-theme="dark"]) .lgo[data-lg="usf-seal"]{filter:brightness(0.53) saturate(1.1)}
- :root:not([data-theme="dark"]) .lgo[data-lg="wolfram"]{filter:invert(1) brightness(.85)}}
-:root[data-theme="light"] .lgo{filter:none}
-:root[data-theme="light"] .lgo[data-lg="docker"]{filter:brightness(.78) saturate(1.15)}
-:root[data-theme="light"] .lgo[data-lg="22nd"]{filter:brightness(0.68) saturate(1.1)}
-:root[data-theme="light"] .lgo[data-lg="cambrian-lab"]{filter:invert(1) brightness(.8)}
-:root[data-theme="light"] .lgo[data-lg="cyberflorida"]{filter:invert(1) brightness(.85)}
-:root[data-theme="light"] .lgo[data-lg="gitam"]{filter:brightness(.48) saturate(1.1)}
-:root[data-theme="light"] .lgo[data-lg="langchain"]{filter:brightness(.6) saturate(1.15)}
-:root[data-theme="light"] .lgo[data-lg="microsoft"]{filter:brightness(0.73) saturate(1.1)}
-:root[data-theme="light"] .lgo[data-lg="surge-it"]{filter:brightness(0.81) saturate(1.1)}
-:root[data-theme="light"] .lgo[data-lg="udacityai"]{filter:invert(1) brightness(.85)}
-:root[data-theme="light"] .lgo[data-lg="usf"]{filter:brightness(0.74) saturate(1.1)}
-:root[data-theme="light"] .lgo[data-lg="usf-seal"]{filter:brightness(0.53) saturate(1.1)}
-:root[data-theme="light"] .lgo[data-lg="wolfram"]{filter:invert(1) brightness(.85)}
-:root[data-theme="dark"] .lgo{filter:none}
-:root[data-theme="dark"] .lgo[data-lg="anthropic"]{filter:invert(1) brightness(1.8)}
-:root[data-theme="dark"] .lgo[data-lg="atlassian"]{filter:brightness(1.2) saturate(1.06)}
-:root[data-theme="dark"] .lgo[data-lg="databricks"]{filter:brightness(1.05) saturate(1.02)}
-:root[data-theme="dark"] .lgo[data-lg="docker"]{filter:brightness(1.32) saturate(1.10)}
-:root[data-theme="dark"] .lgo[data-lg="mckinsey"]{filter:brightness(3.0) saturate(1.35)}
-:root[data-theme="dark"] .lgo[data-lg="pmi"]{filter:brightness(2.0) saturate(1.30)}
-:root[data-theme="dark"] .lgo[data-lg="qdrant"]{filter:brightness(1.83) saturate(1.25)}
-:root[data-theme="dark"] .lgo[data-lg="snowflake"]{filter:brightness(1.27) saturate(1.08)}
-:root[data-theme="dark"] .lgo[data-lg="surge-it"]{filter:brightness(1.87) saturate(1.26)}
-:root[data-theme="dark"] .lgo[data-lg="udacityai"]{filter:brightness(3.0) saturate(1.35)}
-:root[data-theme="dark"] .lgo[data-lg="ukg"]{filter:brightness(2.67) saturate(1.35)}
-:root[data-theme="dark"] .lgo[data-lg="usf"]{filter:brightness(1.62) saturate(1.19)}
 
 @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 
