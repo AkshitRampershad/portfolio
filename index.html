@@ -135,7 +135,17 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.6vw,64px);lin
 @keyframes mv{to{transform:translateX(-50%)}}
 .mqi{display:flex;align-items:center;gap:13px;text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);white-space:nowrap;transition:.25s}
 .mqi .tile{height:54px;width:auto;min-width:54px;max-width:158px;flex:none;display:grid;place-items:center;transition:.25s}
-.mqi img{max-height:54px;max-width:158px;width:auto;height:auto;object-fit:contain;display:block}
+.mqi img{max-height:54px;max-width:158px;width:auto;height:auto;object-fit:contain;display:block;
+ filter:brightness(0) invert(1);opacity:.7;transition:filter .3s ease,opacity .3s ease}
+.mqi img.mq-gs{filter:grayscale(1) brightness(1.55) contrast(1.15)}
+.mqi:hover img,.mqi:hover img.mq-gs{filter:none;opacity:1}
+@media (prefers-color-scheme: light){
+ :root:not([data-theme="dark"]) .mqi img{filter:brightness(0);opacity:.6}
+ :root:not([data-theme="dark"]) .mqi img.mq-gs{filter:grayscale(1) brightness(.55) contrast(1.2)}
+ :root:not([data-theme="dark"]) .mqi:hover img,:root:not([data-theme="dark"]) .mqi:hover img.mq-gs{filter:none;opacity:1}}
+:root[data-theme="light"] .mqi img{filter:brightness(0);opacity:.6}
+:root[data-theme="light"] .mqi img.mq-gs{filter:grayscale(1) brightness(.55) contrast(1.2)}
+:root[data-theme="light"] .mqi:hover img,:root[data-theme="light"] .mqi:hover img.mq-gs{filter:none;opacity:1}
 .mqi:hover{color:var(--bone)}
 .mqi:hover .tile{transform:translateY(-3px)}
 
@@ -777,9 +787,10 @@ document.documentElement.classList.add('js');
  /* marquee */
  var orgs=[['cambrian-lab','Cambrian Lab'],['22nd','22nd Century'],['surge-it','Surge Infotech'],['cyberflorida','CyberFlorida'],['ukg','UKG'],['usf','USF'],['gitam','GITAM'],['anthropic','Anthropic'],['langchain','LangChain'],['qdrant','Qdrant'],['databricks','Databricks'],['snowflake','Snowflake'],['docker','Docker'],['microsoft','Microsoft'],['mckinsey','McKinsey'],['atlassian','Atlassian'],['wolfram','Wolfram'],['udacityai','Udacity']];
  var ORGU={"cambrian-lab": "https://www.cambrianlab.net/", "22nd": "https://www.tscti.com/", "surge-it": "https://surgeit.com/", "cyberflorida": "https://cyberflorida.org/", "ukg": "https://www.ukg.com/", "usf": "https://www.usf.edu/", "anthropic": "https://www.anthropic.com/", "databricks": "https://www.databricks.com/", "snowflake": "https://www.snowflake.com/", "docker": "https://www.docker.com/", "microsoft": "https://www.microsoft.com/", "mckinsey": "https://www.mckinsey.com/", "atlassian": "https://www.atlassian.com/", "wolfram": "https://www.wolfram.com/", "udacityai": "https://www.udacity.com/", "langchain": "https://www.langchain.com/", "qdrant": "https://qdrant.tech/", "gitam": "https://www.gitam.edu/"};
- var INV_L=['atlassian','cambrian-lab','cyberflorida','udacityai'], INV_D=['anthropic'];
+ var INV_L=['cambrian-lab','cyberflorida','wolfram'], INV_D=['anthropic','udacityai'];
  var mqt=document.getElementById('mqt');
- function row(){return orgs.map(function(o){var iv=INV_L.indexOf(o[0])>=0?' lgo-l':(INV_D.indexOf(o[0])>=0?' lgo-d':'');
+ function row(){return orgs.map(function(o){var GS=['mckinsey','22nd'];
+  var iv=(GS.indexOf(o[0])>=0?' mq-gs':'');
   var u=ORGU[o[0]]||'#';
   return '<a class="mqi" href="'+u+'" target="_blank" rel="noopener" title="'+o[1]+'"><span class="tile"><img class="lgo'+iv+'" src="images/logos_t/'+o[0]+'.png" alt="'+o[1]+'" decoding="async"></span>'+o[1]+'</a>';}).join('');}
  mqt.innerHTML=row()+row();
