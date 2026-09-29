@@ -41,6 +41,40 @@ function json(body, status, extraHeaders) {
 
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+
+    // ---- GET /views : footer view counter -------------------------------
+    // Counts each browser once per day (the page only sends ?hit=1 on a
+    // visitor's first load that day), so KV writes track unique visits
+    // rather than refreshes and stay well inside the free tier.
+    if (url.pathname === '/views' && (request.method === 'GET' || request.method === 'OPTIONS')) {
+      const origin = request.headers.get('Origin');
+      const cors = corsHeaders(origin) || { 'Access-Control-Allow-Origin': '*' };
+      if (request.method === 'OPTIONS') {
+        return new Response(null, { headers: { ...cors, 'Access-Control-Allow-Methods': 'GET, OPTIONS' } });
+      }
+      if (!env.VIEWS) return new Response('{}', { status: 503, headers: { ...cors, 'Content-Type': 'application/json' } });
+
+      const dayKey = 'day:' + new Date().toISOString().slice(0, 10);
+      let total = parseInt(await env.VIEWS.get('total'), 10) || 0;
+      let today = parseInt(await env.VIEWS.get(dayKey), 10) || 0;
+
+      if (url.searchParams.get('hit') === '1') {
+        total += 1;
+        today += 1;
+        // fire-and-forget so the response is not held up by the writes
+        await Promise.all([
+          env.VIEWS.put('total', String(total)),
+          env.VIEWS.put(dayKey, String(today), { expirationTtl: 60 * 60 * 24 * 40 }),
+        ]);
+      }
+
+      return new Response(JSON.stringify({ total, today }), {
+        headers: { ...cors, 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+      });
+    }
+    // ---------------------------------------------------------------------
+
     const origin = request.headers.get('Origin') || '';
     const cors = corsHeaders(origin);
 

@@ -322,6 +322,10 @@ summary .ar{color:var(--pc-c,var(--amber))}
 .cta{text-align:center;padding-block:68px;border-top:1px solid var(--line-2)}
 .cta h2{margin:0 auto 20px;max-width:22ch}
 .ctp{color:var(--dim);max-width:52ch;margin:0 auto 24px;font-size:15.5px}
+.views{display:inline-flex;align-items:center;gap:7px;color:var(--faint);font-variant-numeric:tabular-nums}
+.views svg{opacity:.7;flex:none}
+.views #viewsTotal,.views #viewsToday{color:var(--dim)}
+.views .vsep{opacity:.45;margin-inline:1px}
 footer{border-top:1px solid var(--line);padding-block:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .b2t{position:fixed;right:22px;bottom:96px;width:40px;height:40px;border:1px solid var(--line-2);background:var(--ink-800);color:var(--bone);display:grid;place-items:center;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:50}
 .b2t.on{opacity:1;pointer-events:auto}
@@ -681,7 +685,9 @@ footer{border-top:1px solid var(--line);padding-block:28px;font-family:var(--mon
  </div>
 </div>
 
-<footer><span>© 2026 Akshit RamPershad</span><span style="color:var(--amber)">Turning enterprise operations into scalable AI-native systems</span></footer>
+<footer><span>© 2026 Akshit RamPershad</span>
+ <span class="views" id="views" hidden><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span id="viewsTotal"></span> views<span class="vsep">·</span><span id="viewsToday"></span> today</span>
+ <span style="color:var(--amber)">Turning enterprise operations into scalable AI-native systems</span></footer>
 </div>
 
 <button class="b2t" id="b2t" aria-label="Back to top"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
@@ -891,6 +897,25 @@ document.documentElement.classList.add('js');
   start();
  })();
 
+
+ /* footer view counter — counts each browser once per day, hides itself on failure */
+ (function(){
+  var EL=document.getElementById('views');
+  if(!EL) return;
+  var API='https://portfolio-rag.akshitrampershad.workers.dev/views';
+  var today=new Date().toISOString().slice(0,10), hit=false;
+  try{ if(localStorage.getItem('seen')!==today){ hit=true; localStorage.setItem('seen',today); } }
+  catch(e){ hit=false; }                       // private mode: read, never inflate
+  fetch(API+(hit?'?hit=1':''),{cache:'no-store'})
+   .then(function(r){ return r.ok?r.json():null; })
+   .then(function(d){
+     if(!d||typeof d.total!=='number'||d.total<1) return;   // never render a zero or an error
+     document.getElementById('viewsTotal').textContent=d.total.toLocaleString();
+     document.getElementById('viewsToday').textContent=(d.today||0).toLocaleString();
+     EL.hidden=false;
+   })
+   .catch(function(){});                        // silent: the footer just omits it
+ })();
  /* copy email */
  var cm=document.getElementById('copyMail');
  cm.onclick=function(){var m='akshitrampershad@gmail.com';

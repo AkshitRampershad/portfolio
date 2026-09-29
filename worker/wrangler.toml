@@ -5,3 +5,20 @@ compatibility_date = "2024-11-01"
 # GROQ_API_KEY is set as an encrypted secret, never in this file:
 #   wrangler secret put GROQ_API_KEY
 # or via the Cloudflare dashboard (Worker → Settings → Variables and Secrets).
+
+# KV namespace backing the footer view counter.
+#
+# Setup, once:
+#   1. wrangler kv namespace create VIEWS
+#   2. paste the id it returns into `id` below
+#   3. seed the lifetime total from Google Analytics so the counter does not
+#      restart from zero (use the real figure from GA, not an estimate):
+#        wrangler kv key put --binding=VIEWS total <GA_LIFETIME_TOTAL>
+#   4. wrangler deploy
+#
+# The page counts one browser per day, so KV writes track unique visits and
+# stay inside the free tier. Until this namespace exists the /views route
+# returns 503 and the footer simply omits the counter.
+[[kv_namespaces]]
+binding = "VIEWS"
+id = "PASTE_NAMESPACE_ID_HERE"
