@@ -62,7 +62,7 @@ export default {
       if (url.searchParams.get('hit') === '1') {
         total += 1;
         today += 1;
-        // fire-and-forget so the response is not held up by the writes
+        // both writes must land before we report the new figures
         await Promise.all([
           env.VIEWS.put('total', String(total)),
           env.VIEWS.put(dayKey, String(today), { expirationTtl: 60 * 60 * 24 * 40 }),
