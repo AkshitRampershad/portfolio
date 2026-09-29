@@ -39,6 +39,13 @@ function json(body, status, extraHeaders) {
   });
 }
 
+// Views the site had before this counter existed, from Google Analytics
+// (1 Jan 2022 - 29 Sept 2026, all five paths of the old multi-page layout).
+// Kept here rather than seeded into KV so the figure survives the namespace
+// being recreated, and so setup needs no hand-edited key. Everything the
+// counter records itself is added on top.
+const VIEWS_BASELINE = 1591;
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -49,27 +56,30 @@ export default {
     // rather than refreshes and stay well inside the free tier.
     if (url.pathname === '/views' && (request.method === 'GET' || request.method === 'OPTIONS')) {
       const origin = request.headers.get('Origin');
-      const cors = corsHeaders(origin) || { 'Access-Control-Allow-Origin': '*' };
+      const allowed = corsHeaders(origin);
+      // readable from anywhere, but only the site itself can add to the count,
+      // so nobody outside it can inflate the figure or burn the KV write quota
+      const cors = allowed || { 'Access-Control-Allow-Origin': '*' };
       if (request.method === 'OPTIONS') {
         return new Response(null, { headers: { ...cors, 'Access-Control-Allow-Methods': 'GET, OPTIONS' } });
       }
       if (!env.VIEWS) return new Response('{}', { status: 503, headers: { ...cors, 'Content-Type': 'application/json' } });
 
       const dayKey = 'day:' + new Date().toISOString().slice(0, 10);
-      let total = parseInt(await env.VIEWS.get('total'), 10) || 0;
+      let counted = parseInt(await env.VIEWS.get('total'), 10) || 0;
       let today = parseInt(await env.VIEWS.get(dayKey), 10) || 0;
 
-      if (url.searchParams.get('hit') === '1') {
-        total += 1;
+      if (allowed && url.searchParams.get('hit') === '1') {
+        counted += 1;
         today += 1;
         // both writes must land before we report the new figures
         await Promise.all([
-          env.VIEWS.put('total', String(total)),
+          env.VIEWS.put('total', String(counted)),
           env.VIEWS.put(dayKey, String(today), { expirationTtl: 60 * 60 * 24 * 40 }),
         ]);
       }
 
-      return new Response(JSON.stringify({ total, today }), {
+      return new Response(JSON.stringify({ total: VIEWS_BASELINE + counted, today }), {
         headers: { ...cors, 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
       });
     }

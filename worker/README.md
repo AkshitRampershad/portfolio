@@ -33,38 +33,53 @@ wrangler secret put GROQ_API_KEY   # paste the key when prompted
 ## Footer view counter
 
 The same Worker serves `GET /views`, which backs the visitor count in the site
-footer. It needs a KV namespace; `setup-views.sh` creates it, seeds it and
-deploys in one go:
+footer. It needs one KV namespace bound as `VIEWS`. Nothing needs seeding: the
+1,591 views the site had before the counter existed (Google Analytics, 1 Jan
+2022 - 29 Sept 2026, all five paths of the old multi-page layout) are
+`VIEWS_BASELINE` in `rag-worker.js`, and KV holds only what the counter has
+tallied since.
+
+### Option A - Cloudflare dashboard
+
+1. **Storage & Databases -> KV -> Create instance.** Name it `VIEWS`. (On older
+   dashboards KV sits under Workers & Pages instead.)
+2. **Workers & Pages -> portfolio-rag -> Settings -> Bindings -> Add -> KV
+   namespace.** Variable name `VIEWS` (exactly, in capitals), namespace: the one
+   just created. Save.
+3. **Edit code**, replace the contents with `rag-worker.js` from this folder,
+   **Deploy**. This step matters: a Worker deployed before the counter existed
+   has no `/views` route, so the footer stays blank without it.
+
+### Option B - Wrangler CLI
 
 ```bash
 cd worker
 npx wrangler login
-./setup-views.sh 1591
+./setup-views.sh
 git add wrangler.toml && git commit -m "Wire the view counter to its KV namespace"
 ```
 
-1591 is the lifetime Views total for the property from Google Analytics
-(**Reports → Engagement → Pages and screens**, 1 Jan 2022 – 29 Sept 2026,
-Views on the summary row) — the whole site, including the old multi-page
-layout whose paths the single page replaced. Seeding is what stops the
-counter starting again from zero. To re-seed later, just run the script
-again with a new figure; it reuses the existing namespace.
-
-Note the two figures measure slightly different things: the seed is GA
-*views*, while everything counted from here on is one browser per day. The
-counter therefore grows more slowly than GA will, by design — it is a
-visitor count, not a request count.
-
-The page counts one browser per day, so KV writes track unique visits rather
-than requests and stay well inside the free tier (1,000 writes/day). Until the
-namespace exists `/views` returns 503 and the footer just omits the counter —
-nothing on the page breaks.
-
-Check it any time with:
+### Either way, verify
 
 ```bash
 curl -s https://portfolio-rag.akshitrampershad.workers.dev/views
+# {"total":1591,"today":0}
 ```
+
+`{}` with a 503 means the binding is missing or misnamed; a 404 means the
+deployed code predates the `/views` route.
+
+### Notes on the numbers
+
+The baseline is GA *views*; everything counted from here is one browser per
+day, so the figure climbs more slowly than GA does. That is deliberate - it is
+a visitor count, and it keeps KV writes far inside the free tier (1,000/day).
+
+Only requests carrying an allowed `Origin` can increment the count, so the
+figure cannot be inflated from outside the site. Reads are open to anyone.
+
+To change the baseline later, edit `VIEWS_BASELINE` and redeploy; the tally in
+KV is untouched. Deleting and recreating the namespace loses only the tally.
 
 ## Notes
 

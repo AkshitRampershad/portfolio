@@ -10,12 +10,13 @@ compatibility_date = "2024-11-01"
 #
 # Setup, once — ./setup-views.sh does all of it:
 #
-#   ./setup-views.sh 1591
+#   ./setup-views.sh
 #
-# It creates the namespace, writes its id into `id` below, seeds the lifetime
-# total so the counter does not restart from zero, and deploys. 1591 is the
-# site's lifetime Views total from Google Analytics as of 29 Sept 2026.
-# Commit this file afterwards to keep the id.
+# It creates the namespace, writes its id into `id` below, and deploys.
+# Nothing needs seeding: the site's pre-existing Google Analytics total is
+# VIEWS_BASELINE in rag-worker.js, and KV holds only what the counter has
+# tallied since. Commit this file afterwards to keep the id.
+# README.md has the equivalent steps for the Cloudflare dashboard.
 #
 # The page counts one browser per day, so KV writes track unique visits and
 # stay inside the free tier. Until this namespace exists the /views route
