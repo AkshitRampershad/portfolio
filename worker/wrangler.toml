@@ -8,13 +8,14 @@ compatibility_date = "2024-11-01"
 
 # KV namespace backing the footer view counter.
 #
-# Setup, once:
-#   1. wrangler kv namespace create VIEWS
-#   2. paste the id it returns into `id` below
-#   3. seed the lifetime total from Google Analytics so the counter does not
-#      restart from zero (use the real figure from GA, not an estimate):
-#        wrangler kv key put --binding=VIEWS total <GA_LIFETIME_TOTAL>
-#   4. wrangler deploy
+# Setup, once — ./setup-views.sh does all of it:
+#
+#   ./setup-views.sh <GA_LIFETIME_TOTAL>
+#
+# It creates the namespace, writes its id into `id` below, seeds the lifetime
+# total so the counter does not restart from zero, and deploys. Pass the real
+# Views figure from GA (Reports -> Engagement -> Pages and screens, all time),
+# not an estimate. Commit this file afterwards to keep the id.
 #
 # The page counts one browser per day, so KV writes track unique visits and
 # stay inside the free tier. Until this namespace exists the /views route

@@ -30,6 +30,34 @@ wrangler secret put GROQ_API_KEY   # paste the key when prompted
 
 `wrangler deploy` prints the Worker's URL — send it to me the same as step 6 above.
 
+## Footer view counter
+
+The same Worker serves `GET /views`, which backs the visitor count in the site
+footer. It needs a KV namespace; `setup-views.sh` creates it, seeds it and
+deploys in one go:
+
+```bash
+cd worker
+npx wrangler login
+./setup-views.sh <GA_TOTAL>   # e.g. ./setup-views.sh 8412
+git add wrangler.toml && git commit -m "Wire the view counter to its KV namespace"
+```
+
+Find the seed figure in GA under **Reports → Engagement → Pages and screens**,
+with the date range set to all time; use the Views total on the summary row.
+Seeding is what stops the counter starting again from zero.
+
+The page counts one browser per day, so KV writes track unique visits rather
+than requests and stay well inside the free tier (1,000 writes/day). Until the
+namespace exists `/views` returns 503 and the footer just omits the counter —
+nothing on the page breaks.
+
+Check it any time with:
+
+```bash
+curl -s https://portfolio-rag.akshitrampershad.workers.dev/views
+```
+
 ## Notes
 
 - The Worker only accepts requests from `https://akshitrampershad.github.io` (see `ALLOWED_ORIGINS` in `rag-worker.js`) — update that if the site ever moves to a custom domain.
