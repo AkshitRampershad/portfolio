@@ -52,12 +52,17 @@ tallied since.
 
 ### Option B - Wrangler CLI
 
+The namespace already exists and its id is committed in `wrangler.toml`, so a
+plain deploy is enough:
+
 ```bash
 cd worker
 npx wrangler login
-./setup-views.sh
-git add wrangler.toml && git commit -m "Wire the view counter to its KV namespace"
+npx wrangler deploy
 ```
+
+`./setup-views.sh` does the same and creates the namespace first if it is ever
+missing (after `wrangler.toml` is reset to the placeholder, say).
 
 ### Either way, verify
 

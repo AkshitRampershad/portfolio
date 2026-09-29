@@ -23,4 +23,4 @@ compatibility_date = "2024-11-01"
 # returns 503 and the footer simply omits the counter.
 [[kv_namespaces]]
 binding = "VIEWS"
-id = "PASTE_NAMESPACE_ID_HERE"
+id = "bbddc4f7cf51480f99c7f6413d144c35"
