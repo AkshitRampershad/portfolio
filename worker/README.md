@@ -39,13 +39,21 @@ deploys in one go:
 ```bash
 cd worker
 npx wrangler login
-./setup-views.sh <GA_TOTAL>   # e.g. ./setup-views.sh 8412
+./setup-views.sh 1591
 git add wrangler.toml && git commit -m "Wire the view counter to its KV namespace"
 ```
 
-Find the seed figure in GA under **Reports → Engagement → Pages and screens**,
-with the date range set to all time; use the Views total on the summary row.
-Seeding is what stops the counter starting again from zero.
+1591 is the lifetime Views total for the property from Google Analytics
+(**Reports → Engagement → Pages and screens**, 1 Jan 2022 – 29 Sept 2026,
+Views on the summary row) — the whole site, including the old multi-page
+layout whose paths the single page replaced. Seeding is what stops the
+counter starting again from zero. To re-seed later, just run the script
+again with a new figure; it reuses the existing namespace.
+
+Note the two figures measure slightly different things: the seed is GA
+*views*, while everything counted from here on is one browser per day. The
+counter therefore grows more slowly than GA will, by design — it is a
+visitor count, not a request count.
 
 The page counts one browser per day, so KV writes track unique visits rather
 than requests and stay well inside the free tier (1,000 writes/day). Until the
